@@ -7,7 +7,7 @@ test.describe("Playground docs", () => {
     await expect(page.getByRole("tab", { name: "Members" }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: "Edit page on GitHub ↗" })).toHaveAttribute(
       "href",
-      /github\.com\/sinadinzidan\/zed-ui\/edit\/main\/apps\/playground\/src\/docs\/sections\/navigation\.tsx/
+      /github\.com\/zedcraftstudio\/zed-ui\/edit\/main\/apps\/playground\/src\/docs\/sections\/navigation\.tsx/
     );
   });
 
@@ -23,7 +23,7 @@ test.describe("Playground docs", () => {
     );
     await expect(page.getByRole("link", { name: "Edit page on GitHub ↗" })).toHaveAttribute(
       "href",
-      /github\.com\/sinadinzidan\/zed-ui\/edit\/main\/apps\/playground\/src\/pages\/InstallationPage\.tsx/
+      /github\.com\/zedcraftstudio\/zed-ui\/edit\/main\/apps\/playground\/src\/pages\/InstallationPage\.tsx/
     );
   });
 
