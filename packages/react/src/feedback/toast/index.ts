@@ -3,7 +3,6 @@ export {
   ToastProvider,
   ToastRoot,
   ToastViewport,
-  useToast,
   type ToastItem,
   type ToastOptions,
   type ToastOwnProps,
@@ -12,3 +11,4 @@ export {
   type ToastVariant,
   type ToastViewportProps
 } from "./Toast";
+export { useToast } from "./useToast";

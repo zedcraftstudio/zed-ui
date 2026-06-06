@@ -198,7 +198,9 @@ type ToastContextValue = {
   toasts: ToastItem[];
 };
 
-const ToastContext = createContext<ToastContextValue | null>(null);
+export const ToastContext = createContext<ToastContextValue | null>(null);
+
+export type { ToastContextValue };
 
 export type ToastProviderProps = {
   children: ReactNode;
@@ -239,14 +241,6 @@ export function ToastProvider({ children, limit = 5 }: ToastProviderProps) {
   );
 }
 
-export function useToast(): ToastContextValue {
-  const context = useContext(ToastContext);
-  if (!context) {
-    throw new Error("`useToast` must be used within `ToastProvider`");
-  }
-  return context;
-}
-
 export type ToastViewportProps = {
   className?: string;
 };
@@ -259,8 +253,8 @@ export function ToastViewport({ className }: ToastViewportProps) {
 
   const viewport = (
     <div aria-live="polite" className={cx("zui-toast-viewport", className)} role="region">
-      {context.toasts.map((item) => {
-        const { duration: _duration, id, ...toastProps } = item;
+      {context.toasts.map(({ id, duration, ...toastProps }) => {
+        void duration;
 
         return <Toast key={id} {...toastProps} onClose={() => context.dismiss(id)} />;
       })}
