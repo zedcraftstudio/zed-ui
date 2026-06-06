@@ -1,0 +1,61 @@
+{
+  "name": "@zed-ui/themes",
+  "version": "0.0.2",
+  "description": "Theme system for Zed UI",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "design-system",
+    "theme",
+    "tokens",
+    "zed-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinadinzidan/zed-ui.git",
+    "directory": "packages/themes"
+  },
+  "homepage": "https://sinadinzidan.github.io/zed-ui/",
+  "bugs": {
+    "url": "https://github.com/sinadinzidan/zed-ui/issues"
+  },
+  "type": "module",
+  "sideEffects": [
+    "./dist/styles/global.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles/global.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm run build",
+    "build": "tsup",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@zed-ui/utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0 || >=19.0.0",
+    "react-dom": ">=18.2.0 || >=19.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1"
+  }
+}

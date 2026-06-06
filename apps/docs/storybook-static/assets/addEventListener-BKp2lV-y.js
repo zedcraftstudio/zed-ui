@@ -1,0 +1,1 @@
+import{p as e,t}from"./useIsoLayoutEffect-BfjTaIXP.js";function n(n){let i=e(r,n).current;return i.next=n,t(i.effect),i}function r(e){let t={current:e,next:e,effect:()=>{t.current=t.next}};return t}function i(e,t,n,r){return e.addEventListener(t,n,r),()=>{e.removeEventListener(t,n,r)}}export{n,i as t};

@@ -1,0 +1,45 @@
+{
+  "name": "@zed-ui/utils",
+  "version": "0.0.2",
+  "description": "Utilities for Zed UI",
+  "license": "MIT",
+  "keywords": [
+    "utilities",
+    "zed-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinadinzidan/zed-ui.git",
+    "directory": "packages/utils"
+  },
+  "homepage": "https://sinadinzidan.github.io/zed-ui/",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm run build",
+    "build": "tsup",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1"
+  }
+}

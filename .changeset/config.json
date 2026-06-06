@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [["@zed-ui/react", "@zed-ui/themes", "@zed-ui/system", "@zed-ui/utils", "@zed-ui/hooks", "@zed-ui/icons"]],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@zed-ui/docs", "@zed-ui/playground"]
+}

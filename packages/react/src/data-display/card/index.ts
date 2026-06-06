@@ -1,0 +1,22 @@
+export {
+  Card,
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardImage,
+  CardParts,
+  CardRoot,
+  CardTitle,
+  type CardBodyOwnProps,
+  type CardDescriptionOwnProps,
+  type CardFooterOwnProps,
+  type CardHeaderOwnProps,
+  type CardImageProps,
+  type CardOrientation,
+  type CardOwnProps,
+  type CardRootOwnProps,
+  type CardSize,
+  type CardTitleOwnProps,
+  type CardVariant
+} from "./Card";

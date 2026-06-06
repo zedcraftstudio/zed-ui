@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CkXrEl7v.js";import{n as t,t as n}from"./dist-DqDbN6FL.js";var r=e(),i={decorators:[e=>(0,r.jsx)(n,{theme:t(),children:(0,r.jsx)(`div`,{style:{padding:24},children:(0,r.jsx)(e,{})})})],parameters:{layout:`fullscreen`}};export{i as default};

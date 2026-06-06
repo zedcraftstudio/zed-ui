@@ -1,0 +1,1 @@
+import{D as e,R as t}from"./createBaseUIEventDetails-CIym2k9y.js";import{k as n}from"./composite-KklygyPZ.js";function r(r){let i=e(r),a=parseFloat(i.width)||0,o=parseFloat(i.height)||0,s=t(r),c=s?r.offsetWidth:a,l=s?r.offsetHeight:o;return(n(a)!==c||n(o)!==l)&&(a=c,o=l),{width:a,height:o}}export{r as t};

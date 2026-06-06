@@ -1,0 +1,25 @@
+{
+  "name": "@zed-ui/docs",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "storybook build",
+    "dev": "storybook dev -p 6006 --no-open",
+    "lint": "eslint src .storybook",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@zed-ui/react": "workspace:*",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "storybook": "^8.6.14",
+    "vite": "^8.0.14"
+  }
+}

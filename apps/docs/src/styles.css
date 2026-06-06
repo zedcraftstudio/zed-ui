@@ -1,0 +1,48 @@
+:root {
+  background: #f7f8fb;
+}
+
+body {
+  margin: 0;
+}
+
+.docs-shell {
+  min-height: 100vh;
+  padding: 48px 20px;
+}
+
+.docs-container {
+  margin: 0 auto;
+  max-width: 1120px;
+}
+
+.docs-hero {
+  align-items: center;
+  display: grid;
+  min-height: 320px;
+}
+
+.docs-lede {
+  max-width: 720px;
+}
+
+.docs-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.docs-panel {
+  border: 1px solid var(--zui-colors-border-subtle);
+}
+
+@media (max-width: 760px) {
+  .docs-shell {
+    padding-block: 28px;
+  }
+
+  .docs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

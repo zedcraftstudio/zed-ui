@@ -1,0 +1,38 @@
+:root.zui-theme-root,
+.zui-theme {
+  min-height: inherit;
+  background: var(--zui-colors-bg-canvas);
+  color: var(--zui-colors-text-primary);
+  color-scheme: light;
+  font-family: var(--zui-fontFamilies-sans);
+  --zui-motion-duration: var(--zui-motion-duration-normal);
+  --zui-motion-easing: var(--zui-motion-easing-standard);
+}
+
+:root.zui-theme-root[data-zui-color-scheme="dark"],
+.zui-theme[data-zui-color-scheme="dark"] {
+  color-scheme: dark;
+}
+
+.zui-theme[data-zui-density="compact"] {
+  --zui-density-scale: 0.875;
+}
+
+.zui-theme[data-zui-density="comfortable"] {
+  --zui-density-scale: 1;
+}
+
+.zui-theme[data-zui-density="spacious"] {
+  --zui-density-scale: 1.125;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zui-theme {
+    --zui-motion-duration: 1ms;
+  }
+}
+
+.zui-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--zui-shadows-focus);
+}

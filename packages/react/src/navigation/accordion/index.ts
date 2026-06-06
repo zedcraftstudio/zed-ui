@@ -1,0 +1,21 @@
+export {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  AccordionParts,
+  AccordionRoot,
+  AccordionTrigger,
+  type AccordionHeaderOwnProps,
+  type AccordionHeaderProps,
+  type AccordionItemOwnProps,
+  type AccordionItemProps,
+  type AccordionPanelOwnProps,
+  type AccordionPanelProps,
+  type AccordionRootOwnProps,
+  type AccordionRootProps,
+  type AccordionSize,
+  type AccordionTriggerOwnProps,
+  type AccordionTriggerProps,
+  type AccordionVariant
+} from "./Accordion";
