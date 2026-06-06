@@ -2,10 +2,10 @@ import type { ComponentCategory } from "./components";
 import { getComponentById } from "./components";
 import reactPackage from "../../../../packages/react/package.json" with { type: "json" };
 
-export const GITHUB_REPO = "https://github.com/sinadinzidan/zed-ui";
+export const GITHUB_REPO = "https://github.com/zedcraftstudio/zed-ui";
 export const GITHUB_BRANCH = "main";
 
-export const DOCS_SITE_URL = "https://sinadinzidan.github.io/zed-ui";
+export const DOCS_SITE_URL = "https://zed-ui.zedcraftstudio.com";
 
 export const LIBRARY_VERSION = reactPackage.version;
 export const VERSION_LABEL = `v${LIBRARY_VERSION}`;
