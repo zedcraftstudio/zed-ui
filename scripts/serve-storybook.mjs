@@ -50,7 +50,14 @@ const server = http.createServer((req, res) => {
 
   const ext = path.extname(filePath);
   res.writeHead(200, { "Content-Type": types[ext] ?? "application/octet-stream" });
-  createReadStream(filePath).pipe(res);
+  const stream = createReadStream(filePath);
+  stream.on("error", () => {
+    if (!res.headersSent) {
+      res.writeHead(500);
+    }
+    res.end();
+  });
+  stream.pipe(res);
 });
 
 server.listen(port, "127.0.0.1", () => {
