@@ -1,4 +1,18 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+/** Wait for bundled webfont so Linux CI and macOS baselines share the same metrics. */
+async function waitForVisualFonts(page: Page) {
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    const deadline = Date.now() + 10_000;
+    while (Date.now() < deadline) {
+      if (document.fonts.check("1rem Inter") || document.fonts.check("16px Inter")) {
+        return;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
+  });
+}
 
 const stories = [
   { id: "actions-button--solid", name: "button-solid" },
@@ -30,7 +44,7 @@ test.describe("Storybook visual regression", () => {
       await page.waitForFunction(
         () => (document.querySelector("#storybook-root")?.childElementCount ?? 0) > 0
       );
-      await page.evaluate(() => document.fonts?.ready);
+      await waitForVisualFonts(page);
       await expect(page.locator("#storybook-root")).toHaveScreenshot(`${story.name}.png`, {
         animations: "disabled",
         maxDiffPixelRatio: 0.03
