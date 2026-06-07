@@ -9,11 +9,7 @@ expect.extend(toHaveNoViolations);
 describe("CommandPalette", () => {
   it("renders when open", () => {
     const { getByPlaceholderText } = renderWithProvider(
-      <CommandPalette
-        items={[{ id: "new", label: "New file" }]}
-        open
-        onOpenChange={vi.fn()}
-      />
+      <CommandPalette items={[{ id: "new", label: "New file" }]} open onOpenChange={vi.fn()} />
     );
 
     expect(getByPlaceholderText("Search commands…")).toBeTruthy();
@@ -113,11 +109,7 @@ describe("CommandPalette", () => {
 
   it("has no axe violations when open", async () => {
     const { container } = renderWithProvider(
-      <CommandPalette
-        items={[{ id: "new", label: "New file" }]}
-        open
-        onOpenChange={vi.fn()}
-      />
+      <CommandPalette items={[{ id: "new", label: "New file" }]} open onOpenChange={vi.fn()} />
     );
 
     expect(await axe(container)).toHaveNoViolations();

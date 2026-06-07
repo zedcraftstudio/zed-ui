@@ -436,7 +436,8 @@
   background: var(--zui-colors-border-default);
 }
 
-.zui-stepper[data-orientation="vertical"] .zui-stepper__step[data-status="complete"]:not(:last-child)::before {
+.zui-stepper[data-orientation="vertical"]
+  .zui-stepper__step[data-status="complete"]:not(:last-child)::before {
   background: var(--zui-colors-primary-solid);
 }
 
@@ -634,7 +635,8 @@
   font-size: var(--zui-fontSizes-xs);
 }
 
-.zui-stepper[data-size="sm"][data-orientation="vertical"] .zui-stepper__step:not(:last-child)::before {
+.zui-stepper[data-size="sm"][data-orientation="vertical"]
+  .zui-stepper__step:not(:last-child)::before {
   top: 1.5rem;
   left: 0.75rem;
 }
@@ -666,7 +668,8 @@
   font-size: var(--zui-fontSizes-sm);
 }
 
-.zui-stepper[data-size="lg"][data-orientation="vertical"] .zui-stepper__step:not(:last-child)::before {
+.zui-stepper[data-size="lg"][data-orientation="vertical"]
+  .zui-stepper__step:not(:last-child)::before {
   top: 2rem;
   left: 1rem;
 }
@@ -872,7 +875,9 @@
   padding: var(--zui-space-2) var(--zui-space-3);
   text-align: left;
   text-decoration: none;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .zui-sidebar[data-collapsed] .zui-sidebar__control {
@@ -1259,7 +1264,8 @@
   background: var(--zui-colors-primary-solid);
   color: var(--zui-colors-primary-contrast);
 }
-.zui-calendar__day-cell.zui-calendar__day--today:not(.zui-calendar__day--selected) .zui-calendar__day {
+.zui-calendar__day-cell.zui-calendar__day--today:not(.zui-calendar__day--selected)
+  .zui-calendar__day {
   color: var(--zui-colors-primary-solid);
   font-weight: var(--zui-fontWeights-semibold);
 }

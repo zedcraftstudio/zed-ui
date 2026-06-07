@@ -57,11 +57,11 @@ import "@zed-ui/react/styles/layers/actions.css";
 import "@zed-ui/react/styles/layers/forms.css";
 ```
 
-| Layer | Typical use |
-| --- | --- |
-| `base` | Required tokens and resets |
-| `actions`, `forms`, `feedback` | Interactive UI |
-| `layout`, `navigation`, `data-display`, `overlays` | App chrome and content |
+| Layer                                              | Typical use                |
+| -------------------------------------------------- | -------------------------- |
+| `base`                                             | Required tokens and resets |
+| `actions`, `forms`, `feedback`                     | Interactive UI             |
+| `layout`, `navigation`, `data-display`, `overlays` | App chrome and content     |
 
 Full bundle (`styles.css`) is simplest; layered imports are for size-sensitive apps. CI enforces limits in `.size-limit.json`.
 
@@ -92,10 +92,10 @@ Mark client components that use interactive widgets with `"use client"`.
 
 Zed UI uses two doc apps:
 
-| App | Command | Purpose |
-| --- | --- | --- |
-| **Playground** | `pnpm dev` | Public narrative docs at [zed-ui.zedcraftstudio.com](https://zed-ui.zedcraftstudio.com) — guides, props tables, live demos (`apps/playground`) |
-| **Storybook** | `pnpm dev:docs` | Component lab with the a11y addon — isolated stories and visual states (`apps/docs`, port 6006). Production build is deployed at [zed-ui.zedcraftstudio.com/storybook/](https://zed-ui.zedcraftstudio.com/storybook/) |
+| App            | Command         | Purpose                                                                                                                                                                                                               |
+| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Playground** | `pnpm dev`      | Public narrative docs at [zed-ui.zedcraftstudio.com](https://zed-ui.zedcraftstudio.com) — guides, props tables, live demos (`apps/playground`)                                                                        |
+| **Storybook**  | `pnpm dev:docs` | Component lab with the a11y addon — isolated stories and visual states (`apps/docs`, port 6006). Production build is deployed at [zed-ui.zedcraftstudio.com/storybook/](https://zed-ui.zedcraftstudio.com/storybook/) |
 
 Update playground sections when changing APIs consumers read in docs. Add or update Storybook stories when changing component behavior or visual variants.
 
@@ -108,15 +108,15 @@ pnpm install
 pnpm dev
 ```
 
-| Command | Description |
-| --- | --- |
-| `pnpm dev` | Docs playground (http://localhost:5173) |
-| `pnpm dev:docs` | Storybook (http://localhost:6006) |
-| `pnpm build` | Build packages and apps |
-| `pnpm test` | Unit tests (152+) |
-| `pnpm test:coverage` | Vitest coverage (78%+ thresholds) |
+| Command                   | Description                              |
+| ------------------------- | ---------------------------------------- |
+| `pnpm dev`                | Docs playground (http://localhost:5173)  |
+| `pnpm dev:docs`           | Storybook (http://localhost:6006)        |
+| `pnpm build`              | Build packages and apps                  |
+| `pnpm test`               | Unit tests (152+)                        |
+| `pnpm test:coverage`      | Vitest coverage (78%+ thresholds)        |
 | `pnpm test:e2e:storybook` | Storybook visual regression (20 stories) |
-| `pnpm lint` | ESLint |
+| `pnpm lint`               | ESLint                                   |
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md), [ACCESSIBILITY.md](./ACCESSIBILITY.md), [STABILITY.md](./STABILITY.md), and [RELEASING.md](./RELEASING.md).
 

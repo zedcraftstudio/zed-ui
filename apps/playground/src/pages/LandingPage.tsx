@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  Badge,
-  Button,
-  Flex,
-  HStack,
-  Input,
-  Stack,
-  Switch,
-  Text
-} from "@zed-ui/react";
+import { Badge, Button, Flex, HStack, Input, Stack, Switch, Text } from "@zed-ui/react";
 import { Link } from "react-router-dom";
 import { CodeBlock } from "../components/CodeBlock";
 import { ROUTES } from "../config/routes";
@@ -49,8 +40,7 @@ const FEATURES = [
   },
   {
     title: "Accessibility",
-    description:
-      "Keyboard navigation, focus management, and ARIA patterns via Base UI primitives.",
+    description: "Keyboard navigation, focus management, and ARIA patterns via Base UI primitives.",
     code: `<Dialog.Root>\n  <DialogContent title="Confirm" />\n</Dialog.Root>`
   }
 ] as const;

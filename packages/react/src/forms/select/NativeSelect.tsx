@@ -29,12 +29,16 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectOwnProps>(
       devWarn("NativeSelect is deprecated. Use Select or MultiSelect instead.");
     }, []);
 
-    const { invalid, id: fieldId, required: fieldRequired, ...fieldAriaProps } =
-      useFormFieldControlProps({
-        id: rest.id,
-        invalid: invalidProp ? true : undefined,
-        required: rest.required
-      });
+    const {
+      invalid,
+      id: fieldId,
+      required: fieldRequired,
+      ...fieldAriaProps
+    } = useFormFieldControlProps({
+      id: rest.id,
+      invalid: invalidProp ? true : undefined,
+      required: rest.required
+    });
     const { id, required, ...selectRest } = rest;
 
     return (

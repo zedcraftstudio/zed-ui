@@ -337,7 +337,8 @@ export function CheckboxSection() {
       title="Checkbox"
       description="Used when a user needs to select one or more options. Built on Base UI with styled control, label, and indicator."
       usage={{
-        description: "Wrap with label text or pass the label prop. Use indeterminate for mixed selection states.",
+        description:
+          "Wrap with label text or pass the label prop. Use indeterminate for mixed selection states.",
         importCode: `import { Checkbox } from "@zed-ui/react"`,
         usageCode: `<Checkbox
   checked={checked}
@@ -563,7 +564,8 @@ export function SwitchSection() {
       title="Switch"
       description="Used to capture a binary on/off state. Built on Base UI with track, thumb, label, and theme tokens."
       usage={{
-        description: "Pass label text via the label prop. Control state with checked and onCheckedChange.",
+        description:
+          "Pass label text via the label prop. Control state with checked and onCheckedChange.",
         importCode: `import { Switch } from "@zed-ui/react"`,
         usageCode: `<Switch
   checked={on}
@@ -571,11 +573,7 @@ export function SwitchSection() {
   label="Activate notifications"
 />`,
         preview: (
-          <Switch
-            checked={notify}
-            onCheckedChange={setNotify}
-            label="Activate notifications"
-          />
+          <Switch checked={notify} onCheckedChange={setNotify} label="Activate notifications" />
         )
       }}
     >
@@ -676,10 +674,7 @@ export function SwitchSection() {
         <Switch defaultChecked disabled label="Activate notifications" />
       </DocExample>
 
-      <DocExample
-        title="Invalid"
-        code={`<Switch invalid label="Activate notifications" />`}
-      >
+      <DocExample title="Invalid" code={`<Switch invalid label="Activate notifications" />`}>
         <Switch invalid label="Activate notifications" />
       </DocExample>
 
@@ -1039,7 +1034,12 @@ const [value, setValue] = useState("react");
       >
         <Stack gap="3" style={{ maxWidth: "20rem" }}>
           <Combobox options={FRAMEWORK_OPTIONS} placeholder="Small" size="sm" />
-          <Combobox defaultValue="react" options={FRAMEWORK_OPTIONS} placeholder="Medium" size="md" />
+          <Combobox
+            defaultValue="react"
+            options={FRAMEWORK_OPTIONS}
+            placeholder="Medium"
+            size="md"
+          />
           <Combobox options={FRAMEWORK_OPTIONS} placeholder="Large" size="lg" />
         </Stack>
       </DocExample>

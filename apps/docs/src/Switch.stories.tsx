@@ -51,9 +51,7 @@ export const Colors: Story = {
 export const Controlled: Story = {
   render: function ControlledStory() {
     const [checked, setChecked] = useState(false);
-    return (
-      <Switch checked={checked} label="Email notifications" onCheckedChange={setChecked} />
-    );
+    return <Switch checked={checked} label="Email notifications" onCheckedChange={setChecked} />;
   }
 };
 

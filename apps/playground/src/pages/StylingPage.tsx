@@ -63,8 +63,7 @@ export function StylingPage() {
         <h2 className="docs-prose-section__title">CSS variables</h2>
         <Text color="secondary" className="docs-prose-section__lede">
           When you need custom markup outside the component library, reference the same token
-          variables that power Zed UI. They are set on the theme root by{" "}
-          <code>ThemeProvider</code>.
+          variables that power Zed UI. They are set on the theme root by <code>ThemeProvider</code>.
         </Text>
         <CodeBlock code={CSS_VARS_CODE} language="css" />
       </section>

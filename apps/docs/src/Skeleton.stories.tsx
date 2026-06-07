@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState, type CSSProperties } from "react";
-import {
-  Button,
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-  Stack,
-  Text
-} from "@zed-ui/react";
+import { Button, Skeleton, SkeletonCircle, SkeletonText, Stack, Text } from "@zed-ui/react";
 
 const meta: Meta<typeof Skeleton> = {
   title: "Feedback/Skeleton",

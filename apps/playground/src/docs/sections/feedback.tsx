@@ -34,7 +34,9 @@ function ToastExamples() {
         size="sm"
         variant="soft"
         color="warning"
-        onClick={() => toast({ title: "Heads up", description: "Review required.", status: "warning" })}
+        onClick={() =>
+          toast({ title: "Heads up", description: "Review required.", status: "warning" })
+        }
       >
         Warning
       </Button>
@@ -42,14 +44,18 @@ function ToastExamples() {
         size="sm"
         variant="soft"
         color="danger"
-        onClick={() => toast({ title: "Error", description: "Something went wrong.", status: "error" })}
+        onClick={() =>
+          toast({ title: "Error", description: "Something went wrong.", status: "error" })
+        }
       >
         Error
       </Button>
       <Button
         size="sm"
         variant="outline"
-        onClick={() => toast({ title: "Note", description: "For your information.", status: "info" })}
+        onClick={() =>
+          toast({ title: "Note", description: "For your information.", status: "info" })
+        }
       >
         Info
       </Button>
@@ -73,11 +79,7 @@ export function AlertSection() {
   description="Helpful context for the user."
 />`,
         preview: (
-          <Alert
-            description="Helpful context for the user."
-            status="info"
-            title="Information"
-          />
+          <Alert description="Helpful context for the user." status="info" title="Information" />
         )
       }}
     >
@@ -193,7 +195,11 @@ export function AlertSection() {
   startElement={<Spinner size="sm" />}
 />`}
       >
-        <Alert startElement={<Spinner size="sm" />} status="info" title="We are loading something" />
+        <Alert
+          startElement={<Spinner size="sm" />}
+          status="info"
+          title="We are loading something"
+        />
       </DocExample>
 
       <DocExample
@@ -570,10 +576,12 @@ export function SkeletonSection() {
       >
         <Skeleton
           height="1rem"
-          style={{
-            "--zui-skeleton-start-color": "#e2e8f0",
-            "--zui-skeleton-end-color": "#cbd5e1"
-          } as CSSProperties}
+          style={
+            {
+              "--zui-skeleton-start-color": "#e2e8f0",
+              "--zui-skeleton-end-color": "#cbd5e1"
+            } as CSSProperties
+          }
           variant="shine"
           width="12rem"
         />
@@ -639,16 +647,32 @@ function ToastVariantExamples() {
 
   return (
     <Stack direction="row" gap="2" wrap="wrap">
-      <Button size="sm" variant="outline" onClick={() => toast({ title: "Subtle", status: "info", variant: "subtle" })}>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => toast({ title: "Subtle", status: "info", variant: "subtle" })}
+      >
         Subtle
       </Button>
-      <Button size="sm" variant="outline" onClick={() => toast({ title: "Surface", status: "info", variant: "surface" })}>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => toast({ title: "Surface", status: "info", variant: "surface" })}
+      >
         Surface
       </Button>
-      <Button size="sm" variant="outline" onClick={() => toast({ title: "Outline", status: "info", variant: "outline" })}>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => toast({ title: "Outline", status: "info", variant: "outline" })}
+      >
         Outline
       </Button>
-      <Button size="sm" variant="outline" onClick={() => toast({ title: "Solid", status: "info", variant: "solid" })}>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => toast({ title: "Solid", status: "info", variant: "solid" })}
+      >
         Solid
       </Button>
     </Stack>

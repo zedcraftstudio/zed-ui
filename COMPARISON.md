@@ -6,12 +6,12 @@ This document is intentionally honest: what is a real advantage, what is parity 
 
 ## Summary
 
-| Category | What it means for Zed UI |
-| --- | --- |
-| **Differentiators** | Meaningful architectural choices that change how you build |
-| **Parity** | Good patterns shared with MUI, Radix, Mantine ecosystems, etc. |
-| **Trade-offs** | Real costs you accept by choosing Zed UI |
-| **Gaps** | Areas where Zed UI is behind today (`0.0.x`) |
+| Category            | What it means for Zed UI                                       |
+| ------------------- | -------------------------------------------------------------- |
+| **Differentiators** | Meaningful architectural choices that change how you build     |
+| **Parity**          | Good patterns shared with MUI, Radix, Mantine ecosystems, etc. |
+| **Trade-offs**      | Real costs you accept by choosing Zed UI                       |
+| **Gaps**            | Areas where Zed UI is behind today (`0.0.x`)                   |
 
 ---
 
@@ -23,11 +23,11 @@ These are the reasons to pick Zed UI over alternatives — not universal wins, b
 
 Zed UI occupies a specific niche:
 
-| Approach | Examples | Trade-off |
-| --- | --- | --- |
-| **Fully styled kits** | MUI, Ant Design, Mantine | Fast to ship; often heavier runtime or stronger visual opinions |
-| **Headless primitives** | Radix, React Aria, Base UI alone | Maximum control; you own tokens, layout, and CSS |
-| **Zed UI** | Base UI behavior + Zed tokens/CSS | Less DIY than headless; less runtime than Emotion-based kits |
+| Approach                | Examples                          | Trade-off                                                       |
+| ----------------------- | --------------------------------- | --------------------------------------------------------------- |
+| **Fully styled kits**   | MUI, Ant Design, Mantine          | Fast to ship; often heavier runtime or stronger visual opinions |
+| **Headless primitives** | Radix, React Aria, Base UI alone  | Maximum control; you own tokens, layout, and CSS                |
+| **Zed UI**              | Base UI behavior + Zed tokens/CSS | Less DIY than headless; less runtime than Emotion-based kits    |
 
 Interactive widgets (Dialog, Drawer, Menu, Select, Tabs, Accordion, Popover, Tooltip) use **[Base UI](https://base-ui.com/)** for focus management, keyboard models, and APG-aligned behavior. Zed UI adds semantic tokens, compound APIs, and stable `zui-` CSS.
 
@@ -117,14 +117,14 @@ Unlike shadcn’s copy-paste model, Zed UI installs from npm with Changesets ver
 
 What you give up or accept by choosing Zed UI today.
 
-| Trade-off | Detail |
-| --- | --- |
-| **Smaller catalog** | ~35 components vs hundreds across MUI, Ant Design, Mantine |
-| **Early stability** | `0.0.x` — breaking API changes are still expected |
-| **Less ecosystem** | Fewer Stack Overflow answers, plugins, and hiring familiarity than MUI |
+| Trade-off                      | Detail                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **Smaller catalog**            | ~35 components vs hundreds across MUI, Ant Design, Mantine                                                   |
+| **Early stability**            | `0.0.x` — breaking API changes are still expected                                                            |
+| **Less ecosystem**             | Fewer Stack Overflow answers, plugins, and hiring familiarity than MUI                                       |
 | **No `sx`-style escape hatch** | Dynamic styling is `className`, `style`, CSS variables, or style props — not a full CSS-in-JS query language |
-| **Base UI dependency** | You inherit Base UI’s release cadence and primitive coverage, not Radix’s larger primitive catalog |
-| **Inline style props cost** | Layout style props are cheap (token `var()` references) but still computed in JS per render |
+| **Base UI dependency**         | You inherit Base UI’s release cadence and primitive coverage, not Radix’s larger primitive catalog           |
+| **Inline style props cost**    | Layout style props are cheap (token `var()` references) but still computed in JS per render                  |
 
 ---
 
@@ -132,15 +132,15 @@ What you give up or accept by choosing Zed UI today.
 
 Known limitations today — see the table below and [ACCESSIBILITY.md](./ACCESSIBILITY.md).
 
-| Gap | Status | Impact |
-| --- | --- | --- |
-| **Component breadth** | ~47 components | No full Data Grid (pinning/virtualization), Charts, form adapters, etc. |
-| **`@zed-ui/icons`** | Stub (`PlusIcon` only) | Bring your own icon library for now |
-| **`@zed-ui/hooks`** | Published, underused in components | Hooks exist but are not yet the primary behavior layer |
-| **Subpath imports** | 4 paths only: `button`, `box`, `stack`, `text` | Barrel import is the norm for most components today |
-| **Test coverage** | Growing, not exhaustive | jest-axe checks are smoke-level, not full APG conformance |
-| **Storybook + Vite** | Storybook 8 on Vite 8 (above official target) | Works today; may need upgrade later |
-| **Modular packages** | `system`, `utils`, `hooks`, etc. | Mostly a **maintainer** benefit; apps typically install `@zed-ui/react` and pull dependencies transitively |
+| Gap                   | Status                                         | Impact                                                                                                     |
+| --------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Component breadth** | ~47 components                                 | No full Data Grid (pinning/virtualization), Charts, form adapters, etc.                                    |
+| **`@zed-ui/icons`**   | Stub (`PlusIcon` only)                         | Bring your own icon library for now                                                                        |
+| **`@zed-ui/hooks`**   | Published, underused in components             | Hooks exist but are not yet the primary behavior layer                                                     |
+| **Subpath imports**   | 4 paths only: `button`, `box`, `stack`, `text` | Barrel import is the norm for most components today                                                        |
+| **Test coverage**     | Growing, not exhaustive                        | jest-axe checks are smoke-level, not full APG conformance                                                  |
+| **Storybook + Vite**  | Storybook 8 on Vite 8 (above official target)  | Works today; may need upgrade later                                                                        |
+| **Modular packages**  | `system`, `utils`, `hooks`, etc.               | Mostly a **maintainer** benefit; apps typically install `@zed-ui/react` and pull dependencies transitively |
 
 ### Subpath imports (current reality)
 
@@ -163,52 +163,52 @@ Expanding subpath exports across all components is a planned packaging improveme
 
 ### Architecture
 
-| | Zed UI | MUI | Radix + shadcn | Ant Design | Mantine |
-| --- | --- | --- | --- | --- | --- |
-| **Styled out of the box** | Yes | Yes | No (you style) | Yes | Yes |
-| **Headless behavior layer** | Base UI | Custom | Radix | Custom | Custom |
-| **CSS-in-JS runtime** | No | Yes (Emotion) | No | Uncommon | CSS modules |
-| **CSS-variable theming** | Yes | Partial | DIY | Limited | Yes |
-| **Polymorphic `as`** | Yes | Limited | Via Slot | Limited | Yes |
-| **Style props** | Yes (inline + tokens) | `sx` (runtime) | No | Limited | Yes |
-| **Subpath imports** | 4 components | Many | N/A | Partial | Partial |
-| **Component count** | ~47 | Very large | Primitives only | Very large | Large |
-| **Maturity** | Early (`0.0.x`) | Stable | Large ecosystem | Stable | Stable |
+|                             | Zed UI                | MUI            | Radix + shadcn  | Ant Design | Mantine     |
+| --------------------------- | --------------------- | -------------- | --------------- | ---------- | ----------- |
+| **Styled out of the box**   | Yes                   | Yes            | No (you style)  | Yes        | Yes         |
+| **Headless behavior layer** | Base UI               | Custom         | Radix           | Custom     | Custom      |
+| **CSS-in-JS runtime**       | No                    | Yes (Emotion)  | No              | Uncommon   | CSS modules |
+| **CSS-variable theming**    | Yes                   | Partial        | DIY             | Limited    | Yes         |
+| **Polymorphic `as`**        | Yes                   | Limited        | Via Slot        | Limited    | Yes         |
+| **Style props**             | Yes (inline + tokens) | `sx` (runtime) | No              | Limited    | Yes         |
+| **Subpath imports**         | 4 components          | Many           | N/A             | Partial    | Partial     |
+| **Component count**         | ~47                   | Very large     | Primitives only | Very large | Large       |
+| **Maturity**                | Early (`0.0.x`)       | Stable         | Large ecosystem | Stable     | Stable      |
 
 ### vs Material UI
 
-| Zed UI | MUI |
-| --- | --- |
-| No Emotion runtime | Huge component catalog (incl. MUI X) |
-| Neutral default look | Material Design opinion |
-| Base UI for complex widgets | Custom, battle-tested behavior stack |
-| CSS variables for theming | `sx` + theme callbacks |
-| Early stage | Mature ecosystem and hiring familiarity |
+| Zed UI                      | MUI                                     |
+| --------------------------- | --------------------------------------- |
+| No Emotion runtime          | Huge component catalog (incl. MUI X)    |
+| Neutral default look        | Material Design opinion                 |
+| Base UI for complex widgets | Custom, battle-tested behavior stack    |
+| CSS variables for theming   | `sx` + theme callbacks                  |
+| Early stage                 | Mature ecosystem and hiring familiarity |
 
 ### vs Radix + shadcn/ui
 
-| Zed UI | Radix + shadcn |
-| --- | --- |
-| Pre-styled, npm install | You own every class (max flexibility) |
-| Unified `ThemeProvider` | Tailwind + per-component CSS |
-| Semver package upgrades | Template/codegen workflow |
-| Smaller primitive surface | Radix covers more primitives |
+| Zed UI                    | Radix + shadcn                        |
+| ------------------------- | ------------------------------------- |
+| Pre-styled, npm install   | You own every class (max flexibility) |
+| Unified `ThemeProvider`   | Tailwind + per-component CSS          |
+| Semver package upgrades   | Template/codegen workflow             |
+| Smaller primitive surface | Radix covers more primitives          |
 
 ### vs Ant Design
 
-| Zed UI | Ant Design |
-| --- | --- |
-| Composable, neutral design | Enterprise widgets (Table, Upload, Form, …) |
-| React 18/19, ESM-first | Mature i18n and locale packs |
-| Lighter admin-dashboard opinion | Long track record in internal tools |
+| Zed UI                          | Ant Design                                  |
+| ------------------------------- | ------------------------------------------- |
+| Composable, neutral design      | Enterprise widgets (Table, Upload, Form, …) |
+| React 18/19, ESM-first          | Mature i18n and locale packs                |
+| Lighter admin-dashboard opinion | Long track record in internal tools         |
 
 ### vs Mantine
 
-| Zed UI | Mantine |
-| --- | --- |
+| Zed UI                                  | Mantine                                     |
+| --------------------------------------- | ------------------------------------------- |
 | Simpler consumer setup (one CSS import) | Rich hooks, dates, spotlight, notifications |
-| Base UI behavior layer | Custom behavior + large feature set |
-| Smaller scope (easier to fork/audit) | More 1.0-stable components |
+| Base UI behavior layer                  | Custom behavior + large feature set         |
+| Smaller scope (easier to fork/audit)    | More 1.0-stable components                  |
 
 ---
 
@@ -216,15 +216,15 @@ Expanding subpath exports across all components is a planned packaging improveme
 
 These are **planned** add-ons. Do not count them as reasons to adopt Zed UI today.
 
-| Planned | Tier | Notes |
-| --- | --- | --- |
-| Full `@zed-ui/icons` set | — | Today: `PlusIcon` only |
-| Hooks wired into components | — | `@zed-ui/hooks` published but underused |
-| Subpath exports for all components | Packaging | Today: 4 paths |
-| DataTable pinning / virtualization | Tier 3 | Basic sort + filter shipped |
-| Form library adapters (RHF, Formik) | Tier 3 | — |
-| Theme builder / token inspector | Tier 3 | — |
-| Codemods + CLI | Tier 3 | — |
+| Planned                             | Tier      | Notes                                   |
+| ----------------------------------- | --------- | --------------------------------------- |
+| Full `@zed-ui/icons` set            | —         | Today: `PlusIcon` only                  |
+| Hooks wired into components         | —         | `@zed-ui/hooks` published but underused |
+| Subpath exports for all components  | Packaging | Today: 4 paths                          |
+| DataTable pinning / virtualization  | Tier 3    | Basic sort + filter shipped             |
+| Form library adapters (RHF, Formik) | Tier 3    | —                                       |
+| Theme builder / token inspector     | Tier 3    | —                                       |
+| Codemods + CLI                      | Tier 3    | —                                       |
 
 ---
 

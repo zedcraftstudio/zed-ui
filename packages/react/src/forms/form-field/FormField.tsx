@@ -54,7 +54,12 @@ function FormFieldBase(props: PolymorphicProps<ElementType, FormFieldOwnProps>, 
         {label ? (
           <label className="zui-form-field__label" htmlFor={controlId}>
             {label}
-            {required ? <span aria-hidden className="zui-form-field__required"> *</span> : null}
+            {required ? (
+              <span aria-hidden className="zui-form-field__required">
+                {" "}
+                *
+              </span>
+            ) : null}
           </label>
         ) : null}
         <div className="zui-form-field__control">{children}</div>
@@ -73,4 +78,7 @@ function FormFieldBase(props: PolymorphicProps<ElementType, FormFieldOwnProps>, 
   );
 }
 
-export const FormField = forwardRef(FormFieldBase) as PolymorphicComponent<"div", FormFieldOwnProps>;
+export const FormField = forwardRef(FormFieldBase) as PolymorphicComponent<
+  "div",
+  FormFieldOwnProps
+>;

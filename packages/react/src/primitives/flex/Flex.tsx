@@ -58,7 +58,12 @@ function SpacerBase(props: PolymorphicProps<ElementType, SpacerOwnProps>, ref: R
   const { className, flex = "1", ...rest } = props;
 
   return (
-    <Box ref={ref as Ref<HTMLElement>} className={cx("zui-spacer", className)} flex={flex} {...rest} />
+    <Box
+      ref={ref as Ref<HTMLElement>}
+      className={cx("zui-spacer", className)}
+      flex={flex}
+      {...rest}
+    />
   );
 }
 

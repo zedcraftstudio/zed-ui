@@ -19,7 +19,16 @@ export type StackOwnProps = BoxOwnProps & {
 };
 
 function StackBase(props: PolymorphicProps<ElementType, StackOwnProps>, ref: Ref<unknown>) {
-  const { children, className, direction = "column", display, separator, style, wrap, ...rest } = props;
+  const {
+    children,
+    className,
+    direction = "column",
+    display,
+    separator,
+    style,
+    wrap,
+    ...rest
+  } = props;
 
   const content =
     separator == null
@@ -30,7 +39,7 @@ function StackBase(props: PolymorphicProps<ElementType, StackOwnProps>, ref: Ref
           }
 
           return (
-            <Fragment key={isValidElement(child) ? child.key ?? index : index}>
+            <Fragment key={isValidElement(child) ? (child.key ?? index) : index}>
               {index > 0 ? separator : null}
               {child}
             </Fragment>

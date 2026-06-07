@@ -23,7 +23,11 @@ export const SYSTEM_STYLE_PROPS: PropRow[] = [
   { name: "py", default: "—", type: `SpaceToken | undefined` },
   { name: "m", default: "—", type: `SpaceToken | undefined` },
   { name: "gap", default: "—", type: `SpaceToken | undefined` },
-  { name: "bg", default: "—", type: `"canvas" | "surface" | "raised" | "inverse" | "muted" | undefined` },
+  {
+    name: "bg",
+    default: "—",
+    type: `"canvas" | "surface" | "raised" | "inverse" | "muted" | undefined`
+  },
   {
     name: "borderWidth",
     default: "—",
@@ -36,8 +40,16 @@ export const SYSTEM_STYLE_PROPS: PropRow[] = [
     type: `"subtle" | "default" | "strong" | undefined`,
     description: "Border color token. Pair with borderWidth."
   },
-  { name: "color", default: "—", type: `"primary" | "secondary" | "muted" | "inverse" | undefined` },
-  { name: "radius", default: "—", type: `"none" | "xs" | "sm" | "md" | "lg" | "xl" | "full" | undefined` },
+  {
+    name: "color",
+    default: "—",
+    type: `"primary" | "secondary" | "muted" | "inverse" | undefined`
+  },
+  {
+    name: "radius",
+    default: "—",
+    type: `"none" | "xs" | "sm" | "md" | "lg" | "xl" | "full" | undefined`
+  },
   { name: "shadow", default: "—", type: `"none" | "sm" | "md" | "lg" | "focus" | undefined` },
   { name: "width", default: "—", type: `CSSProperties["width"] | undefined` },
   { name: "height", default: "—", type: `CSSProperties["height"] | undefined` },

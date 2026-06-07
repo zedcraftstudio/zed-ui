@@ -27,12 +27,16 @@ function InputBase(props: PolymorphicProps<ElementType, InputOwnProps>, ref: Ref
     ...rest
   } = props;
 
-  const { invalid, id: fieldId, required: fieldRequired, ...fieldAriaProps } =
-    useFormFieldControlProps({
-      id: rest.id,
-      invalid: invalidProp ? true : undefined,
-      required: rest.required
-    });
+  const {
+    invalid,
+    id: fieldId,
+    required: fieldRequired,
+    ...fieldAriaProps
+  } = useFormFieldControlProps({
+    id: rest.id,
+    invalid: invalidProp ? true : undefined,
+    required: rest.required
+  });
   const { id, required, ...inputRest } = rest;
 
   const hasIcons = Boolean(startIcon || endIcon);

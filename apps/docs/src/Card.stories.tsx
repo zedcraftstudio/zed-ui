@@ -55,14 +55,14 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => (
     <Stack gap="4">
-      {(
-        ["elevated", "outline", "subtle", "ghost", "filled", "solid", "unstyled"] as const
-      ).map((variant) => (
-        <Card key={variant} size="sm" variant={variant}>
-          <CardTitle>{variant}</CardTitle>
-          <CardDescription>Card body for the {variant} variant.</CardDescription>
-        </Card>
-      ))}
+      {(["elevated", "outline", "subtle", "ghost", "filled", "solid", "unstyled"] as const).map(
+        (variant) => (
+          <Card key={variant} size="sm" variant={variant}>
+            <CardTitle>{variant}</CardTitle>
+            <CardDescription>Card body for the {variant} variant.</CardDescription>
+          </Card>
+        )
+      )}
     </Stack>
   )
 };

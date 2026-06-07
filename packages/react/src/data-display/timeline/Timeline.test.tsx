@@ -60,9 +60,9 @@ describe("Timeline", () => {
     );
 
     expect(container.querySelectorAll(".zui-timeline__separator").length).toBe(2);
-    expect(
-      container.querySelector(".zui-timeline")?.hasAttribute("data-show-last-separator")
-    ).toBe(false);
+    expect(container.querySelector(".zui-timeline")?.hasAttribute("data-show-last-separator")).toBe(
+      false
+    );
   });
 
   it("shows the last separator when showLastSeparator is true", () => {
@@ -89,9 +89,9 @@ describe("Timeline", () => {
       </Timeline.Root>
     );
 
-    expect(
-      container.querySelector(".zui-timeline")?.hasAttribute("data-show-last-separator")
-    ).toBe(true);
+    expect(container.querySelector(".zui-timeline")?.hasAttribute("data-show-last-separator")).toBe(
+      true
+    );
   });
 
   it("renders alternating content via dual content slots", () => {

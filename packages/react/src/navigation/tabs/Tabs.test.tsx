@@ -100,7 +100,7 @@ describe("Tabs", () => {
     );
     expect(container.querySelector(".zui-tabs__indicator")).toBeTruthy();
     expect(container.querySelector(".zui-tabs__content-group")).toBeTruthy();
-    expect(container.querySelector('.zui-tabs[data-fitted]')).toBeTruthy();
+    expect(container.querySelector(".zui-tabs[data-fitted]")).toBeTruthy();
   });
 
   it("has no axe violations", async () => {

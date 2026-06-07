@@ -17,7 +17,9 @@ describe("Stepper", () => {
         </StepperStep>
       </Stepper>
     );
-    expect(getByText("Two").closest(".zui-stepper__step")?.getAttribute("data-status")).toBe("active");
+    expect(getByText("Two").closest(".zui-stepper__step")?.getAttribute("data-status")).toBe(
+      "active"
+    );
   });
 
   it("renders MUI-style steps", () => {

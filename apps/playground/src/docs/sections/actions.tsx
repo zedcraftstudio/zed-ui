@@ -138,7 +138,12 @@ export function IconButtonSection() {
   onClick={() => {}}
 />`,
         preview: (
-          <IconButton aria-label="Add item" variant="soft" icon={<PlusIcon size={16} />} onClick={() => {}} />
+          <IconButton
+            aria-label="Add item"
+            variant="soft"
+            icon={<PlusIcon size={16} />}
+            onClick={() => {}}
+          />
         )
       }}
     >
@@ -163,7 +168,12 @@ export function IconButtonSection() {
       >
         <Stack direction="row" gap="2" wrap="wrap">
           <IconButton aria-label="Add" color="primary" icon={<PlusIcon size={16} />} />
-          <IconButton aria-label="Add" color="neutral" variant="soft" icon={<PlusIcon size={16} />} />
+          <IconButton
+            aria-label="Add"
+            color="neutral"
+            variant="soft"
+            icon={<PlusIcon size={16} />}
+          />
           <IconButton aria-label="Add" color="success" icon={<PlusIcon size={16} />} />
           <IconButton aria-label="Add" color="warning" icon={<PlusIcon size={16} />} />
           <IconButton aria-label="Add" color="danger" icon={<PlusIcon size={16} />} />
@@ -190,7 +200,7 @@ export function IconButtonSection() {
 
       <DocExample
         title="Shape"
-        description='Use radius for corner roundness. Default is md; full makes a circular icon button.'
+        description="Use radius for corner roundness. Default is md; full makes a circular icon button."
         code={`<IconButton aria-label="Add" radius="sm" icon={<PlusIcon size={16} />} />
 <IconButton aria-label="Add" radius="md" icon={<PlusIcon size={16} />} />
 <IconButton aria-label="Add" radius="lg" icon={<PlusIcon size={16} />} />

@@ -1,10 +1,4 @@
-import type {
-  ComponentPropsWithoutRef,
-  ElementType,
-  ReactElement,
-  ReactNode,
-  Ref
-} from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactElement, ReactNode, Ref } from "react";
 
 export type PropsOf<TElement extends ElementType> = ComponentPropsWithoutRef<TElement>;
 

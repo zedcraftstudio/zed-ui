@@ -69,7 +69,9 @@ const server = http.createServer((req, res) => {
 
 server.on("error", (error) => {
   if (error.code === "EADDRINUSE") {
-    console.error(`Port ${port} is already in use. Stop the other Storybook server or set STORYBOOK_PORT.`);
+    console.error(
+      `Port ${port} is already in use. Stop the other Storybook server or set STORYBOOK_PORT.`
+    );
   }
   console.error(error);
   process.exit(1);

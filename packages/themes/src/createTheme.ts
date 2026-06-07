@@ -1,4 +1,10 @@
-import { darkTheme, defaultTheme, densityMultipliers, type DeepPartial, type ZedTheme } from "./tokens";
+import {
+  darkTheme,
+  defaultTheme,
+  densityMultipliers,
+  type DeepPartial,
+  type ZedTheme
+} from "./tokens";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);

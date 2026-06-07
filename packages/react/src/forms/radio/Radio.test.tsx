@@ -21,7 +21,14 @@ describe("Radio", () => {
   it("renders description-only radios with variants", () => {
     const { container, getByText } = renderWithProvider(
       <RadioGroup orientation="horizontal">
-        <Radio color="danger" description="Basic tier" invalid size="sm" value="free" variant="solid" />
+        <Radio
+          color="danger"
+          description="Basic tier"
+          invalid
+          size="sm"
+          value="free"
+          variant="solid"
+        />
       </RadioGroup>
     );
     expect(getByText("Basic tier")).toBeTruthy();

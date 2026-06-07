@@ -15,42 +15,44 @@ export type TimelineRootOwnProps = Omit<ComponentPropsWithoutRef<"ul">, "childre
   variant?: TimelineVariant;
 };
 
-export const TimelineRoot = forwardRef<HTMLUListElement, TimelineRootOwnProps>(function TimelineRoot(
-  {
-    children,
-    className,
-    color: colorProp,
-    showLastSeparator = false,
-    size: sizeProp,
-    unstyled = false,
-    variant: variantProp,
-    ...rest
-  },
-  ref
-) {
-  const defaults = useComponentDefaults("Timeline");
-  const size = (sizeProp ?? (defaults?.size as ZedSize | undefined) ?? "md") as ZedSize;
-  const variant = (variantProp ??
-    (defaults?.variant as TimelineVariant | undefined) ??
-    "solid") as TimelineVariant;
-  const color = colorProp ?? (defaults?.color as ZedColor | undefined) ?? "neutral";
-  return (
-    <TimelineContext.Provider value={{ color, showLastSeparator, size, unstyled, variant }}>
-      <ul
-        ref={ref}
-        className={cx("zui-timeline", className)}
-        data-color={color}
-        data-show-last-separator={dataAttr(showLastSeparator)}
-        data-size={size}
-        data-unstyled={dataAttr(unstyled)}
-        data-variant={variant}
-        {...rest}
-      >
-        {children}
-      </ul>
-    </TimelineContext.Provider>
-  );
-});
+export const TimelineRoot = forwardRef<HTMLUListElement, TimelineRootOwnProps>(
+  function TimelineRoot(
+    {
+      children,
+      className,
+      color: colorProp,
+      showLastSeparator = false,
+      size: sizeProp,
+      unstyled = false,
+      variant: variantProp,
+      ...rest
+    },
+    ref
+  ) {
+    const defaults = useComponentDefaults("Timeline");
+    const size = (sizeProp ?? (defaults?.size as ZedSize | undefined) ?? "md") as ZedSize;
+    const variant = (variantProp ??
+      (defaults?.variant as TimelineVariant | undefined) ??
+      "solid") as TimelineVariant;
+    const color = colorProp ?? (defaults?.color as ZedColor | undefined) ?? "neutral";
+    return (
+      <TimelineContext.Provider value={{ color, showLastSeparator, size, unstyled, variant }}>
+        <ul
+          ref={ref}
+          className={cx("zui-timeline", className)}
+          data-color={color}
+          data-show-last-separator={dataAttr(showLastSeparator)}
+          data-size={size}
+          data-unstyled={dataAttr(unstyled)}
+          data-variant={variant}
+          {...rest}
+        >
+          {children}
+        </ul>
+      </TimelineContext.Provider>
+    );
+  }
+);
 
 TimelineRoot.displayName = "TimelineRoot";
 
@@ -67,12 +69,11 @@ TimelineItem.displayName = "TimelineItem";
 
 export type TimelineBeforeOwnProps = ComponentPropsWithoutRef<"div">;
 
-export const TimelineBefore = forwardRef<HTMLDivElement, TimelineBeforeOwnProps>(function TimelineBefore(
-  { className, ...rest },
-  ref
-) {
-  return <div ref={ref} className={cx("zui-timeline__before", className)} {...rest} />;
-});
+export const TimelineBefore = forwardRef<HTMLDivElement, TimelineBeforeOwnProps>(
+  function TimelineBefore({ className, ...rest }, ref) {
+    return <div ref={ref} className={cx("zui-timeline__before", className)} {...rest} />;
+  }
+);
 
 TimelineBefore.displayName = "TimelineBefore";
 
@@ -114,23 +115,21 @@ TimelineIndicator.displayName = "TimelineIndicator";
 
 export type TimelineContentOwnProps = ComponentPropsWithoutRef<"div">;
 
-export const TimelineContent = forwardRef<HTMLDivElement, TimelineContentOwnProps>(function TimelineContent(
-  { className, ...rest },
-  ref
-) {
-  return <div ref={ref} className={cx("zui-timeline__content", className)} {...rest} />;
-});
+export const TimelineContent = forwardRef<HTMLDivElement, TimelineContentOwnProps>(
+  function TimelineContent({ className, ...rest }, ref) {
+    return <div ref={ref} className={cx("zui-timeline__content", className)} {...rest} />;
+  }
+);
 
 TimelineContent.displayName = "TimelineContent";
 
 export type TimelineTitleOwnProps = ComponentPropsWithoutRef<"div">;
 
-export const TimelineTitle = forwardRef<HTMLDivElement, TimelineTitleOwnProps>(function TimelineTitle(
-  { className, ...rest },
-  ref
-) {
-  return <div ref={ref} className={cx("zui-timeline__title", className)} {...rest} />;
-});
+export const TimelineTitle = forwardRef<HTMLDivElement, TimelineTitleOwnProps>(
+  function TimelineTitle({ className, ...rest }, ref) {
+    return <div ref={ref} className={cx("zui-timeline__title", className)} {...rest} />;
+  }
+);
 
 TimelineTitle.displayName = "TimelineTitle";
 

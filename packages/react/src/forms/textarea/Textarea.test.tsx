@@ -23,9 +23,7 @@ describe("Textarea", () => {
   });
 
   it("applies invalid state and resize style", () => {
-    const { getByRole } = renderWithProvider(
-      <Textarea aria-label="Notes" invalid resize="none" />
-    );
+    const { getByRole } = renderWithProvider(<Textarea aria-label="Notes" invalid resize="none" />);
     const textarea = getByRole("textbox", { name: "Notes" }) as HTMLTextAreaElement;
     expect(textarea.getAttribute("data-invalid")).toBe("true");
     expect(textarea.style.resize).toBe("none");

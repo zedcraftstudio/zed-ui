@@ -136,8 +136,9 @@ function ComboboxInner({
   );
 }
 
-export const Combobox: ForwardRefExoticComponent<ComboboxOwnProps & RefAttributes<HTMLInputElement>> =
-  forwardRef<HTMLInputElement, ComboboxOwnProps>(function Combobox(
+export const Combobox: ForwardRefExoticComponent<
+  ComboboxOwnProps & RefAttributes<HTMLInputElement>
+> = forwardRef<HTMLInputElement, ComboboxOwnProps>(function Combobox(
   { className, emptyMessage, invalid, options, placeholder, size, ...rest },
   ref
 ) {
@@ -153,7 +154,7 @@ export const Combobox: ForwardRefExoticComponent<ComboboxOwnProps & RefAttribute
       size={size}
     />
   );
-  });
+});
 
 Combobox.displayName = "Combobox";
 

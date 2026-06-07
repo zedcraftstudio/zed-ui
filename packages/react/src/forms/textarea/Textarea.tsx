@@ -28,12 +28,16 @@ function TextareaBase(props: PolymorphicProps<ElementType, TextareaOwnProps>, re
     ...rest
   } = props;
 
-  const { invalid, id: fieldId, required: fieldRequired, ...fieldAriaProps } =
-    useFormFieldControlProps({
-      id: rest.id,
-      invalid: invalidProp ? true : undefined,
-      required: rest.required
-    });
+  const {
+    invalid,
+    id: fieldId,
+    required: fieldRequired,
+    ...fieldAriaProps
+  } = useFormFieldControlProps({
+    id: rest.id,
+    invalid: invalidProp ? true : undefined,
+    required: rest.required
+  });
   const { id, required, ...textareaRest } = rest;
 
   const hasIcons = Boolean(startIcon || endIcon);
@@ -80,4 +84,7 @@ function TextareaBase(props: PolymorphicProps<ElementType, TextareaOwnProps>, re
   );
 }
 
-export const Textarea = forwardRef(TextareaBase) as PolymorphicComponent<"textarea", TextareaOwnProps>;
+export const Textarea = forwardRef(TextareaBase) as PolymorphicComponent<
+  "textarea",
+  TextareaOwnProps
+>;

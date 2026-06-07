@@ -10,7 +10,14 @@ export type AlertStatus = "error" | "info" | "neutral" | "success" | "warning";
 export type AlertVariant = "outline" | "solid" | "subtle" | "surface";
 export type BadgeVariant = "dot" | "ghost" | "outline" | "soft" | "solid";
 export type SkeletonVariant = "none" | "pulse" | "shine";
-export type CardVariant = "elevated" | "filled" | "ghost" | "outline" | "solid" | "subtle" | "unstyled";
+export type CardVariant =
+  | "elevated"
+  | "filled"
+  | "ghost"
+  | "outline"
+  | "solid"
+  | "subtle"
+  | "unstyled";
 export type CardSize = "lg" | "md" | "sm" | "xl" | "xs";
 export type CardOrientation = "horizontal" | "vertical";
 export type TableVariant = "line" | "outline" | "subtle";

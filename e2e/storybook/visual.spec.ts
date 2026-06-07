@@ -40,7 +40,9 @@ const stories = [
 test.describe("Storybook visual regression", () => {
   for (const story of stories) {
     test(`${story.name} matches snapshot`, async ({ page }) => {
-      await page.goto(`iframe.html?id=${story.id}&viewMode=story`, { waitUntil: "domcontentloaded" });
+      await page.goto(`iframe.html?id=${story.id}&viewMode=story`, {
+        waitUntil: "domcontentloaded"
+      });
       await page.waitForFunction(
         () => (document.querySelector("#storybook-root")?.childElementCount ?? 0) > 0
       );

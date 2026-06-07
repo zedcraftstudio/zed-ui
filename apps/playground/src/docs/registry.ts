@@ -1,6 +1,12 @@
 import type { ComponentType } from "react";
 import { ButtonSection, IconButtonSection } from "./sections/actions";
-import { AvatarSection, CardSection, DataTableSection, TableSection, TimelineSection } from "./sections/data-display";
+import {
+  AvatarSection,
+  CardSection,
+  DataTableSection,
+  TableSection,
+  TimelineSection
+} from "./sections/data-display";
 import {
   AlertSection,
   BadgeSection,
@@ -111,7 +117,9 @@ export const COMPONENT_DOC_REGISTRY: Record<string, ComponentDocEntry> = {
   stepper: StepperSection
 };
 
-export const ORDERED_COMPONENT_IDS = COMPONENTS.map((c) => c.id).filter((id) => id in COMPONENT_DOC_REGISTRY);
+export const ORDERED_COMPONENT_IDS = COMPONENTS.map((c) => c.id).filter(
+  (id) => id in COMPONENT_DOC_REGISTRY
+);
 
 export function getComponentDoc(id: string): ComponentDocEntry | undefined {
   return COMPONENT_DOC_REGISTRY[id];
@@ -123,7 +131,10 @@ export function getAdjacentComponents(id: string): {
 } {
   const index = ORDERED_COMPONENT_IDS.indexOf(id);
   const prevId = index > 0 ? ORDERED_COMPONENT_IDS[index - 1] : null;
-  const nextId = index >= 0 && index < ORDERED_COMPONENT_IDS.length - 1 ? ORDERED_COMPONENT_IDS[index + 1] : null;
+  const nextId =
+    index >= 0 && index < ORDERED_COMPONENT_IDS.length - 1
+      ? ORDERED_COMPONENT_IDS[index + 1]
+      : null;
 
   return {
     prev: prevId ? { id: prevId, label: getComponentById(prevId)?.label ?? prevId } : null,

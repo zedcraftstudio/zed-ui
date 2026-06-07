@@ -44,4 +44,7 @@ function ContainerBase(props: PolymorphicProps<ElementType, ContainerOwnProps>, 
   );
 }
 
-export const Container = forwardRef(ContainerBase) as PolymorphicComponent<"div", ContainerOwnProps>;
+export const Container = forwardRef(ContainerBase) as PolymorphicComponent<
+  "div",
+  ContainerOwnProps
+>;

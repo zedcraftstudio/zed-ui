@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import {
-  Button,
-  Popover,
-  PopoverPanel,
-  Stack,
-  Text
-} from "@zed-ui/react";
+import { Button, Popover, PopoverPanel, Stack, Text } from "@zed-ui/react";
 
 const meta: Meta<typeof Popover.Root> = {
   title: "Overlays/Popover",
@@ -37,7 +31,13 @@ export const Controlled: Story = {
       <Popover.Root open={open} onOpenChange={setOpen}>
         <Popover.Trigger render={<Button size="sm">Click me</Button>} />
         <PopoverPanel title="Controlled popover">
-          <Popover.Close render={<Button size="sm" variant="outline">Close</Button>} />
+          <Popover.Close
+            render={
+              <Button size="sm" variant="outline">
+                Close
+              </Button>
+            }
+          />
         </PopoverPanel>
       </Popover.Root>
     );
@@ -49,7 +49,13 @@ export const Placement: Story = {
     <Stack direction="row" gap="2" wrap="wrap">
       {(["top", "right", "bottom", "left"] as const).map((side) => (
         <Popover.Root key={side}>
-          <Popover.Trigger render={<Button size="sm" variant="outline">{side}</Button>} />
+          <Popover.Trigger
+            render={
+              <Button size="sm" variant="outline">
+                {side}
+              </Button>
+            }
+          />
           <PopoverPanel side={side} title={`${side} popover`}>
             <Text color="secondary" size="sm">
               side=&quot;{side}&quot;
@@ -81,7 +87,13 @@ export const WithFooter: Story = {
       <PopoverPanel
         footer={
           <>
-            <Popover.Close render={<Button size="sm" variant="outline">Cancel</Button>} />
+            <Popover.Close
+              render={
+                <Button size="sm" variant="outline">
+                  Cancel
+                </Button>
+              }
+            />
             <Popover.Close render={<Button size="sm">Save</Button>} />
           </>
         }

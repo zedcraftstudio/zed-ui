@@ -21,7 +21,12 @@ function range(start: number, end: number): number[] {
 
 type PageItem = number | "ellipsis";
 
-function getPageItems(count: number, page: number, siblingCount: number, showEdges: boolean): PageItem[] {
+function getPageItems(
+  count: number,
+  page: number,
+  siblingCount: number,
+  showEdges: boolean
+): PageItem[] {
   const totalNumbers = siblingCount * 2 + 3 + (showEdges ? 2 : 0);
   if (count <= totalNumbers) {
     return range(1, count);

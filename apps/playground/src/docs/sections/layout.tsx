@@ -818,7 +818,11 @@ ${shellNavCode}
   <Text>Content</Text>
 </AppShell>`}
       >
-        <AppShell header={<TopBar title="Simple layout" />} height="auto" style={{ minHeight: "8rem" }}>
+        <AppShell
+          header={<TopBar title="Simple layout" />}
+          height="auto"
+          style={{ minHeight: "8rem" }}
+        >
           <Text>Full-width content</Text>
         </AppShell>
       </DocExample>
@@ -843,11 +847,7 @@ export function TopBarSection() {
   <Text color="muted" size="sm">Optional center content</Text>
 </TopBar>`,
         preview: (
-          <TopBar
-            actions={<Button size="sm">New</Button>}
-            brand="Zed UI"
-            title="Dashboard"
-          />
+          <TopBar actions={<Button size="sm">New</Button>} brand="Zed UI" title="Dashboard" />
         )
       }}
     >
@@ -1016,7 +1016,10 @@ export function DividerSection() {
       <DocExample title="Labeled" code={`<Divider label="or" />`}>
         <Divider label="or" />
       </DocExample>
-      <DocExample title="Vertical in flex row" code={`<Flex align="center" gap="3" height="2rem"><Text>A</Text><Divider orientation="vertical" /><Text>B</Text></Flex>`}>
+      <DocExample
+        title="Vertical in flex row"
+        code={`<Flex align="center" gap="3" height="2rem"><Text>A</Text><Divider orientation="vertical" /><Text>B</Text></Flex>`}
+      >
         <Flex align="center" gap="3" height="2rem">
           <Text>A</Text>
           <Divider orientation="vertical" />

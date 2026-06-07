@@ -141,8 +141,8 @@ export function InstallationPage() {
           <Text color="secondary" className="docs-install-highlight__lede">
             Zed UI maps design tokens to CSS custom properties at runtime through{" "}
             <code>ThemeProvider</code> — no Emotion, styled-components, or other CSS-in-JS runtime.
-            Customize <code>colorScheme</code>, <code>density</code>, and semantic colors once; every
-            component reads from the same variable surface.
+            Customize <code>colorScheme</code>, <code>density</code>, and semantic colors once;
+            every component reads from the same variable surface.
           </Text>
 
           <ul className="docs-install-features">
@@ -257,7 +257,10 @@ export function InstallationPage() {
       <section className="docs-install-section docs-install-section--resources" id="learn">
         <div className="docs-install-resources">
           <article className="docs-install-resource" id="learn-card">
-            <span className="docs-install-resource__icon docs-install-resource__icon--learn" aria-hidden>
+            <span
+              className="docs-install-resource__icon docs-install-resource__icon--learn"
+              aria-hidden
+            >
               <svg viewBox="0 0 24 24" fill="none" className="docs-install-resource__glyph">
                 <path
                   d="M4 6.5A2.5 2.5 0 016.5 4H14l6 6v9.5A2.5 2.5 0 0117.5 22h-11A2.5 2.5 0 014 19.5v-13z"
@@ -270,8 +273,8 @@ export function InstallationPage() {
             <div className="docs-install-resource__body">
               <h2 className="docs-install-resource__title">Learn</h2>
               <Text size="sm" color="secondary">
-                Browse the component gallery and Storybook to see every primitive with live examples,
-                props tables, and accessibility notes.
+                Browse the component gallery and Storybook to see every primitive with live
+                examples, props tables, and accessibility notes.
               </Text>
               <div className="docs-install-resource__actions">
                 <Button as={Link} size="sm" to={ROUTES.docsComponents} variant="outline">
@@ -304,7 +307,12 @@ export function InstallationPage() {
                   stroke="currentColor"
                   strokeWidth="1.5"
                 />
-                <path d="M12 14v4M10 20h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                <path
+                  d="M12 14v4M10 20h4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
               </svg>
             </span>
             <div className="docs-install-resource__body">

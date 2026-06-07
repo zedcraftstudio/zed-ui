@@ -46,13 +46,7 @@ describe("Popover", () => {
     const { getByText } = renderWithProvider(
       <PopoverRoot open>
         <PopoverTrigger render={<Button>Open</Button>} />
-        <PopoverPanel
-          description="Details"
-          footer="Footer"
-          showArrow
-          showBackdrop
-          title="Title"
-        >
+        <PopoverPanel description="Details" footer="Footer" showArrow showBackdrop title="Title">
           Body
         </PopoverPanel>
       </PopoverRoot>

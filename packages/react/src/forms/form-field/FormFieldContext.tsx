@@ -68,8 +68,7 @@ export function useFormFieldControlProps(props: FormFieldControlProps = {}): For
     .filter(Boolean)
     .join(" ");
 
-  const invalid =
-    props.invalid === true || (props.invalid !== false && field?.invalid === true);
+  const invalid = props.invalid === true || (props.invalid !== false && field?.invalid === true);
   const required = props.required ?? field?.required;
 
   return {

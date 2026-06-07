@@ -55,18 +55,27 @@ export const TopBar = forwardRef(TopBarBase) as PolymorphicComponent<"header", T
 
 export type TopBarBrandOwnProps = BoxOwnProps;
 
-function TopBarBrandBase(props: PolymorphicProps<ElementType, TopBarBrandOwnProps>, ref: Ref<unknown>) {
+function TopBarBrandBase(
+  props: PolymorphicProps<ElementType, TopBarBrandOwnProps>,
+  ref: Ref<unknown>
+) {
   const { className, ...rest } = props;
   return (
     <Box ref={ref as Ref<HTMLElement>} className={cx("zui-topbar__brand", className)} {...rest} />
   );
 }
 
-export const TopBarBrand = forwardRef(TopBarBrandBase) as PolymorphicComponent<"div", TopBarBrandOwnProps>;
+export const TopBarBrand = forwardRef(TopBarBrandBase) as PolymorphicComponent<
+  "div",
+  TopBarBrandOwnProps
+>;
 
 export type TopBarTitleOwnProps = BoxOwnProps;
 
-function TopBarTitleBase(props: PolymorphicProps<ElementType, TopBarTitleOwnProps>, ref: Ref<unknown>) {
+function TopBarTitleBase(
+  props: PolymorphicProps<ElementType, TopBarTitleOwnProps>,
+  ref: Ref<unknown>
+) {
   const { as, className, ...rest } = props;
   return (
     <Box
@@ -78,7 +87,10 @@ function TopBarTitleBase(props: PolymorphicProps<ElementType, TopBarTitleOwnProp
   );
 }
 
-export const TopBarTitle = forwardRef(TopBarTitleBase) as PolymorphicComponent<"h1", TopBarTitleOwnProps>;
+export const TopBarTitle = forwardRef(TopBarTitleBase) as PolymorphicComponent<
+  "h1",
+  TopBarTitleOwnProps
+>;
 
 export type TopBarActionsOwnProps = BoxOwnProps;
 

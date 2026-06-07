@@ -3,10 +3,7 @@ import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react
 import { cx } from "@zed-ui/utils";
 import type { ZedColor, ZedSize } from "../../shared/types";
 
-export type SliderOwnProps = Omit<
-  ComponentPropsWithoutRef<typeof BaseSlider.Root>,
-  "className"
-> & {
+export type SliderOwnProps = Omit<ComponentPropsWithoutRef<typeof BaseSlider.Root>, "className"> & {
   className?: string;
   color?: ZedColor;
   label?: ReactNode;
@@ -43,7 +40,9 @@ export const Slider = forwardRef<HTMLDivElement, SliderOwnProps>(function Slider
       <div className="zui-slider" data-disabled={disabled ? "" : undefined} data-size={size}>
         {label || showValue ? (
           <div className="zui-slider__header">
-            {label ? <BaseSlider.Label className="zui-slider__label">{label}</BaseSlider.Label> : null}
+            {label ? (
+              <BaseSlider.Label className="zui-slider__label">{label}</BaseSlider.Label>
+            ) : null}
             {showValue ? <BaseSlider.Value className="zui-slider__value" /> : null}
           </div>
         ) : null}

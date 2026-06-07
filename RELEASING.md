@@ -6,14 +6,14 @@ This monorepo publishes the `@zed-ui/*` packages with [Changesets](https://githu
 
 These packages are published together (same version):
 
-| Package | Description |
-|---------|-------------|
-| `@zed-ui/react` | Main component library (install this + themes) |
-| `@zed-ui/themes` | Design tokens and `createTheme` |
-| `@zed-ui/system` | Style system primitives |
-| `@zed-ui/hooks` | React hooks |
-| `@zed-ui/utils` | Shared utilities |
-| `@zed-ui/icons` | Icons |
+| Package          | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| `@zed-ui/react`  | Main component library (install this + themes) |
+| `@zed-ui/themes` | Design tokens and `createTheme`                |
+| `@zed-ui/system` | Style system primitives                        |
+| `@zed-ui/hooks`  | React hooks                                    |
+| `@zed-ui/utils`  | Shared utilities                               |
+| `@zed-ui/icons`  | Icons                                          |
 
 `@zed-ui/playground` and `@zed-ui/docs` are private and never published.
 
@@ -182,12 +182,12 @@ import "@zed-ui/react/styles.css";
 
 ## Troubleshooting publish failures
 
-| Error | Cause | Fix |
-|-------|--------|-----|
-| `EOTP` / “requires a one-time password” | `NPM_TOKEN` is a **Publish** token (2FA required) | Replace with an **Automation** token, or use Trusted Publishing only (see §2) |
-| `E404` on `PUT @zed-ui/…` | CI has no npm publish credentials | Add `NPM_TOKEN` (Automation) or configure Trusted Publishing |
-| `Cannot find module '@zed-ui/system'` during publish | `prepublishOnly` rebuild in isolation | Use root `pnpm build` only (`release:ci` already does this) |
-| Partial publish (some packages at new version, others not) | Transient CI failure | Re-run **Release** workflow after fixing auth; versions already on npm are skipped |
+| Error                                                      | Cause                                             | Fix                                                                                |
+| ---------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `EOTP` / “requires a one-time password”                    | `NPM_TOKEN` is a **Publish** token (2FA required) | Replace with an **Automation** token, or use Trusted Publishing only (see §2)      |
+| `E404` on `PUT @zed-ui/…`                                  | CI has no npm publish credentials                 | Add `NPM_TOKEN` (Automation) or configure Trusted Publishing                       |
+| `Cannot find module '@zed-ui/system'` during publish       | `prepublishOnly` rebuild in isolation             | Use root `pnpm build` only (`release:ci` already does this)                        |
+| Partial publish (some packages at new version, others not) | Transient CI failure                              | Re-run **Release** workflow after fixing auth; versions already on npm are skipped |
 
 ## Security checklist
 

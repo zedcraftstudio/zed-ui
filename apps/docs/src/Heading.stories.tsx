@@ -14,9 +14,7 @@ export default meta;
 type Story = StoryObj<typeof Heading>;
 
 export const Default: Story = {
-  render: (args) => (
-    <Heading {...args}>The quick brown fox jumps over the lazy dog</Heading>
-  )
+  render: (args) => <Heading {...args}>The quick brown fox jumps over the lazy dog</Heading>
 };
 
 export const Sizes: Story = {
@@ -65,8 +63,8 @@ export const Highlight: Story = {
         Create accessible React apps with <mark>speed</mark>
       </Heading>
       <Text color="secondary" size="sm">
-        Zed UI is a simple, modular and accessible component library that gives you the
-        building blocks you need.
+        Zed UI is a simple, modular and accessible component library that gives you the building
+        blocks you need.
       </Text>
     </Stack>
   )
@@ -76,9 +74,7 @@ export const Composition: Story = {
   render: () => (
     <Stack gap="3" style={{ maxWidth: "28rem" }}>
       <Heading size="2xl">Modern payments for Stores</Heading>
-      <Text color="secondary">
-        PayMe helps startups get paid by anyone, anywhere in the world
-      </Text>
+      <Text color="secondary">PayMe helps startups get paid by anyone, anywhere in the world</Text>
       <Flex>
         <Button size="sm">Create account</Button>
       </Flex>

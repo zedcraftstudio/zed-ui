@@ -2,7 +2,16 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
   "changelog": ["@changesets/changelog-github", { "repo": "zedcraftstudio/zed-ui" }],
   "commit": false,
-  "fixed": [["@zed-ui/react", "@zed-ui/themes", "@zed-ui/system", "@zed-ui/utils", "@zed-ui/hooks", "@zed-ui/icons"]],
+  "fixed": [
+    [
+      "@zed-ui/react",
+      "@zed-ui/themes",
+      "@zed-ui/system",
+      "@zed-ui/utils",
+      "@zed-ui/hooks",
+      "@zed-ui/icons"
+    ]
+  ],
   "linked": [],
   "access": "public",
   "baseBranch": "main",

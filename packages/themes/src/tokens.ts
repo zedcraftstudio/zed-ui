@@ -24,7 +24,9 @@ export type ZedTheme = {
   radii: ZedScale<"none" | "xs" | "sm" | "md" | "lg" | "xl" | "full">;
   shadows: ZedScale<"none" | "sm" | "md" | "lg" | "focus">;
   fontFamilies: ZedScale<"sans" | "mono">;
-  fontSizes: ZedScale<"xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl">;
+  fontSizes: ZedScale<
+    "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl"
+  >;
   fontWeights: ZedScale<"regular" | "medium" | "semibold" | "bold">;
   lineHeights: ZedScale<"tight" | "normal" | "relaxed">;
   letterSpacings: ZedScale<"tight" | "normal" | "wide">;

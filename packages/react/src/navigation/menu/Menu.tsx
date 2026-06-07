@@ -34,13 +34,12 @@ export type MenuTriggerOwnProps = Omit<
   className?: string;
 };
 
-export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerOwnProps>(
-  function MenuTrigger({ className, ...rest }, ref) {
-    return (
-      <BaseMenu.Trigger ref={ref} className={cx("zui-menu__trigger", className)} {...rest} />
-    );
-  }
-);
+export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerOwnProps>(function MenuTrigger(
+  { className, ...rest },
+  ref
+) {
+  return <BaseMenu.Trigger ref={ref} className={cx("zui-menu__trigger", className)} {...rest} />;
+});
 
 MenuTrigger.displayName = "MenuTrigger";
 

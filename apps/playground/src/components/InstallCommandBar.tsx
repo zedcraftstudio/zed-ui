@@ -26,9 +26,7 @@ export function InstallCommandBar({
   command,
   packageManagers = DEFAULT_PACKAGE_MANAGERS
 }: InstallCommandBarProps) {
-  const managers = command
-    ? [{ id: "default", label: "Install", command }]
-    : packageManagers;
+  const managers = command ? [{ id: "default", label: "Install", command }] : packageManagers;
   const [selectedId, setSelectedId] = useState(managers[0]?.id ?? "npm");
 
   const activeManager = managers.find((manager) => manager.id === selectedId) ?? managers[0];
@@ -55,11 +53,7 @@ export function InstallCommandBar({
         </div>
       ) : null}
 
-      <CodeBlock
-        code={activeManager?.command ?? ""}
-        language="bash"
-        variant="dark"
-      />
+      <CodeBlock code={activeManager?.command ?? ""} language="bash" variant="dark" />
     </div>
   );
 }

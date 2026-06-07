@@ -4,15 +4,7 @@ import type { PolymorphicComponent, PolymorphicProps } from "@zed-ui/system";
 import { cx } from "@zed-ui/utils";
 import { Box, type BoxOwnProps } from "../box/Box";
 
-export type TextSize =
-  | "2xl"
-  | "3xl"
-  | "4xl"
-  | "lg"
-  | "md"
-  | "sm"
-  | "xl"
-  | "xs";
+export type TextSize = "2xl" | "3xl" | "4xl" | "lg" | "md" | "sm" | "xl" | "xs";
 export type TextWeight = "bold" | "medium" | "regular" | "semibold";
 
 export type TextOwnProps = Omit<BoxOwnProps, "align"> & {

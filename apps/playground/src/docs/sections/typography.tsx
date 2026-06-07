@@ -22,9 +22,7 @@ export function HeadingSection() {
       usage={{
         importCode: `import { Heading } from "@zed-ui/react"`,
         usageCode: `<Heading>The quick brown fox jumps over the lazy dog</Heading>`,
-        preview: (
-          <Heading size="2xl">The quick brown fox jumps over the lazy dog</Heading>
-        )
+        preview: <Heading size="2xl">The quick brown fox jumps over the lazy dog</Heading>
       }}
     >
       <DocExample title="Sizes" code={HEADING_SIZES_CODE}>
@@ -53,8 +51,8 @@ export function HeadingSection() {
             Create accessible React apps with <mark>speed</mark>
           </Heading>
           <Text color="secondary" size="sm">
-            Zed UI is a simple, modular and accessible component library that gives you the
-            building blocks you need.
+            Zed UI is a simple, modular and accessible component library that gives you the building
+            blocks you need.
           </Text>
         </Stack>
       </DocExample>
@@ -213,7 +211,10 @@ export function LinkSection() {
         preview: <Link href="#link">Documentation</Link>
       }}
     >
-      <DocExample title="External" code={`<Link external href="https://github.com/zedcraftstudio/zed-ui">GitHub</Link>`}>
+      <DocExample
+        title="External"
+        code={`<Link external href="https://github.com/zedcraftstudio/zed-ui">GitHub</Link>`}
+      >
         <Link external href="https://github.com/zedcraftstudio/zed-ui">
           GitHub
         </Link>

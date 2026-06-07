@@ -10,4 +10,6 @@ export default meta;
 type Story = StoryObj<typeof Link>;
 
 export const Default: Story = { args: { children: "Documentation", href: "#" } };
-export const External: Story = { args: { children: "GitHub", href: "https://github.com", external: true } };
+export const External: Story = {
+  args: { children: "GitHub", href: "https://github.com", external: true }
+};

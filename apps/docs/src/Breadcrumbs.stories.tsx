@@ -44,10 +44,7 @@ export const CompoundParts: Story = {
 
 export const CustomSeparator: Story = {
   args: {
-    items: [
-      { href: "/", label: "Home" },
-      { label: "Docs" }
-    ],
+    items: [{ href: "/", label: "Home" }, { label: "Docs" }],
     separator: "›"
   }
 };

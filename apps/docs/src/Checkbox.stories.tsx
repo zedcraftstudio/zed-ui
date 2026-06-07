@@ -63,9 +63,7 @@ export const Controlled: Story = {
 };
 
 export const Indeterminate: Story = {
-  render: () => (
-    <Checkbox checked={false} indeterminate label="Select all" />
-  )
+  render: () => <Checkbox checked={false} indeterminate label="Select all" />
 };
 
 export const WithDescription: Story = {
@@ -96,7 +94,12 @@ export const CheckboxCardDefault: Story = {
 export const CheckboxCardVariants: Story = {
   render: () => (
     <Stack gap="3" style={{ maxWidth: "20rem" }}>
-      <CheckboxCard defaultChecked description="Border highlight" label="Outline" variant="outline" />
+      <CheckboxCard
+        defaultChecked
+        description="Border highlight"
+        label="Outline"
+        variant="outline"
+      />
       <CheckboxCard defaultChecked description="Soft background" label="Subtle" variant="subtle" />
       <CheckboxCard defaultChecked description="Filled card" label="Solid" variant="solid" />
     </Stack>

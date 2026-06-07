@@ -97,11 +97,7 @@ export function systemPropsToStyle(props: SystemStyleProps): CSSProperties {
     borderColor: props.borderColor ? tokenVar("colors-border", props.borderColor) : undefined,
     borderStyle: props.borderWidth && props.borderWidth !== "0" ? "solid" : undefined,
     borderWidth:
-      props.borderWidth === "1"
-        ? "1px"
-        : props.borderWidth === "2"
-          ? "2px"
-          : props.borderWidth,
+      props.borderWidth === "1" ? "1px" : props.borderWidth === "2" ? "2px" : props.borderWidth,
     borderRadius: props.radius ? tokenVar("radii", props.radius) : undefined,
     boxShadow: props.shadow ? tokenVar("shadows", props.shadow) : undefined,
     color: props.color ? tokenVar("colors-text", props.color) : undefined,

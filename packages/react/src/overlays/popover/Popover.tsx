@@ -31,7 +31,11 @@ export type PopoverBackdropProps = ComponentPropsWithoutRef<typeof BasePopover.B
 export const PopoverBackdrop = forwardRef<HTMLDivElement, PopoverBackdropProps>(
   function PopoverBackdrop({ className, ...rest }, ref) {
     return (
-      <BasePopover.Backdrop ref={ref} className={cx("zui-popover__backdrop", className)} {...rest} />
+      <BasePopover.Backdrop
+        ref={ref}
+        className={cx("zui-popover__backdrop", className)}
+        {...rest}
+      />
     );
   }
 );
@@ -71,7 +75,11 @@ export type PopoverViewportProps = ComponentPropsWithoutRef<typeof BasePopover.V
 export const PopoverViewport = forwardRef<HTMLDivElement, PopoverViewportProps>(
   function PopoverViewport({ className, ...rest }, ref) {
     return (
-      <BasePopover.Viewport ref={ref} className={cx("zui-popover__viewport", className)} {...rest} />
+      <BasePopover.Viewport
+        ref={ref}
+        className={cx("zui-popover__viewport", className)}
+        {...rest}
+      />
     );
   }
 );
@@ -80,35 +88,34 @@ PopoverViewport.displayName = "PopoverViewport";
 
 export type PopoverArrowProps = ComponentPropsWithoutRef<typeof BasePopover.Arrow>;
 
-export const PopoverArrow = forwardRef<HTMLDivElement, PopoverArrowProps>(
-  function PopoverArrow({ className, ...rest }, ref) {
-    return (
-      <BasePopover.Arrow ref={ref} className={cx("zui-popover__arrow", className)} {...rest} />
-    );
-  }
-);
+export const PopoverArrow = forwardRef<HTMLDivElement, PopoverArrowProps>(function PopoverArrow(
+  { className, ...rest },
+  ref
+) {
+  return <BasePopover.Arrow ref={ref} className={cx("zui-popover__arrow", className)} {...rest} />;
+});
 
 PopoverArrow.displayName = "PopoverArrow";
 
 export type PopoverCloseProps = ComponentPropsWithoutRef<typeof BasePopover.Close>;
 
-export const PopoverClose = forwardRef<HTMLButtonElement, PopoverCloseProps>(
-  function PopoverClose({ className, ...rest }, ref) {
-    return (
-      <BasePopover.Close ref={ref} className={cx("zui-popover__close", className)} {...rest} />
-    );
-  }
-);
+export const PopoverClose = forwardRef<HTMLButtonElement, PopoverCloseProps>(function PopoverClose(
+  { className, ...rest },
+  ref
+) {
+  return <BasePopover.Close ref={ref} className={cx("zui-popover__close", className)} {...rest} />;
+});
 
 PopoverClose.displayName = "PopoverClose";
 
 export type PopoverTitleProps = ComponentPropsWithoutRef<typeof BasePopover.Title>;
 
-export const PopoverTitle = forwardRef<HTMLHeadingElement, PopoverTitleProps>(
-  function PopoverTitle({ className, ...rest }, ref) {
-    return <BasePopover.Title ref={ref} className={cx("zui-popover__title", className)} {...rest} />;
-  }
-);
+export const PopoverTitle = forwardRef<HTMLHeadingElement, PopoverTitleProps>(function PopoverTitle(
+  { className, ...rest },
+  ref
+) {
+  return <BasePopover.Title ref={ref} className={cx("zui-popover__title", className)} {...rest} />;
+});
 
 PopoverTitle.displayName = "PopoverTitle";
 

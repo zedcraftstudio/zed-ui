@@ -52,7 +52,12 @@ const styleLayerEntries = [
   "src/styles/layers/layout.css"
 ];
 
-const tsupEntries = ["src/index.ts", "src/styles.css", ...styleLayerEntries, ...indexFiles.map((f) => `src/${f}`)];
+const tsupEntries = [
+  "src/index.ts",
+  "src/styles.css",
+  ...styleLayerEntries,
+  ...indexFiles.map((f) => `src/${f}`)
+];
 
 const exportsField = {
   ".": {

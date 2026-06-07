@@ -1,7 +1,1 @@
-export {
-  Flex,
-  FlexParts,
-  Spacer,
-  type FlexOwnProps,
-  type SpacerOwnProps
-} from "./Flex";
+export { Flex, FlexParts, Spacer, type FlexOwnProps, type SpacerOwnProps } from "./Flex";

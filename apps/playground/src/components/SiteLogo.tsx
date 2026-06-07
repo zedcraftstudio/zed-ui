@@ -10,7 +10,13 @@ export type SiteLogoProps = {
 export function SiteLogo({ className, imageClassName = "brand-logo" }: SiteLogoProps) {
   return (
     <Link className={className} to={ROUTES.home}>
-      <img alt="" className={imageClassName} height={28} src={assetUrl("brand-logo.png")} width={28} />
+      <img
+        alt=""
+        className={imageClassName}
+        height={28}
+        src={assetUrl("brand-logo.png")}
+        width={28}
+      />
       <span className="site-logo__text">Zed UI</span>
     </Link>
   );

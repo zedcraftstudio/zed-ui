@@ -53,9 +53,7 @@ export const RadioCard = forwardRef(function RadioCard(
       <span className="zui-radio-card__body">
         <span className="zui-radio-card__content">
           {label ? <span className="zui-radio-card__label">{label}</span> : null}
-          {description ? (
-            <span className="zui-radio-card__description">{description}</span>
-          ) : null}
+          {description ? <span className="zui-radio-card__description">{description}</span> : null}
         </span>
         {showIndicator ? (
           <BaseRadio.Root

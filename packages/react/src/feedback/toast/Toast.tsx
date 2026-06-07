@@ -83,12 +83,7 @@ function resolveToastVisualVariant(
 function ToastCloseIcon({ size = 12 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 12 12" fill="none" aria-hidden>
-      <path
-        d="M3 3l6 6M9 3 3 9"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.5"
-      />
+      <path d="M3 3l6 6M9 3 3 9" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" />
     </svg>
   );
 }

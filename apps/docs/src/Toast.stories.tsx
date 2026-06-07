@@ -6,14 +6,21 @@ function ToastDemo() {
 
   return (
     <Stack direction="row" gap="2" wrap="wrap">
-      <Button size="sm" onClick={() => toast({ title: "Saved", description: "Changes applied.", status: "success" })}>
+      <Button
+        size="sm"
+        onClick={() =>
+          toast({ title: "Saved", description: "Changes applied.", status: "success" })
+        }
+      >
         Success
       </Button>
       <Button
         size="sm"
         variant="soft"
         color="warning"
-        onClick={() => toast({ title: "Heads up", description: "Review required.", status: "warning" })}
+        onClick={() =>
+          toast({ title: "Heads up", description: "Review required.", status: "warning" })
+        }
       >
         Warning
       </Button>
@@ -21,7 +28,9 @@ function ToastDemo() {
         size="sm"
         variant="soft"
         color="danger"
-        onClick={() => toast({ title: "Error", description: "Something went wrong.", status: "error" })}
+        onClick={() =>
+          toast({ title: "Error", description: "Something went wrong.", status: "error" })
+        }
       >
         Error
       </Button>

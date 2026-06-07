@@ -24,7 +24,11 @@ function startOfDay(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
-function buildDisabledMatchers(disabled: boolean, min?: Date, max?: Date): Matcher | Matcher[] | boolean | undefined {
+function buildDisabledMatchers(
+  disabled: boolean,
+  min?: Date,
+  max?: Date
+): Matcher | Matcher[] | boolean | undefined {
   if (disabled) return true;
 
   const matchers: Matcher[] = [];
@@ -43,9 +47,14 @@ export function Calendar({
   onValueChange,
   value = null
 }: CalendarOwnProps) {
-  const [uncontrolledMonth, setUncontrolledMonth] = useState(() => startOfMonth(value ?? new Date()));
+  const [uncontrolledMonth, setUncontrolledMonth] = useState(() =>
+    startOfMonth(value ?? new Date())
+  );
   const visibleMonth = monthProp ? startOfMonth(monthProp) : uncontrolledMonth;
-  const disabledDays = useMemo(() => buildDisabledMatchers(disabled, min, max), [disabled, min, max]);
+  const disabledDays = useMemo(
+    () => buildDisabledMatchers(disabled, min, max),
+    [disabled, min, max]
+  );
 
   function handleMonthChange(next: Date) {
     const normalized = startOfMonth(next);

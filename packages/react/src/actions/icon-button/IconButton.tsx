@@ -78,4 +78,7 @@ function IconButtonBase(
   );
 }
 
-export const IconButton = forwardRef(IconButtonBase) as PolymorphicComponent<"button", IconButtonOwnProps>;
+export const IconButton = forwardRef(IconButtonBase) as PolymorphicComponent<
+  "button",
+  IconButtonOwnProps
+>;

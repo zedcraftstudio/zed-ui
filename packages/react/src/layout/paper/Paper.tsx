@@ -15,14 +15,7 @@ export type PaperOwnProps = BoxOwnProps & {
 
 function PaperBase(props: PolymorphicProps<ElementType, PaperOwnProps>, ref: Ref<unknown>) {
   const defaults = useComponentDefaults("Paper");
-  const {
-    as,
-    className,
-    radius = "md",
-    size: sizeProp,
-    variant: variantProp,
-    ...rest
-  } = props;
+  const { as, className, radius = "md", size: sizeProp, variant: variantProp, ...rest } = props;
   const size = (sizeProp ?? (defaults?.size as ZedSize | undefined) ?? "md") as ZedSize;
   const variant = (variantProp ??
     (defaults?.variant as PaperVariant | undefined) ??

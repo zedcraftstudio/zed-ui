@@ -8,12 +8,7 @@ expect.extend(toHaveNoViolations);
 describe("Breadcrumbs", () => {
   it("renders items API", () => {
     const { getByText } = renderWithProvider(
-      <BreadcrumbsRoot
-        items={[
-          { href: "/", label: "Home" },
-          { label: "Components" }
-        ]}
-      />
+      <BreadcrumbsRoot items={[{ href: "/", label: "Home" }, { label: "Components" }]} />
     );
 
     expect(getByText("Home")).toBeTruthy();

@@ -64,13 +64,17 @@ export const Vertical: Story = {
       <Stepper.Step>
         <Stepper.StepLabel>Select campaign settings</Stepper.StepLabel>
         <Stepper.StepContent>
-          <Text color="secondary">For each ad campaign that you create, you can control spend and targeting.</Text>
+          <Text color="secondary">
+            For each ad campaign that you create, you can control spend and targeting.
+          </Text>
         </Stepper.StepContent>
       </Stepper.Step>
       <Stepper.Step>
         <Stepper.StepLabel>Create an ad group</Stepper.StepLabel>
         <Stepper.StepContent>
-          <Text color="secondary">An ad group contains one or more ads which target a shared set of keywords.</Text>
+          <Text color="secondary">
+            An ad group contains one or more ads which target a shared set of keywords.
+          </Text>
         </Stepper.StepContent>
       </Stepper.Step>
       <Stepper.Step>
@@ -125,7 +129,10 @@ export const Controlled: Story = {
             </Stepper.Step>
           ))}
         </Stepper>
-        <Button size="sm" onClick={() => setActiveStep((step) => Math.min(step + 1, steps.length - 1))}>
+        <Button
+          size="sm"
+          onClick={() => setActiveStep((step) => Math.min(step + 1, steps.length - 1))}
+        >
           Next
         </Button>
       </Stack>

@@ -1,7 +1,15 @@
 import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, expect, it } from "vitest";
 import { renderWithProvider } from "../../test/render";
-import { Card, CardBody, CardDescription, CardFooter, CardHeader, CardImage, CardTitle } from "./Card";
+import {
+  Card,
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardImage,
+  CardTitle
+} from "./Card";
 
 expect.extend(toHaveNoViolations);
 

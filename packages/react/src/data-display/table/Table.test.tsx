@@ -61,7 +61,7 @@ describe("Table", () => {
     expect(getByText("Members")).toBeTruthy();
     expect(getByText("Total: 1")).toBeTruthy();
     expect(container.querySelector(".zui-table-scroll-area")).toBeTruthy();
-    expect(container.querySelector('.zui-table[data-striped]')).toBeTruthy();
+    expect(container.querySelector(".zui-table[data-striped]")).toBeTruthy();
   });
 
   it("has no axe violations", async () => {

@@ -21,7 +21,12 @@ describe("FormField", () => {
 
   it("links description and error via aria-describedby", () => {
     const { getByLabelText, getByText } = renderWithProvider(
-      <FormField description="We never share your email." error="Invalid email" label="Email" required>
+      <FormField
+        description="We never share your email."
+        error="Invalid email"
+        label="Email"
+        required
+      >
         <Input />
       </FormField>
     );

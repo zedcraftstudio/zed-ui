@@ -47,7 +47,10 @@ function CardRootBase(props: PolymorphicProps<ElementType, CardRootOwnProps>, re
   );
 }
 
-export const CardRoot = forwardRef(CardRootBase) as PolymorphicComponent<"article", CardRootOwnProps>;
+export const CardRoot = forwardRef(CardRootBase) as PolymorphicComponent<
+  "article",
+  CardRootOwnProps
+>;
 
 export type CardOwnProps = CardRootOwnProps & {
   footer?: ReactNode;
@@ -70,34 +73,48 @@ export const Card = forwardRef(CardBase) as PolymorphicComponent<"article", Card
 
 export type CardHeaderOwnProps = BoxOwnProps;
 
-function CardHeaderBase(props: PolymorphicProps<ElementType, CardHeaderOwnProps>, ref: Ref<unknown>) {
+function CardHeaderBase(
+  props: PolymorphicProps<ElementType, CardHeaderOwnProps>,
+  ref: Ref<unknown>
+) {
   const { className, ...rest } = props;
   return (
     <Box ref={ref as Ref<HTMLElement>} className={cx("zui-card__header", className)} {...rest} />
   );
 }
 
-export const CardHeader = forwardRef(CardHeaderBase) as PolymorphicComponent<"div", CardHeaderOwnProps>;
+export const CardHeader = forwardRef(CardHeaderBase) as PolymorphicComponent<
+  "div",
+  CardHeaderOwnProps
+>;
 
 export type CardBodyOwnProps = BoxOwnProps;
 
 function CardBodyBase(props: PolymorphicProps<ElementType, CardBodyOwnProps>, ref: Ref<unknown>) {
   const { className, ...rest } = props;
-  return <Box ref={ref as Ref<HTMLElement>} className={cx("zui-card__body", className)} {...rest} />;
+  return (
+    <Box ref={ref as Ref<HTMLElement>} className={cx("zui-card__body", className)} {...rest} />
+  );
 }
 
 export const CardBody = forwardRef(CardBodyBase) as PolymorphicComponent<"div", CardBodyOwnProps>;
 
 export type CardFooterOwnProps = BoxOwnProps;
 
-function CardFooterBase(props: PolymorphicProps<ElementType, CardFooterOwnProps>, ref: Ref<unknown>) {
+function CardFooterBase(
+  props: PolymorphicProps<ElementType, CardFooterOwnProps>,
+  ref: Ref<unknown>
+) {
   const { className, ...rest } = props;
   return (
     <Box ref={ref as Ref<HTMLElement>} className={cx("zui-card__footer", className)} {...rest} />
   );
 }
 
-export const CardFooter = forwardRef(CardFooterBase) as PolymorphicComponent<"div", CardFooterOwnProps>;
+export const CardFooter = forwardRef(CardFooterBase) as PolymorphicComponent<
+  "div",
+  CardFooterOwnProps
+>;
 
 export type CardTitleOwnProps = BoxOwnProps;
 

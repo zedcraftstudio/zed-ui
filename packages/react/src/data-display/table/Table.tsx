@@ -50,7 +50,10 @@ function TableRootBase(props: PolymorphicProps<ElementType, TableRootOwnProps>, 
   );
 }
 
-export const TableRoot = forwardRef(TableRootBase) as PolymorphicComponent<"table", TableRootOwnProps>;
+export const TableRoot = forwardRef(TableRootBase) as PolymorphicComponent<
+  "table",
+  TableRootOwnProps
+>;
 
 /** @deprecated Use `TableRoot` */
 export type TableOwnProps = TableRootOwnProps;
@@ -85,43 +88,78 @@ export const TableScrollArea = forwardRef(TableScrollAreaBase) as PolymorphicCom
 
 export type TableHeaderOwnProps = BoxOwnProps;
 
-function TableHeaderBase(props: PolymorphicProps<ElementType, TableHeaderOwnProps>, ref: Ref<unknown>) {
+function TableHeaderBase(
+  props: PolymorphicProps<ElementType, TableHeaderOwnProps>,
+  ref: Ref<unknown>
+) {
   const { as, className, ...rest } = props;
   return (
-    <Box ref={ref as Ref<HTMLElement>} as={as ?? "thead"} className={cx("zui-table__head", className)} {...rest} />
+    <Box
+      ref={ref as Ref<HTMLElement>}
+      as={as ?? "thead"}
+      className={cx("zui-table__head", className)}
+      {...rest}
+    />
   );
 }
 
-export const TableHeader = forwardRef(TableHeaderBase) as PolymorphicComponent<"thead", TableHeaderOwnProps>;
+export const TableHeader = forwardRef(TableHeaderBase) as PolymorphicComponent<
+  "thead",
+  TableHeaderOwnProps
+>;
 
 export type TableBodyOwnProps = BoxOwnProps;
 
 function TableBodyBase(props: PolymorphicProps<ElementType, TableBodyOwnProps>, ref: Ref<unknown>) {
   const { as, className, ...rest } = props;
   return (
-    <Box ref={ref as Ref<HTMLElement>} as={as ?? "tbody"} className={cx("zui-table__body", className)} {...rest} />
+    <Box
+      ref={ref as Ref<HTMLElement>}
+      as={as ?? "tbody"}
+      className={cx("zui-table__body", className)}
+      {...rest}
+    />
   );
 }
 
-export const TableBody = forwardRef(TableBodyBase) as PolymorphicComponent<"tbody", TableBodyOwnProps>;
+export const TableBody = forwardRef(TableBodyBase) as PolymorphicComponent<
+  "tbody",
+  TableBodyOwnProps
+>;
 
 export type TableFooterOwnProps = BoxOwnProps;
 
-function TableFooterBase(props: PolymorphicProps<ElementType, TableFooterOwnProps>, ref: Ref<unknown>) {
+function TableFooterBase(
+  props: PolymorphicProps<ElementType, TableFooterOwnProps>,
+  ref: Ref<unknown>
+) {
   const { as, className, ...rest } = props;
   return (
-    <Box ref={ref as Ref<HTMLElement>} as={as ?? "tfoot"} className={cx("zui-table__foot", className)} {...rest} />
+    <Box
+      ref={ref as Ref<HTMLElement>}
+      as={as ?? "tfoot"}
+      className={cx("zui-table__foot", className)}
+      {...rest}
+    />
   );
 }
 
-export const TableFooter = forwardRef(TableFooterBase) as PolymorphicComponent<"tfoot", TableFooterOwnProps>;
+export const TableFooter = forwardRef(TableFooterBase) as PolymorphicComponent<
+  "tfoot",
+  TableFooterOwnProps
+>;
 
 export type TableRowOwnProps = BoxOwnProps;
 
 function TableRowBase(props: PolymorphicProps<ElementType, TableRowOwnProps>, ref: Ref<unknown>) {
   const { as, className, ...rest } = props;
   return (
-    <Box ref={ref as Ref<HTMLElement>} as={as ?? "tr"} className={cx("zui-table__row", className)} {...rest} />
+    <Box
+      ref={ref as Ref<HTMLElement>}
+      as={as ?? "tr"}
+      className={cx("zui-table__row", className)}
+      {...rest}
+    />
   );
 }
 
@@ -173,7 +211,10 @@ export type TableCaptionOwnProps = BoxOwnProps & {
   side?: TableCaptionSide;
 };
 
-function TableCaptionBase(props: PolymorphicProps<ElementType, TableCaptionOwnProps>, ref: Ref<unknown>) {
+function TableCaptionBase(
+  props: PolymorphicProps<ElementType, TableCaptionOwnProps>,
+  ref: Ref<unknown>
+) {
   const { as, className, side = "bottom", ...rest } = props;
   return (
     <Box
@@ -217,7 +258,10 @@ export type TableColumnOwnProps = BoxOwnProps & {
   htmlWidth?: number | string;
 };
 
-function TableColumnBase(props: PolymorphicProps<ElementType, TableColumnOwnProps>, ref: Ref<unknown>) {
+function TableColumnBase(
+  props: PolymorphicProps<ElementType, TableColumnOwnProps>,
+  ref: Ref<unknown>
+) {
   const { as, className, htmlWidth, style, ...rest } = props;
   return (
     <Box
@@ -230,7 +274,10 @@ function TableColumnBase(props: PolymorphicProps<ElementType, TableColumnOwnProp
   );
 }
 
-export const TableColumn = forwardRef(TableColumnBase) as PolymorphicComponent<"col", TableColumnOwnProps>;
+export const TableColumn = forwardRef(TableColumnBase) as PolymorphicComponent<
+  "col",
+  TableColumnOwnProps
+>;
 
 /** @deprecated Use `TableHead` */
 export const TableHeaderCell = TableHead;

@@ -17,7 +17,9 @@ export type DialogTriggerProps = ComponentPropsWithoutRef<typeof BaseDialog.Trig
 
 export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
   function DialogTrigger({ className, ...rest }, ref) {
-    return <BaseDialog.Trigger ref={ref} className={cx("zui-dialog__trigger", className)} {...rest} />;
+    return (
+      <BaseDialog.Trigger ref={ref} className={cx("zui-dialog__trigger", className)} {...rest} />
+    );
   }
 );
 
@@ -140,7 +142,10 @@ export function DialogContent({
               </DialogClose>
             </header>
           ) : (
-            <DialogClose className="zui-dialog__close zui-dialog__close--floating" aria-label="Close dialog">
+            <DialogClose
+              className="zui-dialog__close zui-dialog__close--floating"
+              aria-label="Close dialog"
+            >
               <span className="zui-dialog__close-icon" aria-hidden>
                 ×
               </span>

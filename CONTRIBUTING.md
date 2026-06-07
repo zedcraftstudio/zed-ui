@@ -15,24 +15,24 @@ pnpm install
 
 ## Development
 
-| Command | Description |
-| --- | --- |
-| `pnpm dev` | Docs playground at http://localhost:5173 |
-| `pnpm dev:docs` | Storybook at http://localhost:6006 |
-| `pnpm build` | Build all packages and apps |
-| `pnpm test` | Unit tests (Vitest) |
-| `pnpm test:e2e` | Playwright tests against the playground |
-| `pnpm test:e2e:storybook` | Storybook visual regression (5 baseline stories) |
-| `pnpm typecheck` | TypeScript across the monorepo |
-| `pnpm lint` | ESLint |
-| `pnpm size` | Bundle size limits for `@zed-ui/react` (barrel JS/CSS + key subpaths) |
+| Command                   | Description                                                           |
+| ------------------------- | --------------------------------------------------------------------- |
+| `pnpm dev`                | Docs playground at http://localhost:5173                              |
+| `pnpm dev:docs`           | Storybook at http://localhost:6006                                    |
+| `pnpm build`              | Build all packages and apps                                           |
+| `pnpm test`               | Unit tests (Vitest)                                                   |
+| `pnpm test:e2e`           | Playwright tests against the playground                               |
+| `pnpm test:e2e:storybook` | Storybook visual regression (5 baseline stories)                      |
+| `pnpm typecheck`          | TypeScript across the monorepo                                        |
+| `pnpm lint`               | ESLint                                                                |
+| `pnpm size`               | Bundle size limits for `@zed-ui/react` (barrel JS/CSS + key subpaths) |
 
 ## Documentation apps
 
-| App | Path | When to update |
-| --- | --- | --- |
-| **Playground** | `apps/playground` | Public docs site (deployed to GitHub Pages). Update `src/docs/sections/` and `src/docs/props/registry.ts` when APIs, props, or usage guidance change. |
-| **Storybook** | `apps/docs` | Component stories and a11y review. Add `*.stories.tsx` when adding variants, states, or visual regression targets. Production build (`build:pages`) deploys to `/storybook/` on GitHub Pages. |
+| App            | Path              | When to update                                                                                                                                                                                |
+| -------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Playground** | `apps/playground` | Public docs site (deployed to GitHub Pages). Update `src/docs/sections/` and `src/docs/props/registry.ts` when APIs, props, or usage guidance change.                                         |
+| **Storybook**  | `apps/docs`       | Component stories and a11y review. Add `*.stories.tsx` when adding variants, states, or visual regression targets. Production build (`build:pages`) deploys to `/storybook/` on GitHub Pages. |
 
 Run `pnpm dev` for playground, `pnpm dev:docs` for Storybook.
 

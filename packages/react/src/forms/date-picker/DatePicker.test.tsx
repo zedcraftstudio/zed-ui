@@ -25,9 +25,7 @@ describe("DatePicker", () => {
   });
 
   it("displays formatted value", () => {
-    const { getByRole } = renderWithProvider(
-      <DatePicker value={new Date(2026, 5, 15)} />
-    );
+    const { getByRole } = renderWithProvider(<DatePicker value={new Date(2026, 5, 15)} />);
     expect(getByRole("button").textContent).toContain("6/15/2026");
   });
 

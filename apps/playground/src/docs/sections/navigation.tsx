@@ -237,7 +237,10 @@ export function TabsSection() {
         </Stack>
       </DocExample>
 
-      <DocExample title="Disabled tab" code={`<Tabs.Trigger disabled value="settings">Settings</Tabs.Trigger>`}>
+      <DocExample
+        title="Disabled tab"
+        code={`<Tabs.Trigger disabled value="settings">Settings</Tabs.Trigger>`}
+      >
         <TabsRoot defaultValue="members">
           <TabsList>
             <TabsTrigger value="members">Members</TabsTrigger>
@@ -377,7 +380,9 @@ export function AccordionSection() {
                 <Accordion.Trigger>What is Zed UI?</Accordion.Trigger>
               </Accordion.Header>
               <Accordion.Panel>
-                <Text color="secondary">Zed UI is a typed React design system built on Base UI and CSS variables.</Text>
+                <Text color="secondary">
+                  Zed UI is a typed React design system built on Base UI and CSS variables.
+                </Text>
               </Accordion.Panel>
             </Accordion.Item>
             <Accordion.Item value="item-2">
@@ -501,9 +506,7 @@ export function BreadcrumbsSection() {
 ];
 
 <BreadcrumbsRoot items={items} />`,
-        preview: (
-          <BreadcrumbsRoot items={[{ href: "/", label: "Home" }, { label: "Components" }]} />
-        )
+        preview: <BreadcrumbsRoot items={[{ href: "/", label: "Home" }, { label: "Components" }]} />
       }}
     >
       <DocExample
@@ -525,10 +528,7 @@ export function BreadcrumbsSection() {
         />
       </DocExample>
 
-      <DocExample
-        title="Long path"
-        code={`<BreadcrumbsRoot items={longPathItems} />`}
-      >
+      <DocExample title="Long path" code={`<BreadcrumbsRoot items={longPathItems} />`}>
         <BreadcrumbsRoot
           items={[
             { href: "/", label: "Home" },
@@ -554,14 +554,8 @@ export function BreadcrumbsSection() {
         </BreadcrumbsRoot>
       </DocExample>
 
-      <DocExample
-        title="Custom separator"
-        code={`<BreadcrumbsRoot items={items} separator="›" />`}
-      >
-        <BreadcrumbsRoot
-          items={[{ href: "/", label: "Home" }, { label: "Docs" }]}
-          separator="›"
-        />
+      <DocExample title="Custom separator" code={`<BreadcrumbsRoot items={items} separator="›" />`}>
+        <BreadcrumbsRoot items={[{ href: "/", label: "Home" }, { label: "Docs" }]} separator="›" />
       </DocExample>
     </ComponentDoc>
   );
@@ -732,11 +726,15 @@ export function StepperSection() {
         <Stepper activeStep={1} orientation="vertical" style={{ maxWidth: "28rem" }}>
           <Stepper.Step>
             <Stepper.StepLabel>Select campaign settings</Stepper.StepLabel>
-            <Stepper.StepContent>For each ad campaign that you create, you can control spend and targeting.</Stepper.StepContent>
+            <Stepper.StepContent>
+              For each ad campaign that you create, you can control spend and targeting.
+            </Stepper.StepContent>
           </Stepper.Step>
           <Stepper.Step>
             <Stepper.StepLabel>Create an ad group</Stepper.StepLabel>
-            <Stepper.StepContent>An ad group contains one or more ads which target a shared set of keywords.</Stepper.StepContent>
+            <Stepper.StepContent>
+              An ad group contains one or more ads which target a shared set of keywords.
+            </Stepper.StepContent>
           </Stepper.Step>
           <Stepper.Step>
             <Stepper.StepLabel>Create an ad</Stepper.StepLabel>

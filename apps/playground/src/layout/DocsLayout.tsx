@@ -20,10 +20,7 @@ export function DocsLayoutSidebar({ children, className }: DocsLayoutSidebarProp
   const navGroups = getDocsNavForPath(pathname);
 
   return (
-    <aside
-      className={cx("docs-sidebar docs-sidebar--zui", className)}
-      aria-label="Documentation"
-    >
+    <aside className={cx("docs-sidebar docs-sidebar--zui", className)} aria-label="Documentation">
       <nav className="docs-sidebar__nav">
         {navGroups.map((group) => (
           <div key={group.title} className="docs-nav-group">

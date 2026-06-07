@@ -15,7 +15,9 @@ const config: StorybookConfig = {
       ...(Array.isArray(config.resolve.alias) ? config.resolve.alias : []),
       {
         find: "@zed-ui/react/styles.css",
-        replacement: fileURLToPath(new URL("../../../packages/react/src/styles.css", import.meta.url))
+        replacement: fileURLToPath(
+          new URL("../../../packages/react/src/styles.css", import.meta.url)
+        )
       },
       {
         find: "@zed-ui/react",

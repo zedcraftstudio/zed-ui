@@ -14,9 +14,7 @@ export const Default: Story = {
 };
 
 export const WithActions: Story = {
-  render: () => (
-    <TopBar actions={<Button size="sm">Create</Button>} title="Projects" />
-  )
+  render: () => <TopBar actions={<Button size="sm">Create</Button>} title="Projects" />
 };
 
 export const Small: Story = {

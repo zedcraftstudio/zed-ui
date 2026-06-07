@@ -13,7 +13,9 @@ export type DrawerTriggerProps = ComponentPropsWithoutRef<typeof BaseDrawer.Trig
 
 export const DrawerTrigger = forwardRef<HTMLButtonElement, DrawerTriggerProps>(
   function DrawerTrigger({ className, ...rest }, ref) {
-    return <BaseDrawer.Trigger ref={ref} className={cx("zui-drawer__trigger", className)} {...rest} />;
+    return (
+      <BaseDrawer.Trigger ref={ref} className={cx("zui-drawer__trigger", className)} {...rest} />
+    );
   }
 );
 

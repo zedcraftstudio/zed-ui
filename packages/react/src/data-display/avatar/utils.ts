@@ -1,13 +1,6 @@
 import type { ZedColor } from "../../shared/types";
 
-const AVATAR_COLORS: ZedColor[] = [
-  "primary",
-  "neutral",
-  "success",
-  "warning",
-  "danger",
-  "info"
-];
+const AVATAR_COLORS: ZedColor[] = ["primary", "neutral", "success", "warning", "danger", "info"];
 
 export function getAvatarInitials(value?: string) {
   if (!value?.trim()) {

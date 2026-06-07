@@ -23,7 +23,10 @@ export function CodeBlock({
   };
 
   return (
-    <div className={cx("docs-code", variant === "dark" && "docs-code--dark")} data-language={language}>
+    <div
+      className={cx("docs-code", variant === "dark" && "docs-code--dark")}
+      data-language={language}
+    >
       {showCopy ? (
         <button type="button" className="docs-code__copy" onClick={onCopy} aria-label="Copy code">
           {copied ? "Copied" : "Copy"}

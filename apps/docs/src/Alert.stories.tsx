@@ -73,7 +73,9 @@ export const WithCloseButton: Story = {
 };
 
 export const WithSpinner: Story = {
-  render: () => <Alert startElement={<Spinner size="sm" />} status="info" title="We are loading something" />
+  render: () => (
+    <Alert startElement={<Spinner size="sm" />} status="info" title="We are loading something" />
+  )
 };
 
 export const ColorOverride: Story = {
@@ -121,7 +123,12 @@ export const Compact: Story = {
   render: () => (
     <Stack gap="3">
       <Alert compact status="info" title="New version available" />
-      <Alert compact status="warning" title="Storage almost full" description="Upgrade to add more space." />
+      <Alert
+        compact
+        status="warning"
+        title="Storage almost full"
+        description="Upgrade to add more space."
+      />
       <Alert compact status="error" title="Failed to save" variant="outline" />
       <Alert
         compact

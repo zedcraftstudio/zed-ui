@@ -152,14 +152,13 @@ TabsTrigger.displayName = "TabsTrigger";
 
 export type TabsIndicatorOwnProps = ComponentPropsWithoutRef<typeof BaseTabs.Indicator>;
 
-export const TabsIndicator = forwardRef<HTMLSpanElement, TabsIndicatorOwnProps>(function TabsIndicator(
-  { className, ...rest },
-  ref
-) {
-  return (
-    <BaseTabs.Indicator ref={ref} className={cx("zui-tabs__indicator", className)} {...rest} />
-  );
-});
+export const TabsIndicator = forwardRef<HTMLSpanElement, TabsIndicatorOwnProps>(
+  function TabsIndicator({ className, ...rest }, ref) {
+    return (
+      <BaseTabs.Indicator ref={ref} className={cx("zui-tabs__indicator", className)} {...rest} />
+    );
+  }
+);
 
 TabsIndicator.displayName = "TabsIndicator";
 

@@ -46,7 +46,13 @@ export const Controlled: Story = {
         </Button>
         <Drawer.Root open={open} onOpenChange={setOpen}>
           <DrawerContent side="right" title="Controlled drawer">
-            <Drawer.Close render={<Button size="sm" variant="outline">Close</Button>} />
+            <Drawer.Close
+              render={
+                <Button size="sm" variant="outline">
+                  Close
+                </Button>
+              }
+            />
           </DrawerContent>
         </Drawer.Root>
       </>
@@ -59,7 +65,13 @@ export const Placement: Story = {
     <Flex gap="2" wrap="wrap">
       {(["left", "right", "top", "bottom"] as const).map((side) => (
         <Drawer.Root key={side}>
-          <Drawer.Trigger render={<Button size="sm" variant="outline">{side}</Button>} />
+          <Drawer.Trigger
+            render={
+              <Button size="sm" variant="outline">
+                {side}
+              </Button>
+            }
+          />
           <DrawerContent side={side} title={`${side} drawer`}>
             <Text color="secondary" size="sm">
               side=&quot;{side}&quot;

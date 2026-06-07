@@ -30,7 +30,9 @@ describe("DataTable", () => {
   });
 
   it("sorts rows when header clicked", () => {
-    const { getAllByRole, getByRole } = renderWithProvider(<DataTable columns={COLUMNS} data={DATA} />);
+    const { getAllByRole, getByRole } = renderWithProvider(
+      <DataTable columns={COLUMNS} data={DATA} />
+    );
     fireEvent.click(getByRole("button", { name: /Price/ }));
     const rows = getAllByRole("row");
     expect(rows[1]?.textContent).toContain("Chair");
@@ -45,7 +47,9 @@ describe("DataTable", () => {
   });
 
   it("toggles descending sort on repeated header clicks", () => {
-    const { getByRole, getAllByRole } = renderWithProvider(<DataTable columns={COLUMNS} data={DATA} />);
+    const { getByRole, getAllByRole } = renderWithProvider(
+      <DataTable columns={COLUMNS} data={DATA} />
+    );
     fireEvent.click(getByRole("button", { name: /Price/ }));
     fireEvent.click(getByRole("button", { name: /Price/ }));
     const rows = getAllByRole("row");

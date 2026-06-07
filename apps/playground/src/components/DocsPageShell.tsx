@@ -44,7 +44,9 @@ export function DocsPageShell({
         className
       )}
     >
-      <article className={cx("docs-page-article", variant === "guide" && "docs-page-article--guide")}>
+      <article
+        className={cx("docs-page-article", variant === "guide" && "docs-page-article--guide")}
+      >
         {showHeader ? (
           <header
             className={cx(

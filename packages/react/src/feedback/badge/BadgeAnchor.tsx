@@ -22,11 +22,7 @@ export type BadgeAnchorOwnProps = Omit<BoxOwnProps, "color"> & {
   variant?: BadgeVariant;
 };
 
-function shouldShowBadge(
-  content: ReactNode | undefined,
-  dot: boolean,
-  showZero: boolean
-): boolean {
+function shouldShowBadge(content: ReactNode | undefined, dot: boolean, showZero: boolean): boolean {
   if (dot) {
     return true;
   }

@@ -52,7 +52,11 @@ export const DatePicker = forwardRef<HTMLButtonElement, DatePickerOwnProps>(func
   const defaults = useComponentDefaults("DatePicker");
   const size = (sizeProp ?? (defaults?.size as ZedSize | undefined) ?? "md") as ZedSize;
   const [open, setOpen] = useState(false);
-  const { invalid, id: fieldId, ...fieldAriaProps } = useFormFieldControlProps({
+  const {
+    invalid,
+    id: fieldId,
+    ...fieldAriaProps
+  } = useFormFieldControlProps({
     id,
     invalid: invalidProp ? true : undefined,
     required
@@ -71,11 +75,20 @@ export const DatePicker = forwardRef<HTMLButtonElement, DatePickerOwnProps>(func
         type="button"
         {...fieldAriaProps}
       >
-        <span className={cx("zui-date-picker__value", !value && "zui-date-picker__value--placeholder")}>
+        <span
+          className={cx("zui-date-picker__value", !value && "zui-date-picker__value--placeholder")}
+        >
           {value ? formatDate(value) : placeholder}
         </span>
         <span aria-hidden className="zui-date-picker__icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
             <rect x="2.5" y="3.5" width="11" height="10" rx="1.5" />
             <path d="M2.5 6.5h11M5.5 2v2M10.5 2v2" strokeLinecap="round" />
           </svg>

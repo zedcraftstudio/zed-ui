@@ -275,8 +275,17 @@ function ControlledDialogExample() {
         Open
       </Button>
       <Dialog.Root open={open} onOpenChange={setOpen}>
-        <DialogContent description="Close with the button, escape key, or backdrop." title="Controlled dialog">
-          <Dialog.Close render={<Button size="sm" variant="outline">Close</Button>} />
+        <DialogContent
+          description="Close with the button, escape key, or backdrop."
+          title="Controlled dialog"
+        >
+          <Dialog.Close
+            render={
+              <Button size="sm" variant="outline">
+                Close
+              </Button>
+            }
+          />
         </DialogContent>
       </Dialog.Root>
     </Stack>
@@ -516,7 +525,13 @@ function ControlledDrawerExample() {
             <Text color="secondary" size="sm">
               Close with the button, escape key, or backdrop.
             </Text>
-            <Drawer.Close render={<Button size="sm" variant="outline">Close</Button>} />
+            <Drawer.Close
+              render={
+                <Button size="sm" variant="outline">
+                  Close
+                </Button>
+              }
+            />
           </Stack>
         </DrawerContent>
       </Drawer.Root>
@@ -768,10 +783,7 @@ function BasicPopoverPreview() {
   return (
     <Popover.Root>
       <Popover.Trigger render={<Button variant="outline">Click me</Button>} />
-      <PopoverPanel
-        description="Helpful context anchored to the trigger."
-        title="Popover title"
-      >
+      <PopoverPanel description="Helpful context anchored to the trigger." title="Popover title">
         <Text color="secondary" size="sm">
           Popover body content goes here.
         </Text>
@@ -791,7 +803,13 @@ function ControlledPopoverExample() {
           <Text color="secondary" size="sm">
             Close with the button or by clicking outside.
           </Text>
-          <Popover.Close render={<Button size="sm" variant="outline">Close</Button>} />
+          <Popover.Close
+            render={
+              <Button size="sm" variant="outline">
+                Close
+              </Button>
+            }
+          />
         </Stack>
       </PopoverPanel>
     </Popover.Root>
@@ -803,7 +821,13 @@ function PopoverPlacementExample({ side }: { side: "bottom" | "left" | "right" |
 
   return (
     <Popover.Root>
-      <Popover.Trigger render={<Button size="sm" variant="outline">{side}</Button>} />
+      <Popover.Trigger
+        render={
+          <Button size="sm" variant="outline">
+            {side}
+          </Button>
+        }
+      />
       <PopoverPanel description={`Placed on the ${side}.`} side={side} title={`${label} popover`}>
         <Text color="secondary" size="sm">
           side=&quot;{side}&quot;
@@ -820,7 +844,13 @@ function PopoverWithFooterExample() {
       <PopoverPanel
         footer={
           <>
-            <Popover.Close render={<Button size="sm" variant="outline">Cancel</Button>} />
+            <Popover.Close
+              render={
+                <Button size="sm" variant="outline">
+                  Cancel
+                </Button>
+              }
+            />
             <Popover.Close render={<Button size="sm">Save</Button>} />
           </>
         }
@@ -1098,7 +1128,13 @@ function TooltipPlacementExample({ side }: { side: "bottom" | "left" | "right" |
 
   return (
     <Tooltip.Root>
-      <Tooltip.Trigger render={<Button size="sm" variant="outline">{side}</Button>} />
+      <Tooltip.Trigger
+        render={
+          <Button size="sm" variant="outline">
+            {side}
+          </Button>
+        }
+      />
       <TooltipContent side={side}>{`${label} tooltip`}</TooltipContent>
     </Tooltip.Root>
   );
@@ -1290,11 +1326,14 @@ export function AlertDialogSection() {
 </AlertDialogRoot>`,
         preview: (
           <AlertDialogRoot>
-            <AlertDialogTrigger render={<Button color="danger" size="sm">Delete</Button>} />
-            <AlertDialogContent
-              description="This cannot be undone."
-              title="Delete project?"
+            <AlertDialogTrigger
+              render={
+                <Button color="danger" size="sm">
+                  Delete
+                </Button>
+              }
             />
+            <AlertDialogContent description="This cannot be undone." title="Delete project?" />
           </AlertDialogRoot>
         )
       }}

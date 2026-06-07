@@ -28,10 +28,7 @@ export type CommandPaletteOwnProps = {
 
 function matchesQuery(item: CommandPaletteItem, query: string): boolean {
   if (!query) return true;
-  const haystack = [
-    typeof item.label === "string" ? item.label : "",
-    ...(item.keywords ?? [])
-  ]
+  const haystack = [typeof item.label === "string" ? item.label : "", ...(item.keywords ?? [])]
     .join(" ")
     .toLowerCase();
   return haystack.includes(query);
@@ -121,11 +118,7 @@ export function CommandPalette({
               onChange={(event) => setQuery(event.currentTarget.value)}
               onKeyDown={handleKeyDown}
             />
-            <div
-              id="zui-command-palette-list"
-              className="zui-command-palette__list"
-              role="listbox"
-            >
+            <div id="zui-command-palette-list" className="zui-command-palette__list" role="listbox">
               {filteredItems.length === 0 ? (
                 <div className="zui-command-palette__empty">{emptyMessage}</div>
               ) : (
@@ -141,7 +134,10 @@ export function CommandPalette({
                         <button
                           key={item.id}
                           aria-selected={isActive}
-                          className={cx("zui-command-palette__item", isActive && "zui-command-palette__item--active")}
+                          className={cx(
+                            "zui-command-palette__item",
+                            isActive && "zui-command-palette__item--active"
+                          )}
                           disabled={item.disabled}
                           role="option"
                           type="button"

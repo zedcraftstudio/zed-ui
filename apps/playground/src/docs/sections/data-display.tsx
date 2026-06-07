@@ -263,10 +263,7 @@ export function AvatarSection() {
         </Flex>
       </DocExample>
 
-      <DocExample
-        title="Ring"
-        code={`<Avatar fallback="R" ring />`}
-      >
+      <DocExample title="Ring" code={`<Avatar fallback="R" ring />`}>
         <Flex align="center" gap="3">
           <Avatar color="primary" fallback="R" ring />
           <Avatar color="success" fallback="R" ring variant="solid" />
@@ -335,10 +332,7 @@ export function AvatarSection() {
             </Stack>
           </Flex>
           <Flex align="center" gap="3">
-            <Avatar
-              color={getAvatarColorFromName("Melissa Jones")}
-              name="Melissa Jones"
-            />
+            <Avatar color={getAvatarColorFromName("Melissa Jones")} name="Melissa Jones" />
             <Stack gap="0">
               <Text weight="semibold">Melissa Jones</Text>
               <Text color="secondary" size="sm">
@@ -369,7 +363,12 @@ export function AvatarSection() {
   <AvatarFallback>SA</AvatarFallback>
 </AvatarRoot>`}
       >
-        <AvatarRoot className="zui-avatar" data-color="primary" data-size="md" data-variant="subtle">
+        <AvatarRoot
+          className="zui-avatar"
+          data-color="primary"
+          data-size="md"
+          data-variant="subtle"
+        >
           <AvatarFallback>SA</AvatarFallback>
         </AvatarRoot>
       </DocExample>
@@ -472,14 +471,14 @@ export function CardSection() {
 <Card variant="unstyled">{children}</Card>`}
       >
         <Stack gap="4">
-          {(
-            ["elevated", "outline", "subtle", "ghost", "filled", "solid", "unstyled"] as const
-          ).map((variant) => (
-            <Card key={variant} size="sm" variant={variant}>
-              <CardTitle>{variant}</CardTitle>
-              <CardDescription>Card body for the {variant} variant.</CardDescription>
-            </Card>
-          ))}
+          {(["elevated", "outline", "subtle", "ghost", "filled", "solid", "unstyled"] as const).map(
+            (variant) => (
+              <Card key={variant} size="sm" variant={variant}>
+                <CardTitle>{variant}</CardTitle>
+                <CardDescription>Card body for the {variant} variant.</CardDescription>
+              </Card>
+            )
+          )}
         </Stack>
       </DocExample>
 
@@ -590,7 +589,8 @@ export function CardSection() {
           <CardBody>
             <CardTitle>The perfect latte</CardTitle>
             <CardDescription>
-              Caffè latte is a coffee beverage of Italian origin made with espresso and steamed milk.
+              Caffè latte is a coffee beverage of Italian origin made with espresso and steamed
+              milk.
             </CardDescription>
             <Flex gap="2" wrap="wrap">
               <Badge color="warning" size="sm" variant="soft">
@@ -918,7 +918,10 @@ const rows = products.slice((page - 1) * pageSize, page * pageSize);`}
         </Stack>
       </DocExample>
 
-      <DocExample title="Selection" code={`const [selected, setSelected] = useState<string[]>([]);`}>
+      <DocExample
+        title="Selection"
+        code={`const [selected, setSelected] = useState<string[]>([]);`}
+      >
         <Table interactive variant="outline">
           <TableHeader>
             <TableRow>
@@ -1313,7 +1316,9 @@ export function TimelineSection() {
               <Timeline.Indicator>1</Timeline.Indicator>
             </Timeline.Connector>
             <Timeline.Content>
-              <Timeline.Title>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Timeline.Title>
+              <Timeline.Title>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Timeline.Title>
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>

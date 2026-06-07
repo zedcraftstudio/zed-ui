@@ -64,7 +64,14 @@ export type StepIconOwnProps = ComponentPropsWithoutRef<"span"> & {
 
 function StepperCheckIcon() {
   return (
-    <svg aria-hidden className="zui-stepper__check" fill="none" height="16" viewBox="0 0 16 16" width="16">
+    <svg
+      aria-hidden
+      className="zui-stepper__check"
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+    >
       <path
         d="M3 8.5 6.5 12 13 4.5"
         stroke="currentColor"
@@ -78,8 +85,20 @@ function StepperCheckIcon() {
 
 function StepperErrorIcon() {
   return (
-    <svg aria-hidden className="zui-stepper__error-icon" fill="none" height="16" viewBox="0 0 16 16" width="16">
-      <path d="M8 4.5v4.25M8 11.25h.01" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
+    <svg
+      aria-hidden
+      className="zui-stepper__error-icon"
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+    >
+      <path
+        d="M8 4.5v4.25M8 11.25h.01"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2"
+      />
     </svg>
   );
 }
@@ -175,7 +194,16 @@ export const StepContent = forwardRef<HTMLDivElement, StepContentOwnProps>(funct
 StepContent.displayName = "Stepper.StepContent";
 
 export const Step = forwardRef<HTMLLIElement, StepOwnProps>(function Step(
-  { children, className, completed: _completed, disabled: _disabled, expanded: _expanded, index: _index, isLast: _isLast, ...rest },
+  {
+    children,
+    className,
+    completed: _completed,
+    disabled: _disabled,
+    expanded: _expanded,
+    index: _index,
+    isLast: _isLast,
+    ...rest
+  },
   ref
 ) {
   const { status } = useStepContext("Stepper.Step");
@@ -231,9 +259,7 @@ const StepperRoot = forwardRef<HTMLOListElement, StepperOwnProps>(function Stepp
   const steps = Children.toArray(children).filter(isValidElement) as ReactElement<StepOwnProps>[];
 
   return (
-    <StepperContext.Provider
-      value={{ activeStep, alternativeLabel, nonLinear, orientation, size }}
-    >
+    <StepperContext.Provider value={{ activeStep, alternativeLabel, nonLinear, orientation, size }}>
       <nav
         aria-label={ariaLabel}
         className={cx("zui-stepper", className)}

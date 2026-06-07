@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  Flex,
-  Text
-} from "@zed-ui/react";
+import { Button, Dialog, DialogContent, Flex, Text } from "@zed-ui/react";
 
 const meta: Meta<typeof Dialog.Root> = {
   title: "Overlays/Dialog",
@@ -34,7 +28,13 @@ export const Sizes: Story = {
     <Flex gap="2" wrap="wrap">
       {(["sm", "md", "lg"] as const).map((size) => (
         <Dialog.Root key={size}>
-          <Dialog.Trigger render={<Button size="sm" variant="outline">{size}</Button>} />
+          <Dialog.Trigger
+            render={
+              <Button size="sm" variant="outline">
+                {size}
+              </Button>
+            }
+          />
           <DialogContent size={size} title={`${size} dialog`}>
             <Text color="secondary" size="sm">
               size=&quot;{size}&quot;
@@ -57,7 +57,13 @@ export const Controlled: Story = {
         </Button>
         <Dialog.Root open={open} onOpenChange={setOpen}>
           <DialogContent title="Controlled dialog">
-            <Dialog.Close render={<Button size="sm" variant="outline">Close</Button>} />
+            <Dialog.Close
+              render={
+                <Button size="sm" variant="outline">
+                  Close
+                </Button>
+              }
+            />
           </DialogContent>
         </Dialog.Root>
       </>

@@ -34,9 +34,27 @@ export const Sizes: Story = {
     const [page, setPage] = useState(2);
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <Pagination aria-label="Small pagination" count={5} page={page} size="sm" onPageChange={setPage} />
-        <Pagination aria-label="Medium pagination" count={5} page={page} size="md" onPageChange={setPage} />
-        <Pagination aria-label="Large pagination" count={5} page={page} size="lg" onPageChange={setPage} />
+        <Pagination
+          aria-label="Small pagination"
+          count={5}
+          page={page}
+          size="sm"
+          onPageChange={setPage}
+        />
+        <Pagination
+          aria-label="Medium pagination"
+          count={5}
+          page={page}
+          size="md"
+          onPageChange={setPage}
+        />
+        <Pagination
+          aria-label="Large pagination"
+          count={5}
+          page={page}
+          size="lg"
+          onPageChange={setPage}
+        />
       </div>
     );
   }

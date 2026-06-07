@@ -148,7 +148,11 @@ export const WithFooter: Story = {
 
 export const StickyHeader: Story = {
   render: () => (
-    <TableScrollArea aria-label="Scrollable product table" style={{ maxHeight: "12rem" }} tabIndex={0}>
+    <TableScrollArea
+      aria-label="Scrollable product table"
+      style={{ maxHeight: "12rem" }}
+      tabIndex={0}
+    >
       <TableRoot stickyHeader>
         <TableHeader>
           <TableRow>

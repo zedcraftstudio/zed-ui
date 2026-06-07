@@ -161,8 +161,20 @@ export const Removable: Story = {
 
 function BellIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
-      <path d="M4.5 13.5h9M7.5 3a3 3 0 0 1 3 0v1.8c1.8.5 3 2.1 3 4.2v2H4.5v-2c0-2.1 1.2-3.7 3-4.2V3Z" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      aria-hidden
+    >
+      <path
+        d="M4.5 13.5h9M7.5 3a3 3 0 0 1 3 0v1.8c1.8.5 3 2.1 3 4.2v2H4.5v-2c0-2.1 1.2-3.7 3-4.2V3Z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

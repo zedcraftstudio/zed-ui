@@ -24,7 +24,11 @@ export type AlertDialogTriggerProps = ComponentPropsWithoutRef<typeof BaseAlertD
 export const AlertDialogTrigger = forwardRef<HTMLButtonElement, AlertDialogTriggerProps>(
   function AlertDialogTrigger({ className, ...rest }, ref) {
     return (
-      <BaseAlertDialog.Trigger ref={ref} className={cx("zui-dialog__trigger", className)} {...rest} />
+      <BaseAlertDialog.Trigger
+        ref={ref}
+        className={cx("zui-dialog__trigger", className)}
+        {...rest}
+      />
     );
   }
 );

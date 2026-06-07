@@ -50,7 +50,13 @@ export const Placement: Story = {
     <Stack direction="row" gap="2" wrap="wrap">
       {(["top", "right", "bottom", "left"] as const).map((side) => (
         <Tooltip.Root key={side}>
-          <Tooltip.Trigger render={<Button size="sm" variant="outline">{side}</Button>} />
+          <Tooltip.Trigger
+            render={
+              <Button size="sm" variant="outline">
+                {side}
+              </Button>
+            }
+          />
           <TooltipContent side={side}>{`${side} tooltip`}</TooltipContent>
         </Tooltip.Root>
       ))}

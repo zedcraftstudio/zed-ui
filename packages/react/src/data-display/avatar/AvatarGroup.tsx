@@ -27,15 +27,7 @@ function AvatarGroupBase(
   props: PolymorphicProps<ElementType, AvatarGroupOwnProps>,
   ref: Ref<unknown>
 ) {
-  const {
-    as,
-    children,
-    className,
-    max,
-    size,
-    stacking = "last-on-top",
-    ...rest
-  } = props;
+  const { as, children, className, max, size, stacking = "last-on-top", ...rest } = props;
 
   const items = Children.toArray(children).filter(isValidElement) as ReactElement<AvatarOwnProps>[];
   const overflow = max != null && items.length > max ? items.length - max : 0;

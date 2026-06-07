@@ -338,9 +338,12 @@
   padding: 0;
   border: none;
 }
-.zui-badge-anchor[data-dot="true"][data-size="md"] .zui-badge-anchor__badge.zui-badge[data-variant="dot"],
-.zui-badge-anchor[data-dot="true"][data-size="lg"] .zui-badge-anchor__badge.zui-badge[data-variant="dot"],
-.zui-badge-anchor[data-dot="true"][data-size="xl"] .zui-badge-anchor__badge.zui-badge[data-variant="dot"] {
+.zui-badge-anchor[data-dot="true"][data-size="md"]
+  .zui-badge-anchor__badge.zui-badge[data-variant="dot"],
+.zui-badge-anchor[data-dot="true"][data-size="lg"]
+  .zui-badge-anchor__badge.zui-badge[data-variant="dot"],
+.zui-badge-anchor[data-dot="true"][data-size="xl"]
+  .zui-badge-anchor__badge.zui-badge[data-variant="dot"] {
   inline-size: 0.875rem;
   block-size: 0.875rem;
 }
@@ -356,7 +359,10 @@
 .zui-badge-anchor[data-placement="top-start"] .zui-badge-anchor__badge {
   inset-block-start: 0;
   inset-inline-start: 0;
-  transform: translate(calc(var(--zui-badge-anchor-offset) * -1), calc(var(--zui-badge-anchor-offset) * -1));
+  transform: translate(
+    calc(var(--zui-badge-anchor-offset) * -1),
+    calc(var(--zui-badge-anchor-offset) * -1)
+  );
   transform-origin: 0% 0%;
 }
 .zui-badge-anchor[data-dot="true"][data-placement="top-start"] .zui-badge-anchor__badge {
@@ -384,11 +390,23 @@
   --zui-alert-accent: var(--zui-colors-info-solid);
   --zui-alert-icon-bg: color-mix(in srgb, var(--zui-colors-info-solid) 14%, transparent);
   --zui-alert-icon-fg: var(--zui-colors-info-solid);
-  --zui-alert-subtle-bg: color-mix(in srgb, var(--zui-colors-info-soft) 68%, var(--zui-colors-bg-surface));
+  --zui-alert-subtle-bg: color-mix(
+    in srgb,
+    var(--zui-colors-info-soft) 68%,
+    var(--zui-colors-bg-surface)
+  );
   --zui-alert-subtle-fg: var(--zui-colors-text-primary);
   --zui-alert-desc-fg: var(--zui-colors-text-secondary);
-  --zui-alert-surface-border: color-mix(in srgb, var(--zui-colors-info-solid) 18%, var(--zui-colors-border-default));
-  --zui-alert-outline-border: color-mix(in srgb, var(--zui-colors-info-solid) 24%, var(--zui-colors-border-default));
+  --zui-alert-surface-border: color-mix(
+    in srgb,
+    var(--zui-colors-info-solid) 18%,
+    var(--zui-colors-border-default)
+  );
+  --zui-alert-outline-border: color-mix(
+    in srgb,
+    var(--zui-colors-info-solid) 24%,
+    var(--zui-colors-border-default)
+  );
   --zui-alert-outline-fg: var(--zui-colors-text-primary);
   --zui-alert-solid-bg: var(--zui-colors-info-solid);
   --zui-alert-solid-fg: var(--zui-colors-info-contrast);
@@ -419,9 +437,21 @@
   --zui-alert-accent: var(--zui-colors-primary-solid);
   --zui-alert-icon-bg: color-mix(in srgb, var(--zui-colors-primary-solid) 14%, transparent);
   --zui-alert-icon-fg: var(--zui-colors-primary-solid);
-  --zui-alert-subtle-bg: color-mix(in srgb, var(--zui-colors-primary-soft) 68%, var(--zui-colors-bg-surface));
-  --zui-alert-surface-border: color-mix(in srgb, var(--zui-colors-primary-solid) 18%, var(--zui-colors-border-default));
-  --zui-alert-outline-border: color-mix(in srgb, var(--zui-colors-primary-solid) 24%, var(--zui-colors-border-default));
+  --zui-alert-subtle-bg: color-mix(
+    in srgb,
+    var(--zui-colors-primary-soft) 68%,
+    var(--zui-colors-bg-surface)
+  );
+  --zui-alert-surface-border: color-mix(
+    in srgb,
+    var(--zui-colors-primary-solid) 18%,
+    var(--zui-colors-border-default)
+  );
+  --zui-alert-outline-border: color-mix(
+    in srgb,
+    var(--zui-colors-primary-solid) 24%,
+    var(--zui-colors-border-default)
+  );
   --zui-alert-solid-bg: var(--zui-colors-primary-solid);
   --zui-alert-solid-fg: var(--zui-colors-primary-contrast);
 }
@@ -429,9 +459,21 @@
   --zui-alert-accent: var(--zui-colors-info-solid);
   --zui-alert-icon-bg: color-mix(in srgb, var(--zui-colors-info-solid) 14%, transparent);
   --zui-alert-icon-fg: var(--zui-colors-info-solid);
-  --zui-alert-subtle-bg: color-mix(in srgb, var(--zui-colors-info-soft) 68%, var(--zui-colors-bg-surface));
-  --zui-alert-surface-border: color-mix(in srgb, var(--zui-colors-info-solid) 18%, var(--zui-colors-border-default));
-  --zui-alert-outline-border: color-mix(in srgb, var(--zui-colors-info-solid) 24%, var(--zui-colors-border-default));
+  --zui-alert-subtle-bg: color-mix(
+    in srgb,
+    var(--zui-colors-info-soft) 68%,
+    var(--zui-colors-bg-surface)
+  );
+  --zui-alert-surface-border: color-mix(
+    in srgb,
+    var(--zui-colors-info-solid) 18%,
+    var(--zui-colors-border-default)
+  );
+  --zui-alert-outline-border: color-mix(
+    in srgb,
+    var(--zui-colors-info-solid) 24%,
+    var(--zui-colors-border-default)
+  );
   --zui-alert-solid-bg: var(--zui-colors-info-solid);
   --zui-alert-solid-fg: var(--zui-colors-info-contrast);
 }
@@ -439,9 +481,21 @@
   --zui-alert-accent: var(--zui-colors-neutral-solid);
   --zui-alert-icon-bg: color-mix(in srgb, var(--zui-colors-neutral-solid) 12%, transparent);
   --zui-alert-icon-fg: var(--zui-colors-neutral-text);
-  --zui-alert-subtle-bg: color-mix(in srgb, var(--zui-colors-neutral-soft) 72%, var(--zui-colors-bg-surface));
-  --zui-alert-surface-border: color-mix(in srgb, var(--zui-colors-neutral-solid) 14%, var(--zui-colors-border-default));
-  --zui-alert-outline-border: color-mix(in srgb, var(--zui-colors-neutral-solid) 20%, var(--zui-colors-border-default));
+  --zui-alert-subtle-bg: color-mix(
+    in srgb,
+    var(--zui-colors-neutral-soft) 72%,
+    var(--zui-colors-bg-surface)
+  );
+  --zui-alert-surface-border: color-mix(
+    in srgb,
+    var(--zui-colors-neutral-solid) 14%,
+    var(--zui-colors-border-default)
+  );
+  --zui-alert-outline-border: color-mix(
+    in srgb,
+    var(--zui-colors-neutral-solid) 20%,
+    var(--zui-colors-border-default)
+  );
   --zui-alert-solid-bg: var(--zui-colors-neutral-solid);
   --zui-alert-solid-fg: var(--zui-colors-neutral-contrast);
 }
@@ -449,9 +503,21 @@
   --zui-alert-accent: var(--zui-colors-success-solid);
   --zui-alert-icon-bg: color-mix(in srgb, var(--zui-colors-success-solid) 14%, transparent);
   --zui-alert-icon-fg: var(--zui-colors-success-solid);
-  --zui-alert-subtle-bg: color-mix(in srgb, var(--zui-colors-success-soft) 68%, var(--zui-colors-bg-surface));
-  --zui-alert-surface-border: color-mix(in srgb, var(--zui-colors-success-solid) 18%, var(--zui-colors-border-default));
-  --zui-alert-outline-border: color-mix(in srgb, var(--zui-colors-success-solid) 24%, var(--zui-colors-border-default));
+  --zui-alert-subtle-bg: color-mix(
+    in srgb,
+    var(--zui-colors-success-soft) 68%,
+    var(--zui-colors-bg-surface)
+  );
+  --zui-alert-surface-border: color-mix(
+    in srgb,
+    var(--zui-colors-success-solid) 18%,
+    var(--zui-colors-border-default)
+  );
+  --zui-alert-outline-border: color-mix(
+    in srgb,
+    var(--zui-colors-success-solid) 24%,
+    var(--zui-colors-border-default)
+  );
   --zui-alert-solid-bg: var(--zui-colors-success-solid);
   --zui-alert-solid-fg: var(--zui-colors-success-contrast);
 }
@@ -459,9 +525,21 @@
   --zui-alert-accent: var(--zui-colors-warning-solid);
   --zui-alert-icon-bg: color-mix(in srgb, var(--zui-colors-warning-solid) 16%, transparent);
   --zui-alert-icon-fg: var(--zui-colors-warning-solid);
-  --zui-alert-subtle-bg: color-mix(in srgb, var(--zui-colors-warning-soft) 68%, var(--zui-colors-bg-surface));
-  --zui-alert-surface-border: color-mix(in srgb, var(--zui-colors-warning-solid) 18%, var(--zui-colors-border-default));
-  --zui-alert-outline-border: color-mix(in srgb, var(--zui-colors-warning-solid) 24%, var(--zui-colors-border-default));
+  --zui-alert-subtle-bg: color-mix(
+    in srgb,
+    var(--zui-colors-warning-soft) 68%,
+    var(--zui-colors-bg-surface)
+  );
+  --zui-alert-surface-border: color-mix(
+    in srgb,
+    var(--zui-colors-warning-solid) 18%,
+    var(--zui-colors-border-default)
+  );
+  --zui-alert-outline-border: color-mix(
+    in srgb,
+    var(--zui-colors-warning-solid) 24%,
+    var(--zui-colors-border-default)
+  );
   --zui-alert-solid-bg: var(--zui-colors-warning-solid);
   --zui-alert-solid-fg: var(--zui-colors-warning-contrast);
 }
@@ -469,9 +547,21 @@
   --zui-alert-accent: var(--zui-colors-danger-solid);
   --zui-alert-icon-bg: color-mix(in srgb, var(--zui-colors-danger-solid) 14%, transparent);
   --zui-alert-icon-fg: var(--zui-colors-danger-solid);
-  --zui-alert-subtle-bg: color-mix(in srgb, var(--zui-colors-danger-soft) 68%, var(--zui-colors-bg-surface));
-  --zui-alert-surface-border: color-mix(in srgb, var(--zui-colors-danger-solid) 18%, var(--zui-colors-border-default));
-  --zui-alert-outline-border: color-mix(in srgb, var(--zui-colors-danger-solid) 24%, var(--zui-colors-border-default));
+  --zui-alert-subtle-bg: color-mix(
+    in srgb,
+    var(--zui-colors-danger-soft) 68%,
+    var(--zui-colors-bg-surface)
+  );
+  --zui-alert-surface-border: color-mix(
+    in srgb,
+    var(--zui-colors-danger-solid) 18%,
+    var(--zui-colors-border-default)
+  );
+  --zui-alert-outline-border: color-mix(
+    in srgb,
+    var(--zui-colors-danger-solid) 24%,
+    var(--zui-colors-border-default)
+  );
   --zui-alert-solid-bg: var(--zui-colors-danger-solid);
   --zui-alert-solid-fg: var(--zui-colors-danger-contrast);
 }
@@ -822,4 +912,3 @@
     transform: translateY(0) scale(1);
   }
 }
-

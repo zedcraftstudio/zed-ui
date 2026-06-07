@@ -47,10 +47,7 @@ function AppShellBase(props: PolymorphicProps<ElementType, AppShellOwnProps>, re
       {sidebar ? <div className="zui-app-shell__sidebar">{sidebar}</div> : null}
       <div className="zui-app-shell__main-column">
         {header ? <div className="zui-app-shell__header">{header}</div> : null}
-        <main
-          className="zui-app-shell__main"
-          data-padded={mainPadding ? "" : undefined}
-        >
+        <main className="zui-app-shell__main" data-padded={mainPadding ? "" : undefined}>
           {children}
         </main>
         {footer ? <div className="zui-app-shell__footer">{footer}</div> : null}

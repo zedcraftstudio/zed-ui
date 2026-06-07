@@ -6,11 +6,7 @@ import {
   type ReactNode,
   type Ref
 } from "react";
-import {
-  Slot,
-  type PolymorphicComponent,
-  type PolymorphicProps
-} from "@zed-ui/system";
+import { Slot, type PolymorphicComponent, type PolymorphicProps } from "@zed-ui/system";
 import { useComponentDefaults } from "@zed-ui/themes";
 import { cx, dataAttr } from "@zed-ui/utils";
 import type { ZedColor, ZedSize, ZedVariant } from "../../shared/types";
@@ -27,10 +23,7 @@ export type ButtonOwnProps = Omit<BoxOwnProps, "color"> & {
   variant?: ZedVariant;
 };
 
-function ButtonBase(
-  props: PolymorphicProps<ElementType, ButtonOwnProps>,
-  ref: Ref<HTMLElement>
-) {
+function ButtonBase(props: PolymorphicProps<ElementType, ButtonOwnProps>, ref: Ref<HTMLElement>) {
   const defaults = useComponentDefaults("Button");
   const {
     as,

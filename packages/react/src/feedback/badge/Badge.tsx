@@ -20,12 +20,7 @@ export type BadgeAvatarProps = {
 function BadgeCloseIcon({ size = 12 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 12 12" fill="none" aria-hidden>
-      <path
-        d="M3 3l6 6M9 3 3 9"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.5"
-      />
+      <path d="M3 3l6 6M9 3 3 9" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" />
     </svg>
   );
 }
@@ -114,7 +109,8 @@ function BadgeBase(props: PolymorphicProps<ElementType, BadgeOwnProps>, ref: Ref
   }
 
   const content = formatBadgeContent(children, max);
-  const isCounter = typeof content === "number" || (typeof content === "string" && /^\d+\+?$/.test(content));
+  const isCounter =
+    typeof content === "number" || (typeof content === "string" && /^\d+\+?$/.test(content));
 
   return (
     <Box
@@ -133,7 +129,9 @@ function BadgeBase(props: PolymorphicProps<ElementType, BadgeOwnProps>, ref: Ref
       {avatar ? <BadgeAvatar {...avatar} /> : null}
       {statusDot ? <span aria-hidden className="zui-badge__status-dot" /> : null}
       {startIcon ? <span className="zui-badge__icon">{startIcon}</span> : null}
-      {content != null && content !== "" ? <span className="zui-badge__label">{content}</span> : null}
+      {content != null && content !== "" ? (
+        <span className="zui-badge__label">{content}</span>
+      ) : null}
       {endIcon ? <span className="zui-badge__icon">{endIcon}</span> : null}
       {onClose ? (
         <button

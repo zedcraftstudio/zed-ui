@@ -7,9 +7,7 @@ expect.extend(toHaveNoViolations);
 
 describe("Checkbox", () => {
   it("renders a checkbox", () => {
-    const { getByRole } = renderWithProvider(
-      <Checkbox defaultChecked label="Accept terms" />
-    );
+    const { getByRole } = renderWithProvider(<Checkbox defaultChecked label="Accept terms" />);
 
     expect(getByRole("checkbox", { name: "Accept terms" })).toBeTruthy();
   });

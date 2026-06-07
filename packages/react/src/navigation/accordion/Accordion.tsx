@@ -65,7 +65,11 @@ export type AccordionHeaderOwnProps = Omit<
 export const AccordionHeader = forwardRef<HTMLHeadingElement, AccordionHeaderOwnProps>(
   function AccordionHeader({ className, ...rest }, ref) {
     return (
-      <BaseAccordion.Header ref={ref} className={cx("zui-accordion__header", className)} {...rest} />
+      <BaseAccordion.Header
+        ref={ref}
+        className={cx("zui-accordion__header", className)}
+        {...rest}
+      />
     );
   }
 );
@@ -100,7 +104,11 @@ export type AccordionTriggerOwnProps = Omit<
 export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerOwnProps>(
   function AccordionTrigger({ children, className, ...rest }, ref) {
     return (
-      <BaseAccordion.Trigger ref={ref} className={cx("zui-accordion__trigger", className)} {...rest}>
+      <BaseAccordion.Trigger
+        ref={ref}
+        className={cx("zui-accordion__trigger", className)}
+        {...rest}
+      >
         <span className="zui-accordion__trigger-label">{children}</span>
         <AccordionChevronIcon />
       </BaseAccordion.Trigger>

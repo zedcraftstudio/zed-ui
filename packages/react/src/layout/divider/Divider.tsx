@@ -19,12 +19,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerOwnProps>(function Divi
         data-orientation={orientation}
         role="separator"
       >
-        <Separator
-          ref={ref}
-          className="zui-divider__line"
-          orientation={orientation}
-          {...rest}
-        />
+        <Separator ref={ref} className="zui-divider__line" orientation={orientation} {...rest} />
         <span className="zui-divider__label">{label}</span>
         <Separator className="zui-divider__line" orientation={orientation} />
       </div>

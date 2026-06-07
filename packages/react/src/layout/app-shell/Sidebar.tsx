@@ -25,11 +25,7 @@ function SidebarBase(props: PolymorphicProps<ElementType, SidebarOwnProps>, ref:
       aria-label={rest["aria-label"] ?? "Sidebar"}
       className={cx("zui-sidebar", className)}
       data-collapsed={collapsed ? "" : undefined}
-      style={
-        width
-          ? ({ "--zui-sidebar-width": width, ...style } as React.CSSProperties)
-          : style
-      }
+      style={width ? ({ "--zui-sidebar-width": width, ...style } as React.CSSProperties) : style}
       {...rest}
     />
   );
@@ -56,7 +52,10 @@ export const SidebarHeader = forwardRef(SidebarHeaderBase) as PolymorphicCompone
 
 export type SidebarNavOwnProps = BoxOwnProps;
 
-function SidebarNavBase(props: PolymorphicProps<ElementType, SidebarNavOwnProps>, ref: Ref<unknown>) {
+function SidebarNavBase(
+  props: PolymorphicProps<ElementType, SidebarNavOwnProps>,
+  ref: Ref<unknown>
+) {
   const { as, className, ...rest } = props;
   return (
     <Box
@@ -68,7 +67,10 @@ function SidebarNavBase(props: PolymorphicProps<ElementType, SidebarNavOwnProps>
   );
 }
 
-export const SidebarNav = forwardRef(SidebarNavBase) as PolymorphicComponent<"ul", SidebarNavOwnProps>;
+export const SidebarNav = forwardRef(SidebarNavBase) as PolymorphicComponent<
+  "ul",
+  SidebarNavOwnProps
+>;
 
 export type SidebarSectionOwnProps = BoxOwnProps & {
   label?: ReactNode;
@@ -99,7 +101,10 @@ export type SidebarItemOwnProps = Omit<BoxOwnProps, "color"> & {
   icon?: ReactNode;
 };
 
-function SidebarItemBase(props: PolymorphicProps<ElementType, SidebarItemOwnProps>, ref: Ref<unknown>) {
+function SidebarItemBase(
+  props: PolymorphicProps<ElementType, SidebarItemOwnProps>,
+  ref: Ref<unknown>
+) {
   const {
     active = false,
     as,

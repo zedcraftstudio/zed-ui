@@ -52,7 +52,11 @@ export function DocExample({
               type="button"
               role="tab"
               aria-selected={tab === "preview"}
-              className={tab === "preview" ? "docs-example__tab docs-example__tab--active" : "docs-example__tab"}
+              className={
+                tab === "preview"
+                  ? "docs-example__tab docs-example__tab--active"
+                  : "docs-example__tab"
+              }
               onClick={() => setTab("preview")}
             >
               Preview
@@ -61,7 +65,9 @@ export function DocExample({
               type="button"
               role="tab"
               aria-selected={tab === "code"}
-              className={tab === "code" ? "docs-example__tab docs-example__tab--active" : "docs-example__tab"}
+              className={
+                tab === "code" ? "docs-example__tab docs-example__tab--active" : "docs-example__tab"
+              }
               onClick={() => setTab("code")}
             >
               Code

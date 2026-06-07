@@ -52,9 +52,9 @@ export function ThemingPage() {
       <section className="docs-prose-section" id="provider">
         <h2 className="docs-prose-section__title">ThemeProvider</h2>
         <Text color="secondary" className="docs-prose-section__lede">
-          Place <code>ThemeProvider</code> at the root of your app. It injects CSS variables from your
-          theme and sets <code>data-zui-color-scheme</code> and <code>data-zui-density</code> on the
-          theme root.
+          Place <code>ThemeProvider</code> at the root of your app. It injects CSS variables from
+          your theme and sets <code>data-zui-color-scheme</code> and <code>data-zui-density</code>{" "}
+          on the theme root.
         </Text>
         <CodeBlock code={PROVIDER_CODE} />
       </section>

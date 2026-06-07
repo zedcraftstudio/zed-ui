@@ -22,7 +22,11 @@ describe("Badge", () => {
   it("renders avatar and close button", () => {
     const onClose = vi.fn();
     const { getByRole, container } = renderWithProvider(
-      <Badge avatar={{ fallback: "ZK", src: "/a.png" }} onClose={onClose} startIcon={<span>★</span>}>
+      <Badge
+        avatar={{ fallback: "ZK", src: "/a.png" }}
+        onClose={onClose}
+        startIcon={<span>★</span>}
+      >
         New
       </Badge>
     );

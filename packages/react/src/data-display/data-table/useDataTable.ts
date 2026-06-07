@@ -71,7 +71,8 @@ export function useDataTable<T>({
     if (sorting) {
       const column = columns.find((item) => item.id === sorting.id);
       if (column) {
-        const compare = column.sortingFn ?? ((left, right) => defaultSortingFn(left, right, column));
+        const compare =
+          column.sortingFn ?? ((left, right) => defaultSortingFn(left, right, column));
         nextRows.sort(compare);
         if (sorting.direction === "desc") {
           nextRows.reverse();

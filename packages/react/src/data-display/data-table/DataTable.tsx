@@ -83,7 +83,7 @@ function DataTableInner<T>(
             <Input
               className="zui-data-table__filter"
               placeholder={filterPlaceholder}
-              size={size === "lg" ? "md" : size ?? "md"}
+              size={size === "lg" ? "md" : (size ?? "md")}
               value={globalFilter}
               onChange={(event) => {
                 const value = event.currentTarget.value;
@@ -111,7 +111,12 @@ function DataTableInner<T>(
                 }
 
                 return (
-                  <TableHead key={column.id} aria-sort={isSorted ? (sortDirection === "asc" ? "ascending" : "descending") : "none"}>
+                  <TableHead
+                    key={column.id}
+                    aria-sort={
+                      isSorted ? (sortDirection === "asc" ? "ascending" : "descending") : "none"
+                    }
+                  >
                     <button
                       className="zui-data-table__sort-button"
                       type="button"

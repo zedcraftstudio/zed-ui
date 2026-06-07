@@ -4,19 +4,19 @@ Zed UI targets [WAI-ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI
 
 ## Keyboard interaction
 
-| Component | Keys | Behavior |
-| --- | --- | --- |
-| **Button** | `Enter`, `Space` | Activates the control |
-| **Tabs** | `ArrowLeft`/`ArrowRight` (or `Up`/`Down` when vertical) | Moves focus between tabs; selection follows `activationMode` |
-| **Accordion** | `ArrowUp`/`ArrowDown`, `Home`, `End` | Moves focus between triggers; `Enter`/`Space` toggles panels |
-| **Menu** | `ArrowUp`/`ArrowDown`, typeahead | Moves focus; `Enter`/`Space` activates item; `Esc` closes |
-| **Select** | `ArrowUp`/`ArrowDown`, `Enter`, typeahead | Opens list, moves highlight, selects value |
-| **Combobox** | `ArrowUp`/`ArrowDown`, `Enter`, type in input | Filters list, moves highlight, selects value |
-| **CommandPalette** | `ArrowUp`/`ArrowDown`, `Enter`, `Esc` | Filters commands, selects item, closes dialog |
-| **Sidebar** | `Tab`, `Enter`/`Space` on items | `SidebarItem` renders links or buttons with visible `:focus-visible` rings; active route uses `aria-current="page"` |
-| **Dialog / Drawer / AlertDialog** | `Esc` | Closes overlay; focus is trapped while open |
-| **Slider** | `ArrowLeft`/`ArrowRight`, `Home`, `End` | Moves thumb along track |
-| **Checkbox / Radio / Switch** | `Space` | Toggles or selects |
+| Component                         | Keys                                                    | Behavior                                                                                                            |
+| --------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Button**                        | `Enter`, `Space`                                        | Activates the control                                                                                               |
+| **Tabs**                          | `ArrowLeft`/`ArrowRight` (or `Up`/`Down` when vertical) | Moves focus between tabs; selection follows `activationMode`                                                        |
+| **Accordion**                     | `ArrowUp`/`ArrowDown`, `Home`, `End`                    | Moves focus between triggers; `Enter`/`Space` toggles panels                                                        |
+| **Menu**                          | `ArrowUp`/`ArrowDown`, typeahead                        | Moves focus; `Enter`/`Space` activates item; `Esc` closes                                                           |
+| **Select**                        | `ArrowUp`/`ArrowDown`, `Enter`, typeahead               | Opens list, moves highlight, selects value                                                                          |
+| **Combobox**                      | `ArrowUp`/`ArrowDown`, `Enter`, type in input           | Filters list, moves highlight, selects value                                                                        |
+| **CommandPalette**                | `ArrowUp`/`ArrowDown`, `Enter`, `Esc`                   | Filters commands, selects item, closes dialog                                                                       |
+| **Sidebar**                       | `Tab`, `Enter`/`Space` on items                         | `SidebarItem` renders links or buttons with visible `:focus-visible` rings; active route uses `aria-current="page"` |
+| **Dialog / Drawer / AlertDialog** | `Esc`                                                   | Closes overlay; focus is trapped while open                                                                         |
+| **Slider**                        | `ArrowLeft`/`ArrowRight`, `Home`, `End`                 | Moves thumb along track                                                                                             |
+| **Checkbox / Radio / Switch**     | `Space`                                                 | Toggles or selects                                                                                                  |
 
 ## Form fields
 

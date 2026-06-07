@@ -41,7 +41,9 @@ export const Progress = forwardRef<HTMLDivElement, ProgressOwnProps>(function Pr
       <div className="zui-progress" data-size={size}>
         {label || showValue ? (
           <div className="zui-progress__header">
-            {label ? <BaseProgress.Label className="zui-progress__label">{label}</BaseProgress.Label> : null}
+            {label ? (
+              <BaseProgress.Label className="zui-progress__label">{label}</BaseProgress.Label>
+            ) : null}
             {showValue ? <BaseProgress.Value className="zui-progress__value" /> : null}
           </div>
         ) : null}

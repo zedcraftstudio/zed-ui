@@ -66,7 +66,8 @@ export type GridItemOwnProps = BoxOwnProps & {
 };
 
 function GridItemBase(props: PolymorphicProps<ElementType, GridItemOwnProps>, ref: Ref<unknown>) {
-  const { area, className, colEnd, colSpan, colStart, rowEnd, rowSpan, rowStart, style, ...rest } = props;
+  const { area, className, colEnd, colSpan, colStart, rowEnd, rowSpan, rowStart, style, ...rest } =
+    props;
 
   return (
     <Box

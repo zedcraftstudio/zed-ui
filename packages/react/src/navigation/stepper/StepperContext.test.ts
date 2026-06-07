@@ -9,7 +9,9 @@ describe("resolveStepStatus", () => {
   });
 
   it("returns error when step has error", () => {
-    expect(resolveStepStatus({ activeStep: 0, error: true, index: 0, nonLinear: false })).toBe("error");
+    expect(resolveStepStatus({ activeStep: 0, error: true, index: 0, nonLinear: false })).toBe(
+      "error"
+    );
   });
 
   it("returns complete when completed is true", () => {
@@ -19,15 +21,15 @@ describe("resolveStepStatus", () => {
   });
 
   it("returns active for explicit incomplete completed false on active index", () => {
-    expect(
-      resolveStepStatus({ activeStep: 1, completed: false, index: 1, nonLinear: false })
-    ).toBe("active");
+    expect(resolveStepStatus({ activeStep: 1, completed: false, index: 1, nonLinear: false })).toBe(
+      "active"
+    );
   });
 
   it("returns incomplete for explicit completed false on other indices", () => {
-    expect(
-      resolveStepStatus({ activeStep: 1, completed: false, index: 0, nonLinear: false })
-    ).toBe("incomplete");
+    expect(resolveStepStatus({ activeStep: 1, completed: false, index: 0, nonLinear: false })).toBe(
+      "incomplete"
+    );
   });
 
   it("marks prior steps complete in linear mode", () => {

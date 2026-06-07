@@ -48,13 +48,12 @@ export type SelectOwnProps = SelectOptionsProps &
   Omit<ComponentPropsWithoutRef<typeof BaseSelect.Root<string, false>>, "className" | "children">;
 
 export type MultiSelectOwnProps = SelectOptionsProps &
-  Omit<ComponentPropsWithoutRef<typeof BaseSelect.Root<string, true>>, "className" | "children" | "multiple">;
+  Omit<
+    ComponentPropsWithoutRef<typeof BaseSelect.Root<string, true>>,
+    "className" | "children" | "multiple"
+  >;
 
-function formatSelectValue(
-  value: unknown,
-  options: SelectOption[],
-  multiple: boolean
-): ReactNode {
+function formatSelectValue(value: unknown, options: SelectOption[], multiple: boolean): ReactNode {
   if (multiple) {
     const values = Array.isArray(value) ? value : [];
     if (values.length === 0) return null;

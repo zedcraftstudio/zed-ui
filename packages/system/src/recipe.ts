@@ -13,9 +13,7 @@ export type RecipeOptions<TVariants extends RecipeVariantMap> = {
 export function recipe<TVariants extends RecipeVariantMap>(options: RecipeOptions<TVariants>) {
   const { base, variants = {} as TVariants, compoundVariants = [] } = options;
 
-  return function resolve(
-    props: Partial<{ [K in keyof TVariants]: keyof TVariants[K] }>
-  ): string {
+  return function resolve(props: Partial<{ [K in keyof TVariants]: keyof TVariants[K] }>): string {
     const classes: Array<string | undefined> = [base];
 
     for (const [key, value] of Object.entries(props)) {
@@ -28,7 +26,9 @@ export function recipe<TVariants extends RecipeVariantMap>(options: RecipeOption
 
     for (const compound of compoundVariants) {
       const { className, ...conditions } = compound;
-      const matches = Object.entries(conditions).every(([key, expected]) => props[key] === expected);
+      const matches = Object.entries(conditions).every(
+        ([key, expected]) => props[key] === expected
+      );
       if (matches) {
         classes.push(className);
       }

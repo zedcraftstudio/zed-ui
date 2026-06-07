@@ -2,7 +2,8 @@ import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 
-const pkg = (name: string) => fileURLToPath(new URL(`../../packages/${name}/src/index.ts`, import.meta.url));
+const pkg = (name: string) =>
+  fileURLToPath(new URL(`../../packages/${name}/src/index.ts`, import.meta.url));
 const pkgIcons = fileURLToPath(new URL(`../../packages/icons/src/index.tsx`, import.meta.url));
 
 const base = process.env.VITE_BASE_PATH ?? "/";

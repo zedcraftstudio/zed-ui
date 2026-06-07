@@ -81,19 +81,21 @@ function AvatarBase(props: PolymorphicProps<ElementType, AvatarOwnProps>, ref: R
   );
 }
 
-export const AvatarRoot = forwardRef<HTMLSpanElement, ComponentPropsWithoutRef<typeof BaseAvatar.Root>>(
-  function AvatarRoot({ className, ...rest }, ref) {
-    return <BaseAvatar.Root ref={ref} className={cx("zui-avatar", className)} {...rest} />;
-  }
-);
+export const AvatarRoot = forwardRef<
+  HTMLSpanElement,
+  ComponentPropsWithoutRef<typeof BaseAvatar.Root>
+>(function AvatarRoot({ className, ...rest }, ref) {
+  return <BaseAvatar.Root ref={ref} className={cx("zui-avatar", className)} {...rest} />;
+});
 
 AvatarRoot.displayName = "AvatarRoot";
 
-export const AvatarImage = forwardRef<HTMLImageElement, ComponentPropsWithoutRef<typeof BaseAvatar.Image>>(
-  function AvatarImage({ className, ...rest }, ref) {
-    return <BaseAvatar.Image ref={ref} className={cx("zui-avatar__img", className)} {...rest} />;
-  }
-);
+export const AvatarImage = forwardRef<
+  HTMLImageElement,
+  ComponentPropsWithoutRef<typeof BaseAvatar.Image>
+>(function AvatarImage({ className, ...rest }, ref) {
+  return <BaseAvatar.Image ref={ref} className={cx("zui-avatar__img", className)} {...rest} />;
+});
 
 AvatarImage.displayName = "AvatarImage";
 

@@ -37,8 +37,7 @@ export const Checkbox = forwardRef(function Checkbox(
   const defaults = useComponentDefaults("Checkbox");
   const color = colorProp ?? (defaults?.color as ZedColor | undefined) ?? "primary";
   const size = sizeProp ?? (defaults?.size as ZedSize | undefined) ?? "md";
-  const variant =
-    variantProp ?? (defaults?.variant as CheckboxVariant | undefined) ?? "solid";
+  const variant = variantProp ?? (defaults?.variant as CheckboxVariant | undefined) ?? "solid";
 
   return (
     <label className={cx("zui-checkbox", className)} data-disabled={dataAttr(disabled)}>
