@@ -1,0 +1,22 @@
+[
+  {
+    "name": "@zed-ui/react JS (ESM)",
+    "path": "packages/react/dist/index.js",
+    "limit": "145 KB"
+  },
+  {
+    "name": "@zed-ui/react dialog subpath",
+    "path": "packages/react/dist/overlays/dialog/index.js",
+    "limit": "25 KB"
+  },
+  {
+    "name": "@zed-ui/react CSS",
+    "path": "packages/react/dist/styles.css",
+    "limit": "165 KB"
+  },
+  {
+    "name": "@zed-ui/react forms CSS layer",
+    "path": "packages/react/dist/styles/layers/forms.css",
+    "limit": "50 KB"
+  }
+]

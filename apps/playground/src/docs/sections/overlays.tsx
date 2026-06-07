@@ -1,8 +1,12 @@
 import { useState } from "react";
 import {
+  AlertDialogContent,
+  AlertDialogRoot,
+  AlertDialogTrigger,
   Avatar,
   Button,
   Checkbox,
+  CommandPalette,
   Dialog,
   DialogBackdrop,
   DialogClose,
@@ -45,6 +49,7 @@ import {
 } from "@zed-ui/react";
 import { ComponentDoc } from "../../components/ComponentDoc";
 import { DocExample } from "../../components/DocExample";
+import { StatePreview } from "../shared";
 
 function BasicDialogPreview() {
   return (
@@ -1165,5 +1170,134 @@ function ComposedTooltipExample() {
         </TooltipPositioner>
       </TooltipPortal>
     </Tooltip.Root>
+  );
+}
+
+const COMMAND_ITEMS = [
+  { group: "File", id: "new", label: "New file", keywords: ["create", "add"] },
+  { group: "File", id: "save", label: "Save file", keywords: ["write", "disk"] },
+  { group: "View", id: "theme", label: "Toggle theme", keywords: ["dark", "light"] },
+  { group: "View", disabled: true, id: "locked", label: "Locked command" }
+];
+
+export function CommandPaletteSection() {
+  const [open, setOpen] = useState(false);
+  const [actionOpen, setActionOpen] = useState(false);
+  const [lastAction, setLastAction] = useState("none");
+
+  const actionItems = COMMAND_ITEMS.map((item) =>
+    item.disabled
+      ? item
+      : {
+          ...item,
+          onSelect: () => {
+            setLastAction(item.id);
+            setActionOpen(false);
+          }
+        }
+  );
+
+  return (
+    <ComponentDoc
+      id="command-palette"
+      title="CommandPalette"
+      description="Modal command launcher with grouped items and keyboard navigation."
+      usage={{
+        importCode: `import { useState } from "react";
+import { Button, CommandPalette } from "@zed-ui/react"`,
+        usageCode: `const [open, setOpen] = useState(false);
+
+const items = [
+  { id: "new", label: "New file", group: "File" },
+  { id: "save", label: "Save file", group: "File", onSelect: () => save() }
+];
+
+<>
+  <Button onClick={() => setOpen(true)}>Open palette</Button>
+  <CommandPalette open={open} onOpenChange={setOpen} items={items} />
+</>`,
+        preview: (
+          <>
+            <Button size="sm" onClick={() => setOpen(true)}>
+              Open command palette
+            </Button>
+            <CommandPalette items={COMMAND_ITEMS} open={open} onOpenChange={setOpen} />
+          </>
+        )
+      }}
+    >
+      <DocExample
+        title="With actions"
+        code={`const items = [
+  { id: "new", label: "New file", onSelect: () => create() },
+  { id: "save", label: "Save file", onSelect: () => save() }
+];
+
+<CommandPalette open={open} onOpenChange={setOpen} items={items} />`}
+        footer={<StatePreview value={lastAction} />}
+      >
+        <Button size="sm" onClick={() => setActionOpen(true)}>
+          Run command
+        </Button>
+        <CommandPalette items={actionItems} open={actionOpen} onOpenChange={setActionOpen} />
+      </DocExample>
+
+      <DocExample
+        title="Keywords"
+        description="Items match on label and optional keywords for fuzzy search."
+        code={`<CommandPalette
+  items={[{ id: "theme", label: "Toggle theme", keywords: ["dark", "light"] }]}
+  open={open}
+  onOpenChange={setOpen}
+/>`}
+      >
+        <Text color="muted" size="sm">
+          Try searching &quot;dark&quot; in the palette preview above.
+        </Text>
+      </DocExample>
+
+      <DocExample
+        title="Disabled items"
+        code={`<CommandPalette
+  items={[{ id: "locked", label: "Locked", disabled: true }]}
+  open={open}
+  onOpenChange={setOpen}
+/>`}
+      >
+        <Text color="muted" size="sm">
+          The &quot;Locked command&quot; item in the preview is disabled.
+        </Text>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function AlertDialogSection() {
+  return (
+    <ComponentDoc
+      id="alert-dialog"
+      title="AlertDialog"
+      description="Confirmation dialog for destructive or irreversible actions."
+      usage={{
+        importCode: `import { AlertDialog, AlertDialogContent, AlertDialogRoot, AlertDialogTrigger, Button } from "@zed-ui/react"`,
+        usageCode: `<AlertDialogRoot>
+  <AlertDialogTrigger render={<Button color="danger">Delete</Button>} />
+  <AlertDialogContent
+    title="Delete project?"
+    description="This cannot be undone."
+    confirmLabel="Delete"
+  />
+</AlertDialogRoot>`,
+        preview: (
+          <AlertDialogRoot>
+            <AlertDialogTrigger render={<Button color="danger" size="sm">Delete</Button>} />
+            <AlertDialogContent
+              description="This cannot be undone."
+              title="Delete project?"
+            />
+          </AlertDialogRoot>
+        )
+      }}
+    />
   );
 }

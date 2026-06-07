@@ -4,6 +4,7 @@ import { useComponentDefaults } from "@zed-ui/themes";
 import { cx, dataAttr } from "@zed-ui/utils";
 import type { InputVariant, ZedSize } from "../../shared/types";
 import { Box, type BoxOwnProps } from "../../primitives/box/Box";
+import { useFormFieldControlProps } from "../form-field/FormFieldContext";
 
 export type InputOwnProps = Omit<BoxOwnProps, "color"> & {
   endIcon?: ReactNode;
@@ -19,12 +20,20 @@ function InputBase(props: PolymorphicProps<ElementType, InputOwnProps>, ref: Ref
     as,
     className,
     endIcon,
-    invalid = false,
+    invalid: invalidProp = false,
     size = (defaults?.size as ZedSize | undefined) ?? "md",
     startIcon,
     variant = (defaults?.variant as InputVariant | undefined) ?? "outline",
     ...rest
   } = props;
+
+  const { invalid, id: fieldId, required: fieldRequired, ...fieldAriaProps } =
+    useFormFieldControlProps({
+      id: rest.id,
+      invalid: invalidProp ? true : undefined,
+      required: rest.required
+    });
+  const { id, required, ...inputRest } = rest;
 
   const hasIcons = Boolean(startIcon || endIcon);
 
@@ -41,7 +50,10 @@ function InputBase(props: PolymorphicProps<ElementType, InputOwnProps>, ref: Ref
       data-invalid={dataAttr(invalid)}
       data-size={size}
       data-variant={variant}
-      {...rest}
+      {...fieldAriaProps}
+      {...inputRest}
+      id={fieldId ?? id}
+      required={fieldRequired ?? required}
     />
   );
 
@@ -72,3 +84,5 @@ function InputBase(props: PolymorphicProps<ElementType, InputOwnProps>, ref: Ref
 }
 
 export const Input = forwardRef(InputBase) as PolymorphicComponent<"input", InputOwnProps>;
+
+(Input as { displayName?: string }).displayName = "Input";

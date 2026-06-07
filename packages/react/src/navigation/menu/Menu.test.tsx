@@ -45,4 +45,21 @@ describe("Menu", () => {
     expect(Menu.Root).toBe(MenuRoot);
     expect(Menu.Item).toBe(MenuItem);
   });
+
+  it("applies size to the popup when open", () => {
+    renderWithProvider(
+      <MenuRoot defaultOpen size="lg">
+        <MenuTrigger render={<Button>Open menu</Button>} />
+        <MenuPortal>
+          <MenuPositioner>
+            <MenuPopup>
+              <MenuItem>Edit</MenuItem>
+            </MenuPopup>
+          </MenuPositioner>
+        </MenuPortal>
+      </MenuRoot>
+    );
+
+    expect(document.querySelector('.zui-menu__popup[data-size="lg"]')).toBeTruthy();
+  });
 });

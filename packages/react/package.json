@@ -35,15 +35,233 @@
       "require": "./dist/index.cjs"
     },
     "./styles.css": "./dist/styles.css",
+    "./styles/base.css": "./dist/styles/layers/base.css",
+    "./styles/actions.css": "./dist/styles/layers/actions.css",
+    "./styles/forms.css": "./dist/styles/layers/forms.css",
+    "./styles/feedback.css": "./dist/styles/layers/feedback.css",
+    "./styles/overlays.css": "./dist/styles/layers/overlays.css",
+    "./styles/navigation.css": "./dist/styles/layers/navigation.css",
+    "./styles/data-display.css": "./dist/styles/layers/data-display.css",
+    "./styles/layout.css": "./dist/styles/layers/layout.css",
+    "./button": {
+      "types": "./dist/actions/button/index.d.ts",
+      "import": "./dist/actions/button/index.js",
+      "require": "./dist/actions/button/index.cjs"
+    },
+    "./icon-button": {
+      "types": "./dist/actions/icon-button/index.d.ts",
+      "import": "./dist/actions/icon-button/index.js",
+      "require": "./dist/actions/icon-button/index.cjs"
+    },
+    "./avatar": {
+      "types": "./dist/data-display/avatar/index.d.ts",
+      "import": "./dist/data-display/avatar/index.js",
+      "require": "./dist/data-display/avatar/index.cjs"
+    },
+    "./card": {
+      "types": "./dist/data-display/card/index.d.ts",
+      "import": "./dist/data-display/card/index.js",
+      "require": "./dist/data-display/card/index.cjs"
+    },
+    "./data-table": {
+      "types": "./dist/data-display/data-table/index.d.ts",
+      "import": "./dist/data-display/data-table/index.js",
+      "require": "./dist/data-display/data-table/index.cjs"
+    },
+    "./table": {
+      "types": "./dist/data-display/table/index.d.ts",
+      "import": "./dist/data-display/table/index.js",
+      "require": "./dist/data-display/table/index.cjs"
+    },
+    "./timeline": {
+      "types": "./dist/data-display/timeline/index.d.ts",
+      "import": "./dist/data-display/timeline/index.js",
+      "require": "./dist/data-display/timeline/index.cjs"
+    },
+    "./alert": {
+      "types": "./dist/feedback/alert/index.d.ts",
+      "import": "./dist/feedback/alert/index.js",
+      "require": "./dist/feedback/alert/index.cjs"
+    },
+    "./badge": {
+      "types": "./dist/feedback/badge/index.d.ts",
+      "import": "./dist/feedback/badge/index.js",
+      "require": "./dist/feedback/badge/index.cjs"
+    },
+    "./progress": {
+      "types": "./dist/feedback/progress/index.d.ts",
+      "import": "./dist/feedback/progress/index.js",
+      "require": "./dist/feedback/progress/index.cjs"
+    },
+    "./skeleton": {
+      "types": "./dist/feedback/skeleton/index.d.ts",
+      "import": "./dist/feedback/skeleton/index.js",
+      "require": "./dist/feedback/skeleton/index.cjs"
+    },
+    "./spinner": {
+      "types": "./dist/feedback/spinner/index.d.ts",
+      "import": "./dist/feedback/spinner/index.js",
+      "require": "./dist/feedback/spinner/index.cjs"
+    },
+    "./toast": {
+      "types": "./dist/feedback/toast/index.d.ts",
+      "import": "./dist/feedback/toast/index.js",
+      "require": "./dist/feedback/toast/index.cjs"
+    },
+    "./calendar": {
+      "types": "./dist/forms/calendar/index.d.ts",
+      "import": "./dist/forms/calendar/index.js",
+      "require": "./dist/forms/calendar/index.cjs"
+    },
+    "./checkbox": {
+      "types": "./dist/forms/checkbox/index.d.ts",
+      "import": "./dist/forms/checkbox/index.js",
+      "require": "./dist/forms/checkbox/index.cjs"
+    },
+    "./combobox": {
+      "types": "./dist/forms/combobox/index.d.ts",
+      "import": "./dist/forms/combobox/index.js",
+      "require": "./dist/forms/combobox/index.cjs"
+    },
+    "./date-picker": {
+      "types": "./dist/forms/date-picker/index.d.ts",
+      "import": "./dist/forms/date-picker/index.js",
+      "require": "./dist/forms/date-picker/index.cjs"
+    },
+    "./form-field": {
+      "types": "./dist/forms/form-field/index.d.ts",
+      "import": "./dist/forms/form-field/index.js",
+      "require": "./dist/forms/form-field/index.cjs"
+    },
+    "./input": {
+      "types": "./dist/forms/input/index.d.ts",
+      "import": "./dist/forms/input/index.js",
+      "require": "./dist/forms/input/index.cjs"
+    },
+    "./radio": {
+      "types": "./dist/forms/radio/index.d.ts",
+      "import": "./dist/forms/radio/index.js",
+      "require": "./dist/forms/radio/index.cjs"
+    },
+    "./select": {
+      "types": "./dist/forms/select/index.d.ts",
+      "import": "./dist/forms/select/index.js",
+      "require": "./dist/forms/select/index.cjs"
+    },
+    "./slider": {
+      "types": "./dist/forms/slider/index.d.ts",
+      "import": "./dist/forms/slider/index.js",
+      "require": "./dist/forms/slider/index.cjs"
+    },
+    "./switch": {
+      "types": "./dist/forms/switch/index.d.ts",
+      "import": "./dist/forms/switch/index.js",
+      "require": "./dist/forms/switch/index.cjs"
+    },
+    "./textarea": {
+      "types": "./dist/forms/textarea/index.d.ts",
+      "import": "./dist/forms/textarea/index.js",
+      "require": "./dist/forms/textarea/index.cjs"
+    },
+    "./app-shell": {
+      "types": "./dist/layout/app-shell/index.d.ts",
+      "import": "./dist/layout/app-shell/index.js",
+      "require": "./dist/layout/app-shell/index.cjs"
+    },
+    "./divider": {
+      "types": "./dist/layout/divider/index.d.ts",
+      "import": "./dist/layout/divider/index.js",
+      "require": "./dist/layout/divider/index.cjs"
+    },
+    "./paper": {
+      "types": "./dist/layout/paper/index.d.ts",
+      "import": "./dist/layout/paper/index.js",
+      "require": "./dist/layout/paper/index.cjs"
+    },
+    "./accordion": {
+      "types": "./dist/navigation/accordion/index.d.ts",
+      "import": "./dist/navigation/accordion/index.js",
+      "require": "./dist/navigation/accordion/index.cjs"
+    },
+    "./breadcrumbs": {
+      "types": "./dist/navigation/breadcrumbs/index.d.ts",
+      "import": "./dist/navigation/breadcrumbs/index.js",
+      "require": "./dist/navigation/breadcrumbs/index.cjs"
+    },
+    "./menu": {
+      "types": "./dist/navigation/menu/index.d.ts",
+      "import": "./dist/navigation/menu/index.js",
+      "require": "./dist/navigation/menu/index.cjs"
+    },
+    "./pagination": {
+      "types": "./dist/navigation/pagination/index.d.ts",
+      "import": "./dist/navigation/pagination/index.js",
+      "require": "./dist/navigation/pagination/index.cjs"
+    },
+    "./stepper": {
+      "types": "./dist/navigation/stepper/index.d.ts",
+      "import": "./dist/navigation/stepper/index.js",
+      "require": "./dist/navigation/stepper/index.cjs"
+    },
+    "./tabs": {
+      "types": "./dist/navigation/tabs/index.d.ts",
+      "import": "./dist/navigation/tabs/index.js",
+      "require": "./dist/navigation/tabs/index.cjs"
+    },
+    "./alert-dialog": {
+      "types": "./dist/overlays/alert-dialog/index.d.ts",
+      "import": "./dist/overlays/alert-dialog/index.js",
+      "require": "./dist/overlays/alert-dialog/index.cjs"
+    },
+    "./command-palette": {
+      "types": "./dist/overlays/command-palette/index.d.ts",
+      "import": "./dist/overlays/command-palette/index.js",
+      "require": "./dist/overlays/command-palette/index.cjs"
+    },
+    "./dialog": {
+      "types": "./dist/overlays/dialog/index.d.ts",
+      "import": "./dist/overlays/dialog/index.js",
+      "require": "./dist/overlays/dialog/index.cjs"
+    },
+    "./drawer": {
+      "types": "./dist/overlays/drawer/index.d.ts",
+      "import": "./dist/overlays/drawer/index.js",
+      "require": "./dist/overlays/drawer/index.cjs"
+    },
+    "./popover": {
+      "types": "./dist/overlays/popover/index.d.ts",
+      "import": "./dist/overlays/popover/index.js",
+      "require": "./dist/overlays/popover/index.cjs"
+    },
+    "./tooltip": {
+      "types": "./dist/overlays/tooltip/index.d.ts",
+      "import": "./dist/overlays/tooltip/index.js",
+      "require": "./dist/overlays/tooltip/index.cjs"
+    },
     "./box": {
       "types": "./dist/primitives/box/index.d.ts",
       "import": "./dist/primitives/box/index.js",
       "require": "./dist/primitives/box/index.cjs"
     },
-    "./button": {
-      "types": "./dist/actions/button/index.d.ts",
-      "import": "./dist/actions/button/index.js",
-      "require": "./dist/actions/button/index.cjs"
+    "./container": {
+      "types": "./dist/primitives/container/index.d.ts",
+      "import": "./dist/primitives/container/index.js",
+      "require": "./dist/primitives/container/index.cjs"
+    },
+    "./flex": {
+      "types": "./dist/primitives/flex/index.d.ts",
+      "import": "./dist/primitives/flex/index.js",
+      "require": "./dist/primitives/flex/index.cjs"
+    },
+    "./grid": {
+      "types": "./dist/primitives/grid/index.d.ts",
+      "import": "./dist/primitives/grid/index.js",
+      "require": "./dist/primitives/grid/index.cjs"
+    },
+    "./heading": {
+      "types": "./dist/primitives/heading/index.d.ts",
+      "import": "./dist/primitives/heading/index.js",
+      "require": "./dist/primitives/heading/index.cjs"
     },
     "./stack": {
       "types": "./dist/primitives/stack/index.d.ts",
@@ -54,6 +272,11 @@
       "types": "./dist/primitives/text/index.d.ts",
       "import": "./dist/primitives/text/index.js",
       "require": "./dist/primitives/text/index.cjs"
+    },
+    "./link": {
+      "types": "./dist/typography/link/index.d.ts",
+      "import": "./dist/typography/link/index.js",
+      "require": "./dist/typography/link/index.cjs"
     }
   },
   "files": [
@@ -68,6 +291,7 @@
     "build": "tsup",
     "lint": "eslint src",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -80,11 +304,18 @@
   },
   "peerDependencies": {
     "react": ">=18.2.0 || >=19.0.0",
-    "react-dom": ">=18.2.0 || >=19.0.0"
+    "react-dom": ">=18.2.0 || >=19.0.0",
+    "react-day-picker": "^9.0.0"
   },
   "devDependencies": {
     "@types/jest-axe": "^3.5.9",
     "jest-axe": "^10.0.0",
+    "react-day-picker": "^9.14.0",
     "tsup": "^8.5.1"
+  },
+  "peerDependenciesMeta": {
+    "react-day-picker": {
+      "optional": true
+    }
   }
 }

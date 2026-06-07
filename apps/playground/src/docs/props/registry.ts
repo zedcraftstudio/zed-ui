@@ -652,6 +652,368 @@ export const COMPONENT_PROPS: Record<string, PropRow[]> = {
     { name: "defaultOpen", default: "false", type: "boolean | undefined" },
     { name: "onOpenChange", default: "—", type: "(open: boolean) => void | undefined" },
     { name: "Menu.Item.disabled", default: "false", type: "boolean | undefined" }
+  ],
+
+  paper: boxProps([
+    {
+      name: "variant",
+      default: '"elevated"',
+      type: '"elevated" | "filled" | "outline" | "subtle" | undefined',
+      description: "Surface style. Theme default via components.Paper.variant."
+    },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined`, description: "Padding scale. Theme default via components.Paper.size." },
+    { name: "radius", default: '"md"', type: '"none" | "xs" | "sm" | "md" | "lg" | "xl" | "full" | undefined' }
+  ]),
+
+  "app-shell": boxProps([
+    { name: "header", default: "—", type: "ReactNode | undefined", description: "TopBar or custom header in the main column." },
+    { name: "sidebar", default: "—", type: "ReactNode | undefined", description: "Sidebar navigation panel in the leading column." },
+    { name: "footer", default: "—", type: "ReactNode | undefined", description: "Footer region below main content." },
+    {
+      name: "sidebarWidth",
+      default: '"16rem"',
+      type: "string | undefined",
+      description: "Sets --zui-sidebar-width inherited by Sidebar."
+    },
+    {
+      name: "height",
+      default: '"screen"',
+      type: '"screen" | "auto" | undefined',
+      description: "screen fills the viewport; auto fits embedded docs and previews."
+    },
+    {
+      name: "mainPadding",
+      default: "true",
+      type: "boolean | undefined",
+      description: "Apply default padding to the main content region."
+    },
+    { name: "children", default: "—", type: "ReactNode", description: "Main content rendered in the center column." }
+  ]),
+
+  topbar: boxProps([
+    { name: "brand", default: "—", type: "ReactNode | undefined", description: "Logo or product name beside the title." },
+    { name: "title", default: "—", type: "ReactNode | undefined", description: "Primary page or section title." },
+    { name: "actions", default: "—", type: "ReactNode | undefined", description: "Trailing action buttons or controls." },
+    { name: "children", default: "—", type: "ReactNode | undefined", description: "Center content slot between title and actions." },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined`, description: "Bar height and horizontal padding." },
+    { name: "sticky", default: "false", type: "boolean | undefined", description: "Stick to the top of the scroll container." },
+    { name: "border", default: "true", type: "boolean | undefined", description: "Bottom border separating the bar from content." }
+  ]),
+
+  sidebar: boxProps([
+    {
+      name: "collapsed",
+      default: "false",
+      type: "boolean | undefined",
+      description: "Icon-only layout; hides labels and section headings."
+    },
+    {
+      name: "width",
+      default: "—",
+      type: "string | undefined",
+      description: "Override --zui-sidebar-width on this instance."
+    },
+    {
+      name: "Sidebar.Header",
+      default: "—",
+      type: "ReactNode",
+      description: "Brand or product title at the top of the panel."
+    },
+    {
+      name: "Sidebar.Item.active",
+      default: "false",
+      type: "boolean | undefined",
+      description: "Highlights the current route."
+    },
+    { name: "Sidebar.Item.href", default: "—", type: "string | undefined", description: "Renders a link when set; button otherwise." },
+    { name: "Sidebar.Item.icon", default: "—", type: "ReactNode | undefined", description: "Leading icon shown in collapsed mode." },
+    { name: "Sidebar.Section.label", default: "—", type: "ReactNode | undefined", description: "Uppercase group label above a nav block." }
+  ]),
+
+  breadcrumbs: [
+    {
+      name: "items",
+      default: "—",
+      type: "BreadcrumbItem[] | undefined",
+      description: "Declarative trail: { label, href?, current? }[]."
+    },
+    { name: "separator", default: '"/"', type: "ReactNode | undefined", description: "Rendered between each crumb." },
+    { name: "children", default: "—", type: "ReactNode | undefined", description: "Compound API: Breadcrumbs.List + Breadcrumbs.Item." },
+    {
+      name: "Breadcrumbs.Item.current",
+      default: "false",
+      type: "boolean | undefined",
+      description: "Marks the current page (aria-current=\"page\")."
+    },
+    { name: "Breadcrumbs.Item.href", default: "—", type: "string | undefined", description: "Link target for non-current crumbs." }
+  ],
+
+  pagination: [
+    { name: "page", default: "—", type: "number", description: "Current page (1-based). Controlled." },
+    { name: "count", default: "—", type: "number", description: "Total number of pages." },
+    { name: "onPageChange", default: "—", type: "(page: number) => void | undefined", description: "Called when the user selects a page." },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined`, description: "Button scale. Theme default via components.Pagination.size." },
+    { name: "disabled", default: "false", type: "boolean | undefined", description: "Disables all page controls." },
+    {
+      name: "siblingCount",
+      default: "1",
+      type: "number | undefined",
+      description: "Pages shown on each side of the current page."
+    },
+    {
+      name: "showEdges",
+      default: "true",
+      type: "boolean | undefined",
+      description: "Always show first and last page buttons when ellipsis is used."
+    }
+  ],
+
+  stepper: [
+    { name: "activeStep", default: "0", type: "number | undefined", description: "Zero-based index of the active step." },
+    {
+      name: "orientation",
+      default: '"horizontal"',
+      type: '"horizontal" | "vertical" | undefined',
+      description: "Horizontal for desktop flows; vertical for narrow layouts with expandable content."
+    },
+    {
+      name: "alternativeLabel",
+      default: "false",
+      type: "boolean | undefined",
+      description: "Places step labels below the icon in horizontal mode."
+    },
+    {
+      name: "nonLinear",
+      default: "false",
+      type: "boolean | undefined",
+      description: "Allows navigating to any step. Pair with StepButton for clickable labels."
+    },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined`, description: "Icon and text scale. Theme default via components.Stepper.size." },
+    { name: "aria-label", default: '"Progress"', type: "string | undefined", description: "Accessible label for the stepper navigation landmark." },
+    { name: "children", default: "—", type: "ReactNode", description: "Stepper.Step elements." },
+    {
+      name: "Step.completed",
+      default: "—",
+      type: "boolean | undefined",
+      description: "Overrides completion state. Set false to keep an optional step incomplete."
+    },
+    { name: "Step.disabled", default: "—", type: "boolean | undefined", description: "Disables a step." },
+    { name: "Step.expanded", default: "—", type: "boolean | undefined", description: "Controls vertical StepContent visibility." },
+    {
+      name: "StepLabel.children",
+      default: "—",
+      type: "ReactNode",
+      description: "Primary step title."
+    },
+    {
+      name: "StepLabel.optional",
+      default: "—",
+      type: "ReactNode | undefined",
+      description: "Optional badge text shown below the title."
+    },
+    {
+      name: "StepLabel.description",
+      default: "—",
+      type: "ReactNode | undefined",
+      description: "Secondary text below the title."
+    },
+    {
+      name: "StepLabel.error",
+      default: "false",
+      type: "boolean | undefined",
+      description: "Marks the step with error styling."
+    },
+    {
+      name: "StepLabel.icon",
+      default: "—",
+      type: "ReactNode | undefined",
+      description: "Custom icon content inside the step indicator."
+    },
+    {
+      name: "StepButton.onClick",
+      default: "—",
+      type: "(() => void) | undefined",
+      description: "Makes the step label clickable in non-linear flows."
+    },
+    {
+      name: "StepContent.children",
+      default: "—",
+      type: "ReactNode",
+      description: "Expandable body shown for the active vertical step."
+    }
+  ],
+
+  combobox: [
+    { name: "options", default: "[]", type: "ComboboxOption[]", description: "{ value, label, disabled? } options to filter and select." },
+    { name: "value", default: "—", type: "string | undefined", description: "Controlled selected value." },
+    { name: "defaultValue", default: "—", type: "string | undefined", description: "Initial value when uncontrolled." },
+    { name: "onValueChange", default: "—", type: "(value: string) => void | undefined", description: "Called when the selection changes." },
+    { name: "placeholder", default: '"Search…"', type: "string | undefined", description: "Input placeholder text." },
+    { name: "disabled", default: "—", type: "boolean | undefined", description: "Disables the combobox input and trigger." },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined`, description: "Input scale. Theme default via components.Combobox.size." },
+    { name: "invalid", default: "false", type: "boolean | undefined", description: "Applies error styling; pairs with FormField error." },
+    { name: "emptyMessage", default: '"No results found."', type: "string | undefined", description: "Shown when the filter matches no options." }
+  ],
+
+  calendar: [
+    { name: "value", default: "null", type: "Date | null | undefined", description: "Selected date. Controlled." },
+    { name: "onValueChange", default: "—", type: "(value: Date | null) => void | undefined", description: "Called when a day is selected." },
+    { name: "month", default: "—", type: "Date | undefined", description: "Visible month. Controlled." },
+    { name: "onMonthChange", default: "—", type: "(month: Date) => void | undefined", description: "Called when prev/next month is used." },
+    { name: "min", default: "—", type: "Date | undefined", description: "Earliest selectable date (inclusive)." },
+    { name: "max", default: "—", type: "Date | undefined", description: "Latest selectable date (inclusive)." },
+    { name: "disabled", default: "false", type: "boolean | undefined", description: "Disables all day buttons." }
+  ],
+
+  "date-picker": [
+    { name: "value", default: "null", type: "Date | null | undefined", description: "Selected date. Controlled." },
+    { name: "onValueChange", default: "—", type: "(value: Date | null) => void | undefined", description: "Called when a date is picked or cleared." },
+    { name: "placeholder", default: '"Select date"', type: "string | undefined", description: "Trigger label when no date is selected." },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined`, description: "Trigger scale. Theme default via components.DatePicker.size." },
+    { name: "disabled", default: "false", type: "boolean | undefined", description: "Disables the trigger button." },
+    { name: "invalid", default: "false", type: "boolean | undefined", description: "Applies error styling; pairs with FormField error." },
+    { name: "min", default: "—", type: "Date | undefined", description: "Earliest selectable date passed to Calendar." },
+    { name: "max", default: "—", type: "Date | undefined", description: "Latest selectable date passed to Calendar." },
+    { name: "id", default: "—", type: "string | undefined", description: "Trigger id; auto-linked when inside FormField." },
+    { name: "name", default: "—", type: "string | undefined", description: "Hidden input name for native submit." },
+    { name: "required", default: "—", type: "boolean | undefined", description: "Marks the control as required for assistive tech." }
+  ],
+
+  timeline: [
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined`, description: "Indicator and text scale (sm, md, lg, xl). Theme default via components.Timeline.size." },
+    {
+      name: "variant",
+      default: '"solid"',
+      type: '"solid" | "subtle" | "outline" | "plain" | undefined',
+      description: "Indicator visual style. Theme default via components.Timeline.variant."
+    },
+    { name: "color", default: '"neutral"', type: `${ZED_COLOR} | undefined`, description: "Semantic color for indicators. Theme default via components.Timeline.color." },
+    { name: "showLastSeparator", default: "false", type: "boolean | undefined", description: "When false, hides the separator on the last item." },
+    { name: "unstyled", default: "false", type: "boolean | undefined", description: "Removes recipe styles from timeline slots." },
+    { name: "children", default: "—", type: "ReactNode", description: "Timeline.Item elements." }
+  ],
+
+  "data-table": boxProps([
+    { name: "data", default: "—", type: "T[]", description: "Row data array." },
+    { name: "columns", default: "—", type: "DataTableColumn<T>[]", description: "Column definitions with header, accessor, and optional sort." },
+    { name: "variant", default: '"line"', type: '"line" | "outline" | "subtle" | undefined', description: "Inherited from Table. Theme default via components.Table.variant." },
+    { name: "size", default: '"md"', type: '"sm" | "md" | "lg" | undefined', description: "Inherited from Table. Theme default via components.Table.size." },
+    { name: "striped", default: "false", type: "boolean | undefined", description: "Zebra-striping on body rows." },
+    { name: "interactive", default: "false", type: "boolean | undefined", description: "Highlight rows on hover." },
+    { name: "stickyHeader", default: "false", type: "boolean | undefined", description: "Keep the header row visible while scrolling." },
+    { name: "showColumnBorder", default: "false", type: "boolean | undefined", description: "Vertical borders between columns." },
+    { name: "enableGlobalFilter", default: "false", type: "boolean | undefined", description: "Renders a search input in the toolbar." },
+    { name: "filterPlaceholder", default: '"Filter rows…"', type: "string | undefined", description: "Placeholder for the global filter input." },
+    { name: "globalFilter", default: "—", type: "string | undefined", description: "Controlled global filter string." },
+    { name: "onGlobalFilterChange", default: "—", type: "(value: string) => void | undefined", description: "Called when the global filter changes." },
+    { name: "initialSorting", default: "—", type: "DataTableSortingState | undefined", description: "Initial sort column and direction." },
+    { name: "getRowId", default: "—", type: "(row: T, index: number) => string | undefined", description: "Stable row key for React list rendering." },
+    { name: "toolbar", default: "—", type: "ReactNode | undefined", description: "Custom content rendered above the table beside the filter." }
+  ]),
+
+  "command-palette": [
+    { name: "open", default: "false", type: "boolean", description: "Controlled open state." },
+    { name: "onOpenChange", default: "—", type: "(open: boolean) => void", description: "Called when the palette opens or closes." },
+    { name: "items", default: "—", type: "CommandPaletteItem[]", description: "Searchable commands with id, label, group, keywords, onSelect." },
+    { name: "placeholder", default: '"Search commands…"', type: "string | undefined", description: "Search input placeholder." },
+    { name: "emptyMessage", default: '"No commands found."', type: "string | undefined", description: "Shown when the query matches no items." },
+    {
+      name: "CommandPaletteItem.group",
+      default: '"Commands"',
+      type: "string | undefined",
+      description: "Section heading for grouped results."
+    },
+    {
+      name: "CommandPaletteItem.keywords",
+      default: "—",
+      type: "string[] | undefined",
+      description: "Extra terms matched by the search filter."
+    },
+    { name: "CommandPaletteItem.disabled", default: "false", type: "boolean | undefined", description: "Non-selectable item." },
+    { name: "CommandPaletteItem.onSelect", default: "—", type: "() => void | undefined", description: "Called when the item is chosen." }
+  ],
+
+  divider: [
+    { name: "orientation", default: '"horizontal"', type: '"horizontal" | "vertical" | undefined' },
+    { name: "label", default: "—", type: "string | undefined", description: "Centered label between two rules." }
+  ],
+
+  link: boxProps([
+    { name: "color", default: '"primary"', type: `${ZED_COLOR} | undefined` },
+    { name: "external", default: "false", type: "boolean | undefined", description: "Opens in a new tab with rel=\"noopener noreferrer\"." },
+    { name: "underline", default: '"hover"', type: '"always" | "hover" | "none" | undefined' },
+    { name: "href", default: "—", type: "string | undefined" }
+  ]),
+
+  slider: [
+    { name: "value", default: "—", type: "number | number[] | undefined", description: "Controlled thumb position." },
+    { name: "defaultValue", default: "—", type: "number | number[] | undefined" },
+    { name: "onValueChange", default: "—", type: "(value: number | number[], eventDetails: object) => void | undefined" },
+    { name: "min", default: "0", type: "number | undefined" },
+    { name: "max", default: "100", type: "number | undefined" },
+    { name: "step", default: "1", type: "number | undefined" },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined` },
+    { name: "color", default: '"primary"', type: `${ZED_COLOR} | undefined` },
+    { name: "disabled", default: "—", type: "boolean | undefined" },
+    { name: "label", default: "—", type: "ReactNode | undefined", description: "Accessible label above the track." },
+    { name: "showValue", default: "false", type: "boolean | undefined", description: "Show the current value beside the label." }
+  ],
+
+  progress: [
+    { name: "value", default: "—", type: "number | null | undefined", description: "Current progress value." },
+    { name: "min", default: "0", type: "number | undefined" },
+    { name: "max", default: "100", type: "number | undefined" },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined` },
+    { name: "color", default: '"primary"', type: `${ZED_COLOR} | undefined` },
+    { name: "label", default: "—", type: "ReactNode | undefined", description: "Accessible label above the bar." },
+    { name: "showValue", default: "false", type: "boolean | undefined", description: "Show formatted value beside the label." }
+  ],
+
+  "alert-dialog": [
+    { name: "open", default: "false", type: "boolean | undefined", description: "Controlled open state on AlertDialog.Root." },
+    { name: "defaultOpen", default: "false", type: "boolean | undefined" },
+    { name: "onOpenChange", default: "—", type: "(open: boolean, eventDetails?) => void | undefined" },
+    {
+      name: "AlertDialog.Content.title",
+      default: "—",
+      type: "ReactNode | undefined",
+      description: "Confirmation heading."
+    },
+    {
+      name: "AlertDialog.Content.description",
+      default: "—",
+      type: "ReactNode | undefined",
+      description: "Supporting text for the action."
+    },
+    {
+      name: "AlertDialog.Content.confirmLabel",
+      default: '"Confirm"',
+      type: "ReactNode | undefined",
+      description: "Destructive confirm button label."
+    },
+    {
+      name: "AlertDialog.Content.cancelLabel",
+      default: '"Cancel"',
+      type: "ReactNode | undefined",
+      description: "Dismiss button label."
+    },
+    {
+      name: "AlertDialog.Content.onConfirm",
+      default: "—",
+      type: "() => void | undefined",
+      description: "Called when the confirm button is pressed."
+    }
+  ],
+
+  "native-select": [
+    { name: "options", default: "[]", type: "SelectOption[]", description: "Native option list." },
+    { name: "placeholder", default: "—", type: "string | undefined", description: "Disabled placeholder option." },
+    { name: "size", default: '"md"', type: `${ZED_SIZE} | undefined` },
+    { name: "invalid", default: "false", type: "boolean | undefined" },
+    { name: "disabled", default: "—", type: "boolean | undefined" },
+    { name: "value", default: "—", type: "string | undefined" },
+    { name: "defaultValue", default: "—", type: "string | undefined" },
+    { name: "onChange", default: "—", type: "ChangeEventHandler<HTMLSelectElement> | undefined" }
   ]
 };
 

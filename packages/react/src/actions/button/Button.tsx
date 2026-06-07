@@ -68,7 +68,7 @@ function ButtonBase(
 
   const content = (
     <>
-      {loading ? <Spinner className="zui-button__spinner" size="sm" /> : startIcon}
+      {loading ? <Spinner aria-hidden className="zui-button__spinner" size="sm" /> : startIcon}
       <span className="zui-button__label">{children}</span>
       {endIcon}
     </>
@@ -90,3 +90,5 @@ function ButtonBase(
 }
 
 export const Button = forwardRef(ButtonBase) as PolymorphicComponent<"button", ButtonOwnProps>;
+
+(Button as { displayName?: string }).displayName = "Button";

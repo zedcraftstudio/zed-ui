@@ -1,6 +1,7 @@
 // Actions
 export { Button, type ButtonOwnProps } from "./actions/button";
 export { IconButton, type IconButtonOwnProps } from "./actions/icon-button";
+export { Link, type LinkOwnProps } from "./typography/link";
 
 // Data display
 export {
@@ -42,6 +43,29 @@ export {
   type CardVariant
 } from "./data-display/card";
 export {
+  Timeline,
+  TimelineBefore,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDescription,
+  TimelineIndicator,
+  TimelineItem,
+  TimelineParts,
+  TimelineRoot,
+  TimelineSeparator,
+  TimelineTitle,
+  type TimelineBeforeOwnProps,
+  type TimelineConnectorOwnProps,
+  type TimelineContentOwnProps,
+  type TimelineDescriptionOwnProps,
+  type TimelineIndicatorOwnProps,
+  type TimelineItemOwnProps,
+  type TimelineRootOwnProps,
+  type TimelineSeparatorOwnProps,
+  type TimelineTitleOwnProps,
+  type TimelineVariant
+} from "./data-display/timeline";
+export {
   Table,
   TableBody,
   TableCaption,
@@ -73,6 +97,14 @@ export {
   type TableSize,
   type TableVariant
 } from "./data-display/table";
+export {
+  DataTable,
+  useDataTable,
+  type DataTableColumn,
+  type DataTableOwnProps,
+  type DataTableSortingState,
+  type UseDataTableOptions
+} from "./data-display/data-table/DataTable";
 
 // Feedback
 export { Alert, type AlertOwnProps, getAlertStatusIcon } from "./feedback/alert";
@@ -84,6 +116,7 @@ export {
   type BadgeAvatarProps,
   type BadgeOwnProps
 } from "./feedback/badge";
+export { Progress, type ProgressOwnProps } from "./feedback/progress";
 export { Skeleton, SkeletonCircle, SkeletonText, type SkeletonCircleOwnProps, type SkeletonOwnProps, type SkeletonTextOwnProps } from "./feedback/skeleton";
 export { Spinner, type SpinnerOwnProps } from "./feedback/spinner";
 export {
@@ -105,6 +138,7 @@ export {
 export { Checkbox, type CheckboxOwnProps, CheckboxCard, type CheckboxCardOwnProps, type CheckboxCardVariant } from "./forms/checkbox";
 export { FormField, type FormFieldOwnProps } from "./forms/form-field";
 export { Input, type InputOwnProps } from "./forms/input";
+export { Slider, type SliderOwnProps } from "./forms/slider";
 export {
   Radio,
   RadioCard,
@@ -136,6 +170,27 @@ export {
   type SelectOwnProps
 } from "./forms/select";
 export {
+  Combobox,
+  ComboboxClear,
+  ComboboxEmpty,
+  ComboboxIcon,
+  ComboboxInput,
+  ComboboxInputGroup,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxParts,
+  ComboboxPopup,
+  ComboboxPortal,
+  ComboboxPositioner,
+  ComboboxRoot,
+  ComboboxTrigger,
+  ComboboxValue,
+  type ComboboxOption,
+  type ComboboxOwnProps
+} from "./forms/combobox/Combobox";
+export { Calendar, type CalendarOwnProps } from "./forms/calendar/Calendar";
+export { DatePicker, type DatePickerOwnProps } from "./forms/date-picker/DatePicker";
+export {
   Switch,
   SwitchCheckIcon,
   SwitchCloseIcon,
@@ -145,6 +200,38 @@ export {
 export { Textarea, type TextareaOwnProps } from "./forms/textarea";
 
 // Navigation
+export {
+  Breadcrumbs,
+  BreadcrumbsItem,
+  BreadcrumbsList,
+  BreadcrumbsParts,
+  BreadcrumbsRoot,
+  BreadcrumbsSeparator,
+  type BreadcrumbItem,
+  type BreadcrumbsOwnProps
+} from "./navigation/breadcrumbs";
+export {
+  Pagination,
+  type PaginationOwnProps
+} from "./navigation/pagination";
+export {
+  Step,
+  StepButton,
+  StepContent,
+  StepIcon,
+  StepLabel,
+  Stepper,
+  StepperParts,
+  StepperStep,
+  type StepButtonOwnProps,
+  type StepContentOwnProps,
+  type StepIconOwnProps,
+  type StepLabelOwnProps,
+  type StepOwnProps,
+  type StepperOwnProps,
+  type StepperStepOwnProps,
+  type StepperStepStatus
+} from "./navigation/stepper";
 export {
   Accordion,
   AccordionHeader,
@@ -226,6 +313,21 @@ export {
 } from "./navigation/tabs";
 
 // Overlays
+export {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogParts,
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  type AlertDialogContentProps,
+  type AlertDialogRootProps,
+  type AlertDialogTriggerProps
+} from "./overlays/alert-dialog";
+export {
+  CommandPalette,
+  type CommandPaletteItem,
+  type CommandPaletteOwnProps
+} from "./overlays/command-palette/CommandPalette";
 export {
   Dialog,
   DialogBackdrop,
@@ -330,6 +432,35 @@ export {
 
 // Primitives
 export { Box, type BoxOwnProps } from "./primitives/box";
+export {
+  AppShell,
+  Sidebar,
+  SidebarDivider,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+  SidebarParts,
+  SidebarSection,
+  TopBar,
+  TopBarActions,
+  TopBarBrand,
+  TopBarParts,
+  TopBarTitle,
+  type AppShellOwnProps,
+  type SidebarFooterOwnProps,
+  type SidebarHeaderOwnProps,
+  type SidebarItemOwnProps,
+  type SidebarNavOwnProps,
+  type SidebarOwnProps,
+  type SidebarSectionOwnProps,
+  type TopBarActionsOwnProps,
+  type TopBarBrandOwnProps,
+  type TopBarOwnProps,
+  type TopBarTitleOwnProps
+} from "./layout/app-shell";
+export { Divider, type DividerOwnProps } from "./layout/divider";
+export { Paper, type PaperOwnProps, type PaperVariant } from "./layout/paper";
 export { Container, type ContainerOwnProps, type ContainerSize } from "./primitives/container";
 export { Flex, FlexParts, Spacer, type FlexOwnProps, type SpacerOwnProps } from "./primitives/flex";
 export {
@@ -399,7 +530,7 @@ export type {
   PropsOf
 } from "@zed-ui/system";
 
-export { cx, mergeRefs, dataAttr } from "@zed-ui/utils";
+export { cx, dataAttr, devWarn, mergeRefs } from "@zed-ui/utils";
 export {
   useControllableState,
   useDisclosure,

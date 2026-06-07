@@ -1,4 +1,3 @@
-export { createContext, type CreateContextReturn } from "./createContext";
 export {
   type PolymorphicComponent,
   type PolymorphicProps,

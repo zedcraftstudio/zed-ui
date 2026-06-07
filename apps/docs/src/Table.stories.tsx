@@ -148,7 +148,7 @@ export const WithFooter: Story = {
 
 export const StickyHeader: Story = {
   render: () => (
-    <TableScrollArea style={{ maxHeight: "12rem" }}>
+    <TableScrollArea aria-label="Scrollable product table" style={{ maxHeight: "12rem" }} tabIndex={0}>
       <TableRoot stickyHeader>
         <TableHeader>
           <TableRow>
@@ -181,7 +181,7 @@ export const Selection: Story = {
       <TableRoot interactive variant="outline">
         <TableHeader>
           <TableRow>
-            <TableHead>
+            <TableHead aria-label="Select rows">
               <Checkbox
                 aria-label="Select all rows"
                 checked={allSelected}

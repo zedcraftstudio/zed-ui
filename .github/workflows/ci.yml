@@ -21,7 +21,14 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm test
+      - run: pnpm test:coverage
       - run: pnpm build
+      - run: pnpm size
       - run: pnpm pack:dry-run
+      - run: pnpm --filter @zed-ui/docs build:pages
       - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm --filter @zed-ui/docs test-storybook
+      - run: pnpm audit --audit-level=high
+        continue-on-error: true
       - run: pnpm test:e2e
+      - run: pnpm test:e2e:storybook

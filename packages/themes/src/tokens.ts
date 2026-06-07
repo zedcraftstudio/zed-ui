@@ -54,6 +54,30 @@ export type ZedComponentDefaults = {
     size: string;
     variant: string;
   }>;
+  Select?: Partial<{
+    size: string;
+  }>;
+  Combobox?: Partial<{
+    size: string;
+  }>;
+  DatePicker?: Partial<{
+    size: string;
+  }>;
+  Paper?: Partial<{
+    size: string;
+    variant: string;
+  }>;
+  Pagination?: Partial<{
+    size: string;
+  }>;
+  Stepper?: Partial<{
+    size: string;
+  }>;
+  Timeline?: Partial<{
+    color: string;
+    size: string;
+    variant: string;
+  }>;
   Switch?: Partial<{
     variant: string;
     size: string;
@@ -141,8 +165,8 @@ const sharedSemantic = {
     contrast: "#ffffff"
   },
   warning: {
-    solid: "#b56b00",
-    hover: "#965800",
+    solid: "#8a4f00",
+    hover: "#744200",
     soft: "#fff1d7",
     text: "#895100",
     contrast: "#ffffff"

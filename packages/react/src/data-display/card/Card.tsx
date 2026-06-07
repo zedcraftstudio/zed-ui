@@ -140,10 +140,10 @@ export const CardDescription = forwardRef(CardDescriptionBase) as PolymorphicCom
 export type CardImageProps = ComponentPropsWithoutRef<"img">;
 
 export const CardImage = forwardRef<HTMLImageElement, CardImageProps>(function CardImage(
-  { className, ...rest },
+  { alt = "", className, ...rest },
   ref
 ) {
-  return <img ref={ref} className={cx("zui-card__image", className)} {...rest} />;
+  return <img ref={ref} alt={alt} className={cx("zui-card__image", className)} {...rest} />;
 });
 
 CardImage.displayName = "CardImage";

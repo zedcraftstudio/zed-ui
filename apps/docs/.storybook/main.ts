@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     options: {}
   },
   viteFinal: async (config) => {
+    config.base = process.env.STORYBOOK_BASE_PATH ?? "/";
     config.resolve ??= {};
     config.resolve.alias = [
       ...(Array.isArray(config.resolve.alias) ? config.resolve.alias : []),

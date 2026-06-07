@@ -8,6 +8,7 @@ import {
   Skeleton,
   SkeletonCircle,
   SkeletonText,
+  Progress,
   Spinner,
   Stack,
   Text,
@@ -456,6 +457,21 @@ export function SpinnerSection() {
         </Stack>
       </DocExample>
     </ComponentDoc>
+  );
+}
+
+export function ProgressSection() {
+  return (
+    <ComponentDoc
+      id="progress"
+      title="Progress"
+      description="Shows task completion progress."
+      usage={{
+        importCode: `import { Progress } from "@zed-ui/react"`,
+        usageCode: `<Progress label="Upload" showValue value={60} />`,
+        preview: <Progress label="Upload" showValue value={60} />
+      }}
+    />
   );
 }
 

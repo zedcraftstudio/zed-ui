@@ -31,12 +31,13 @@ jobs:
       - name: Build playground for GitHub Pages
         run: pnpm --filter @zed-ui/playground build:pages
         env:
-          # Custom domain (zed-ui.zedcraftstudio.com) serves from `/`, not `/repo/`.
-          # Override with repo variable `PAGES_BASE_PATH` if you drop the custom domain.
           VITE_BASE_PATH: ${{ vars.PAGES_BASE_PATH || '/' }}
+          VITE_STORYBOOK_URL: ${{ vars.STORYBOOK_URL || 'https://zed-ui.zedcraftstudio.com/storybook/' }}
+      - run: pnpm --filter @zed-ui/docs build:pages
+      - run: node scripts/deploy-pages.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/playground/dist
+          path: pages-dist
 
   deploy:
     needs: build

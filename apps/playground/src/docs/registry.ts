@@ -1,21 +1,58 @@
 import type { ComponentType } from "react";
 import { ButtonSection, IconButtonSection } from "./sections/actions";
-import { AvatarSection, CardSection, TableSection } from "./sections/data-display";
-import { AlertSection, BadgeSection, SkeletonSection, SpinnerSection, ToastSection } from "./sections/feedback";
+import { AvatarSection, CardSection, DataTableSection, TableSection, TimelineSection } from "./sections/data-display";
 import {
+  AlertSection,
+  BadgeSection,
+  ProgressSection,
+  SkeletonSection,
+  SpinnerSection,
+  ToastSection
+} from "./sections/feedback";
+import {
+  CalendarSection,
   CheckboxSection,
+  ComboboxSection,
+  DatePickerSection,
   FormFieldSection,
   InputSection,
   MultiSelectSection,
+  NativeSelectSection,
   RadioSection,
   SelectSection,
+  SliderSection,
   SwitchSection,
   TextareaSection
 } from "./sections/forms";
-import { BoxSection, ContainerSection, FlexSection, GridSection, StackSection } from "./sections/layout";
-import { DialogSection, DrawerSection, PopoverSection, TooltipSection } from "./sections/overlays";
-import { AccordionSection, MenuSection, TabsSection } from "./sections/navigation";
-import { HeadingSection, TextSection } from "./sections/typography";
+import {
+  AppShellSection,
+  BoxSection,
+  ContainerSection,
+  DividerSection,
+  FlexSection,
+  GridSection,
+  PaperSection,
+  SidebarSection,
+  StackSection,
+  TopBarSection
+} from "./sections/layout";
+import {
+  AlertDialogSection,
+  CommandPaletteSection,
+  DialogSection,
+  DrawerSection,
+  PopoverSection,
+  TooltipSection
+} from "./sections/overlays";
+import {
+  AccordionSection,
+  BreadcrumbsSection,
+  MenuSection,
+  PaginationSection,
+  StepperSection,
+  TabsSection
+} from "./sections/navigation";
+import { HeadingSection, LinkSection, TextSection } from "./sections/typography";
 import { COMPONENTS, getComponentById } from "../config/components";
 
 export type ComponentDocEntry = ComponentType;
@@ -23,10 +60,16 @@ export type ComponentDocEntry = ComponentType;
 export const COMPONENT_DOC_REGISTRY: Record<string, ComponentDocEntry> = {
   box: BoxSection,
   container: ContainerSection,
+  divider: DividerSection,
+  paper: PaperSection,
+  "app-shell": AppShellSection,
+  topbar: TopBarSection,
+  sidebar: SidebarSection,
   flex: FlexSection,
   grid: GridSection,
   stack: StackSection,
   heading: HeadingSection,
+  link: LinkSection,
   text: TextSection,
   button: ButtonSection,
   "icon-button": IconButtonSection,
@@ -34,25 +77,38 @@ export const COMPONENT_DOC_REGISTRY: Record<string, ComponentDocEntry> = {
   input: InputSection,
   textarea: TextareaSection,
   select: SelectSection,
+  combobox: ComboboxSection,
+  calendar: CalendarSection,
+  "date-picker": DatePickerSection,
   "multi-select": MultiSelectSection,
+  "native-select": NativeSelectSection,
   checkbox: CheckboxSection,
+  slider: SliderSection,
   switch: SwitchSection,
   radio: RadioSection,
   alert: AlertSection,
   badge: BadgeSection,
+  progress: ProgressSection,
   spinner: SpinnerSection,
   skeleton: SkeletonSection,
   toast: ToastSection,
   dialog: DialogSection,
+  "alert-dialog": AlertDialogSection,
   drawer: DrawerSection,
   popover: PopoverSection,
   tooltip: TooltipSection,
+  "command-palette": CommandPaletteSection,
   avatar: AvatarSection,
   card: CardSection,
   table: TableSection,
+  "data-table": DataTableSection,
+  timeline: TimelineSection,
   tabs: TabsSection,
   accordion: AccordionSection,
-  menu: MenuSection
+  menu: MenuSection,
+  breadcrumbs: BreadcrumbsSection,
+  pagination: PaginationSection,
+  stepper: StepperSection
 };
 
 export const ORDERED_COMPONENT_IDS = COMPONENTS.map((c) => c.id).filter((id) => id in COMPONENT_DOC_REGISTRY);

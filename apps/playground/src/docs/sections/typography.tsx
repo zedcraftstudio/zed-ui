@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Stack, Text } from "@zed-ui/react";
+import { Button, Flex, Heading, Link, Stack, Text } from "@zed-ui/react";
 import { ComponentDoc } from "../../components/ComponentDoc";
 import { DocExample } from "../../components/DocExample";
 
@@ -196,6 +196,27 @@ export function TextSection() {
           <Text color="secondary">Secondary text</Text>
           <Text color="muted">Muted text</Text>
         </Stack>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function LinkSection() {
+  return (
+    <ComponentDoc
+      id="link"
+      title="Link"
+      description="Styled anchor for inline navigation."
+      usage={{
+        importCode: `import { Link } from "@zed-ui/react"`,
+        usageCode: `<Link href="/docs">Documentation</Link>`,
+        preview: <Link href="#link">Documentation</Link>
+      }}
+    >
+      <DocExample title="External" code={`<Link external href="https://github.com/zedcraftstudio/zed-ui">GitHub</Link>`}>
+        <Link external href="https://github.com/zedcraftstudio/zed-ui">
+          GitHub
+        </Link>
       </DocExample>
     </ComponentDoc>
   );

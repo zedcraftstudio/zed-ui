@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Select, Stack } from "@zed-ui/react";
+import { FormField, Select, Stack } from "@zed-ui/react";
 
 const OPTIONS = [
   { label: "Design", value: "design" },
@@ -19,19 +19,36 @@ const meta: Meta<typeof Select> = {
 export default meta;
 type Story = StoryObj<typeof Select>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  render: (args) => (
+    <FormField label="Team" style={{ maxWidth: "16rem" }}>
+      <Select {...args} />
+    </FormField>
+  )
+};
 
 export const Sizes: Story = {
   render: () => (
     <Stack gap="3" style={{ maxWidth: "16rem" }}>
-      <Select options={OPTIONS} placeholder="Small" size="sm" />
-      <Select options={OPTIONS} placeholder="Medium" size="md" />
-      <Select options={OPTIONS} placeholder="Large" size="lg" />
+      <FormField label="Small">
+        <Select options={OPTIONS} placeholder="Small" size="sm" />
+      </FormField>
+      <FormField label="Medium">
+        <Select options={OPTIONS} placeholder="Medium" size="md" />
+      </FormField>
+      <FormField label="Large">
+        <Select options={OPTIONS} placeholder="Large" size="lg" />
+      </FormField>
     </Stack>
   )
 };
 
 export const Invalid: Story = {
+  render: (args) => (
+    <FormField error="Required" label="Team" required style={{ maxWidth: "16rem" }}>
+      <Select {...args} />
+    </FormField>
+  ),
   args: {
     invalid: true,
     placeholder: "Required field"

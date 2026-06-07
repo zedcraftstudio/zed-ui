@@ -90,7 +90,7 @@ export function LandingPage() {
 
   return (
     <div className="site-landing">
-      <section className="site-hero site-hero--chakra">
+      <section className="site-hero">
         <div className="site-hero__mesh" aria-hidden />
         <div className="site-hero__layout">
           <Stack gap="6" className="site-hero__content">

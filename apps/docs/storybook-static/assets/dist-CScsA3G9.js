@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CkXrEl7v.js";var t=e();function n({size:e=16,...n}){return(0,t.jsx)(`svg`,{width:e,height:e,viewBox:`0 0 16 16`,fill:`none`,stroke:`currentColor`,strokeWidth:`2`,"aria-hidden":!0,...n,children:(0,t.jsx)(`path`,{d:`M8 3v10M3 8h10`,strokeLinecap:`round`})})}export{n as t};

@@ -1,7 +1,8 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import { cx, dataAttr } from "@zed-ui/utils";
+import { forwardRef, useEffect, type ComponentPropsWithoutRef } from "react";
+import { cx, dataAttr, devWarn } from "@zed-ui/utils";
 import type { ZedSize } from "../../shared/types";
 import { Box } from "../../primitives/box/Box";
+import { useFormFieldControlProps } from "../form-field/FormFieldContext";
 import type { SelectOption } from "./Select";
 
 export type NativeSelectOwnProps = Omit<
@@ -21,9 +22,21 @@ export type NativeSelectOwnProps = Omit<
  */
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectOwnProps>(
   function NativeSelect(
-    { className, invalid = false, options = [], placeholder, size = "md", ...rest },
+    { className, invalid: invalidProp = false, options = [], placeholder, size = "md", ...rest },
     ref
   ) {
+    useEffect(() => {
+      devWarn("NativeSelect is deprecated. Use Select or MultiSelect instead.");
+    }, []);
+
+    const { invalid, id: fieldId, required: fieldRequired, ...fieldAriaProps } =
+      useFormFieldControlProps({
+        id: rest.id,
+        invalid: invalidProp ? true : undefined,
+        required: rest.required
+      });
+    const { id, required, ...selectRest } = rest;
+
     return (
       <Box
         ref={ref}
@@ -31,7 +44,10 @@ export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectOwnProps>(
         className={cx("zui-select", "zui-select--native", className)}
         data-invalid={dataAttr(invalid)}
         data-size={size}
-        {...rest}
+        {...fieldAriaProps}
+        {...selectRest}
+        id={fieldId ?? id}
+        required={fieldRequired ?? required}
       >
         {placeholder ? (
           <option disabled value="">

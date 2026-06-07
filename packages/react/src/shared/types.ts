@@ -20,3 +20,4 @@ export type TabsVariant = "enclosed" | "line" | "outline" | "plain" | "subtle";
 export type TabsSize = "lg" | "md" | "sm";
 export type TabsJustify = "center" | "end" | "start";
 export type TabsActivationMode = "automatic" | "manual";
+export type TimelineVariant = "outline" | "plain" | "solid" | "subtle";

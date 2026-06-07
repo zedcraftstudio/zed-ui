@@ -1,0 +1,338 @@
+.zui-button {
+  --zui-button-bg: var(--zui-colors-primary-solid);
+  --zui-button-bg-hover: var(--zui-colors-primary-hover);
+  --zui-button-border: transparent;
+  --zui-button-color: var(--zui-colors-primary-contrast);
+  align-items: center;
+  appearance: none;
+  background: var(--zui-button-bg);
+  border: 1px solid var(--zui-button-border);
+  border-radius: var(--zui-radii-md);
+  color: var(--zui-button-color);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: var(--zui-fontWeights-medium);
+  gap: var(--zui-space-2);
+  justify-content: center;
+  line-height: 1;
+  min-inline-size: 0;
+  outline: none;
+  position: relative;
+  text-decoration: none;
+  transition:
+    background-color var(--zui-motion-duration) var(--zui-motion-easing),
+    border-color var(--zui-motion-duration) var(--zui-motion-easing),
+    box-shadow var(--zui-motion-duration) var(--zui-motion-easing),
+    color var(--zui-motion-duration) var(--zui-motion-easing),
+    transform 120ms var(--zui-motion-easing);
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.zui-button[data-color="neutral"] {
+  --zui-button-bg: var(--zui-colors-neutral-solid);
+  --zui-button-bg-hover: var(--zui-colors-neutral-hover);
+  --zui-button-color: var(--zui-colors-neutral-contrast);
+}
+.zui-button[data-color="success"] {
+  --zui-button-bg: var(--zui-colors-success-solid);
+  --zui-button-bg-hover: var(--zui-colors-success-hover);
+  --zui-button-color: var(--zui-colors-success-contrast);
+}
+.zui-button[data-color="warning"] {
+  --zui-button-bg: var(--zui-colors-warning-solid);
+  --zui-button-bg-hover: var(--zui-colors-warning-hover);
+  --zui-button-color: var(--zui-colors-warning-contrast);
+}
+.zui-button[data-color="danger"] {
+  --zui-button-bg: var(--zui-colors-danger-solid);
+  --zui-button-bg-hover: var(--zui-colors-danger-hover);
+  --zui-button-color: var(--zui-colors-danger-contrast);
+}
+.zui-button[data-color="info"] {
+  --zui-button-bg: var(--zui-colors-info-solid);
+  --zui-button-bg-hover: var(--zui-colors-info-hover);
+  --zui-button-color: var(--zui-colors-info-contrast);
+}
+.zui-button[data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-primary-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-primary-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-primary-text);
+}
+.zui-button[data-color="neutral"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-neutral-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-neutral-soft), #000 8%);
+  --zui-button-color: var(--zui-colors-neutral-text);
+}
+.zui-button[data-color="success"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-success-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-success-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-success-text);
+}
+.zui-button[data-color="warning"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-warning-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-warning-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-warning-text);
+}
+.zui-button[data-color="danger"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-danger-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-danger-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-danger-text);
+}
+.zui-button[data-color="info"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-info-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-info-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-info-text);
+}
+.zui-button[data-variant="outline"] {
+  --zui-button-bg: transparent;
+  --zui-button-bg-hover: var(--zui-colors-primary-soft);
+  --zui-button-border: var(--zui-colors-border-default);
+  --zui-button-color: var(--zui-colors-primary-text);
+}
+.zui-button[data-variant="outline"]:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: currentColor;
+}
+.zui-button[data-variant="ghost"] {
+  --zui-button-bg: transparent;
+  --zui-button-bg-hover: var(--zui-colors-primary-soft);
+  --zui-button-color: var(--zui-colors-primary-text);
+}
+.zui-button[data-variant="link"] {
+  --zui-button-bg: transparent;
+  --zui-button-bg-hover: transparent;
+  --zui-button-border: transparent;
+  --zui-button-color: var(--zui-colors-primary-text);
+  padding-inline: 0;
+  text-decoration: underline;
+}
+.zui-button[data-variant="link"]:hover:not(:disabled):not([aria-disabled="true"]) {
+  color: var(--zui-colors-primary-hover);
+}
+.zui-button[data-size="xs"] {
+  block-size: var(--zui-sizes-xs);
+  font-size: var(--zui-fontSizes-xs);
+  padding-inline: var(--zui-space-2);
+}
+.zui-button[data-size="sm"] {
+  block-size: var(--zui-sizes-sm);
+  font-size: var(--zui-fontSizes-sm);
+  padding-inline: var(--zui-space-3);
+}
+.zui-button[data-size="md"] {
+  block-size: var(--zui-sizes-md);
+  font-size: var(--zui-fontSizes-sm);
+  padding-inline: var(--zui-space-3);
+}
+.zui-button[data-size="lg"] {
+  block-size: var(--zui-sizes-lg);
+  font-size: var(--zui-fontSizes-md);
+  padding-inline: var(--zui-space-4);
+}
+.zui-button[data-size="xl"] {
+  block-size: var(--zui-sizes-xl);
+  font-size: var(--zui-fontSizes-lg);
+  padding-inline: var(--zui-space-5);
+}
+.zui-button:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--zui-button-bg-hover);
+}
+.zui-button:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: translateY(1px);
+}
+.zui-button:focus-visible {
+  box-shadow: var(--zui-shadows-focus);
+}
+.zui-button:disabled,
+.zui-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.zui-button--full {
+  inline-size: 100%;
+}
+.zui-icon-button {
+  --zui-button-bg: var(--zui-colors-primary-solid);
+  --zui-button-bg-hover: var(--zui-colors-primary-hover);
+  --zui-button-border: transparent;
+  --zui-button-color: var(--zui-colors-primary-contrast);
+  align-items: center;
+  appearance: none;
+  background: var(--zui-button-bg);
+  block-size: var(--zui-sizes-md);
+  border: 1px solid var(--zui-button-border);
+  color: var(--zui-button-color);
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font: inherit;
+  inline-size: var(--zui-sizes-md);
+  justify-content: center;
+  line-height: 0;
+  min-inline-size: 0;
+  outline: none;
+  padding: 0;
+  position: relative;
+  text-decoration: none;
+  transition:
+    background-color var(--zui-motion-duration) var(--zui-motion-easing),
+    border-color var(--zui-motion-duration) var(--zui-motion-easing),
+    border-radius var(--zui-motion-duration) var(--zui-motion-easing),
+    box-shadow var(--zui-motion-duration) var(--zui-motion-easing),
+    color var(--zui-motion-duration) var(--zui-motion-easing),
+    transform 120ms var(--zui-motion-easing);
+  user-select: none;
+  vertical-align: middle;
+}
+.zui-icon-button svg {
+  display: block;
+  flex-shrink: 0;
+}
+.zui-icon-button[data-color="neutral"] {
+  --zui-button-bg: var(--zui-colors-neutral-solid);
+  --zui-button-bg-hover: var(--zui-colors-neutral-hover);
+  --zui-button-color: var(--zui-colors-neutral-contrast);
+}
+.zui-icon-button[data-color="success"] {
+  --zui-button-bg: var(--zui-colors-success-solid);
+  --zui-button-bg-hover: var(--zui-colors-success-hover);
+  --zui-button-color: var(--zui-colors-success-contrast);
+}
+.zui-icon-button[data-color="warning"] {
+  --zui-button-bg: var(--zui-colors-warning-solid);
+  --zui-button-bg-hover: var(--zui-colors-warning-hover);
+  --zui-button-color: var(--zui-colors-warning-contrast);
+}
+.zui-icon-button[data-color="danger"] {
+  --zui-button-bg: var(--zui-colors-danger-solid);
+  --zui-button-bg-hover: var(--zui-colors-danger-hover);
+  --zui-button-color: var(--zui-colors-danger-contrast);
+}
+.zui-icon-button[data-color="info"] {
+  --zui-button-bg: var(--zui-colors-info-solid);
+  --zui-button-bg-hover: var(--zui-colors-info-hover);
+  --zui-button-color: var(--zui-colors-info-contrast);
+}
+.zui-icon-button[data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-primary-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-primary-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-primary-text);
+}
+.zui-icon-button[data-color="neutral"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-neutral-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-neutral-soft), #000 8%);
+  --zui-button-color: var(--zui-colors-neutral-text);
+}
+.zui-icon-button[data-color="success"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-success-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-success-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-success-text);
+}
+.zui-icon-button[data-color="warning"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-warning-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-warning-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-warning-text);
+}
+.zui-icon-button[data-color="danger"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-danger-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-danger-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-danger-text);
+}
+.zui-icon-button[data-color="info"][data-variant="soft"] {
+  --zui-button-bg: var(--zui-colors-info-soft);
+  --zui-button-bg-hover: color-mix(in srgb, var(--zui-colors-info-soft), #000 6%);
+  --zui-button-color: var(--zui-colors-info-text);
+}
+.zui-icon-button[data-variant="outline"] {
+  --zui-button-bg: transparent;
+  --zui-button-bg-hover: var(--zui-colors-primary-soft);
+  --zui-button-border: var(--zui-colors-border-default);
+  --zui-button-color: var(--zui-colors-primary-text);
+}
+.zui-icon-button[data-variant="outline"]:hover:not(:disabled):not([aria-disabled="true"]) {
+  border-color: currentColor;
+}
+.zui-icon-button[data-variant="ghost"] {
+  --zui-button-bg: transparent;
+  --zui-button-bg-hover: var(--zui-colors-primary-soft);
+  --zui-button-color: var(--zui-colors-primary-text);
+}
+.zui-icon-button[data-variant="link"] {
+  --zui-button-bg: transparent;
+  --zui-button-bg-hover: transparent;
+  --zui-button-border: transparent;
+  --zui-button-color: var(--zui-colors-primary-text);
+}
+.zui-icon-button[data-variant="link"]:hover:not(:disabled):not([aria-disabled="true"]) {
+  color: var(--zui-colors-primary-hover);
+}
+.zui-icon-button[data-size="xs"] {
+  block-size: var(--zui-sizes-xs);
+  inline-size: var(--zui-sizes-xs);
+}
+.zui-icon-button[data-size="sm"] {
+  block-size: var(--zui-sizes-sm);
+  inline-size: var(--zui-sizes-sm);
+}
+.zui-icon-button[data-size="md"] {
+  block-size: var(--zui-sizes-md);
+  inline-size: var(--zui-sizes-md);
+}
+.zui-icon-button[data-size="lg"] {
+  block-size: var(--zui-sizes-lg);
+  inline-size: var(--zui-sizes-lg);
+}
+.zui-icon-button[data-size="xl"] {
+  block-size: var(--zui-sizes-xl);
+  inline-size: var(--zui-sizes-xl);
+}
+.zui-icon-button[data-radius="none"] {
+  border-radius: var(--zui-radii-none);
+}
+.zui-icon-button[data-radius="xs"] {
+  border-radius: var(--zui-radii-xs);
+}
+.zui-icon-button[data-radius="sm"] {
+  border-radius: var(--zui-radii-sm);
+}
+.zui-icon-button[data-radius="md"] {
+  border-radius: var(--zui-radii-md);
+}
+.zui-icon-button[data-radius="lg"] {
+  border-radius: var(--zui-radii-lg);
+}
+.zui-icon-button[data-radius="xl"] {
+  border-radius: var(--zui-radii-xl);
+}
+.zui-icon-button[data-radius="full"] {
+  border-radius: var(--zui-radii-full);
+}
+.zui-icon-button:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--zui-button-bg-hover);
+}
+.zui-icon-button:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: translateY(1px);
+}
+.zui-icon-button:focus-visible {
+  box-shadow: var(--zui-shadows-focus);
+}
+.zui-icon-button:disabled,
+.zui-icon-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.zui-button__spinner {
+  animation: zui-spin 800ms linear infinite;
+  block-size: 1em;
+  border: 2px solid currentColor;
+  border-block-start-color: transparent;
+  border-radius: var(--zui-radii-full);
+  inline-size: 1em;
+}
+@keyframes zui-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+

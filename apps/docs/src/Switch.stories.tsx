@@ -97,7 +97,7 @@ export const WithDescription: Story = {
 };
 
 export const Disabled: Story = {
-  args: { defaultChecked: true, disabled: true }
+  args: { defaultChecked: true, disabled: true, label: "Activate notifications" }
 };
 
 export const Invalid: Story = {

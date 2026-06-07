@@ -63,13 +63,13 @@ export const Sizes: Story = {
 export const Counter: Story = {
   render: () => (
     <Stack direction="row" gap="2" wrap="wrap">
-      <Badge color="danger" variant="solid">
+      <Badge aria-label="3 unread messages" color="danger" variant="solid">
         3
       </Badge>
-      <Badge color="danger" max={99} variant="solid">
+      <Badge aria-label="120 unread messages" color="danger" max={99} variant="solid">
         120
       </Badge>
-      <Badge color="primary" variant="solid">
+      <Badge aria-label="99 plus unread messages" color="primary" variant="solid">
         99+
       </Badge>
     </Stack>
@@ -95,9 +95,15 @@ export const StatusDot: Story = {
 export const Dot: Story = {
   render: () => (
     <Stack direction="row" gap="3" align="center">
-      <Badge aria-label="Online" color="success" variant="dot" />
-      <Badge aria-label="Away" color="warning" variant="dot" />
-      <Badge aria-label="Offline" color="neutral" variant="dot" />
+      <Badge color="success" variant="dot">
+        Online
+      </Badge>
+      <Badge color="warning" variant="dot">
+        Away
+      </Badge>
+      <Badge color="neutral" variant="dot">
+        Offline
+      </Badge>
     </Stack>
   )
 };
@@ -139,7 +145,12 @@ export const Removable: Story = {
     return (
       <Stack direction="row" gap="2" wrap="wrap">
         {tags.map((tag) => (
-          <Badge key={tag} color="primary" onClose={() => setTags((current) => current.filter((item) => item !== tag))}>
+          <Badge
+            key={tag}
+            aria-label={`${tag} tag`}
+            color="primary"
+            onClose={() => setTags((current) => current.filter((item) => item !== tag))}
+          >
             {tag}
           </Badge>
         ))}

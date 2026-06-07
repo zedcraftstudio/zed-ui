@@ -45,3 +45,5 @@ function BoxBase(props: PolymorphicProps<ElementType, BoxOwnProps>, ref: Ref<HTM
 }
 
 export const Box = forwardRef(BoxBase) as PolymorphicComponent<"div", BoxOwnProps>;
+
+(Box as { displayName?: string }).displayName = "Box";

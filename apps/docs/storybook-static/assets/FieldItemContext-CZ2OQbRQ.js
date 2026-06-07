@@ -1,1 +1,0 @@
-import{s as e}from"./iframe-Fsv4RreF.js";import{t}from"./react-Dv9OFCKq.js";var n=e(t()),r=n.createContext({disabled:!1});function i(){return n.useContext(r)}export{i as t};

@@ -1,7 +1,10 @@
+import { axe, toHaveNoViolations } from "jest-axe";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "@zed-ui/themes";
 import { Button } from "./Button";
+
+expect.extend(toHaveNoViolations);
 
 describe("Button", () => {
   it("renders a typed button by default", () => {
@@ -49,5 +52,14 @@ describe("Button", () => {
     const link = screen.getByRole("link", { name: "Home" });
     expect(link.getAttribute("href")).toBe("/home");
     expect(link.getAttribute("data-variant")).toBe("link");
+  });
+
+  it("has no axe violations", async () => {
+    const { container } = render(
+      <ThemeProvider>
+        <Button>Save</Button>
+      </ThemeProvider>
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

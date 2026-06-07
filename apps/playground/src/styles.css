@@ -1576,7 +1576,11 @@ a.docs-install-framework {
 .site-preview-card__slider {
   block-size: 0.375rem;
   border-radius: var(--zui-radii-full);
-  background: linear-gradient(90deg, var(--zui-colors-primary-solid) 40%, var(--zui-colors-border-subtle) 40%);
+  background: linear-gradient(
+    90deg,
+    var(--zui-colors-primary-solid) 40%,
+    var(--zui-colors-border-subtle) 40%
+  );
 }
 
 .site-preview-card__row {
@@ -1741,8 +1745,6 @@ a.docs-install-framework {
   line-height: 1.6;
 }
 
-/* ─── Chakra-inspired marketing + docs extensions ─── */
-
 .site-banner {
   border-bottom: 1px solid var(--zui-colors-border-subtle);
   background: color-mix(in srgb, var(--zui-colors-primary-soft) 65%, var(--zui-colors-bg-canvas));
@@ -1787,7 +1789,7 @@ a.docs-install-framework {
   color: var(--zui-colors-primary-text);
 }
 
-.site-hero--chakra {
+.site-landing .site-hero {
   text-align: start;
   padding-block: clamp(3rem, 7vw, 5rem);
   padding-inline: var(--zui-page-gutter);
@@ -1797,9 +1799,21 @@ a.docs-install-framework {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--zui-colors-primary-soft), transparent 35%), transparent 45%),
-    radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--zui-colors-info-soft), transparent 40%), transparent 40%),
-    radial-gradient(ellipse 70% 50% at 50% 100%, color-mix(in srgb, var(--zui-colors-border-subtle), transparent 50%), transparent);
+    radial-gradient(
+      circle at 15% 20%,
+      color-mix(in srgb, var(--zui-colors-primary-soft), transparent 35%),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 10%,
+      color-mix(in srgb, var(--zui-colors-info-soft), transparent 40%),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 50% 100%,
+      color-mix(in srgb, var(--zui-colors-border-subtle), transparent 50%),
+      transparent
+    );
   pointer-events: none;
 }
 

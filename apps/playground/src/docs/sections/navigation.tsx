@@ -1,7 +1,25 @@
 import { useRef, useState, type ComponentProps, type CSSProperties } from "react";
-import { Box, Accordion, Button, Menu, Stack, TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger, Text } from "@zed-ui/react";
+import {
+  Accordion,
+  Box,
+  BreadcrumbsItem,
+  BreadcrumbsRoot,
+  BreadcrumbsSeparator,
+  Button,
+  Menu,
+  Pagination,
+  Stack,
+  Stepper,
+  TabsContent,
+  TabsIndicator,
+  TabsList,
+  TabsRoot,
+  TabsTrigger,
+  Text
+} from "@zed-ui/react";
 import { ComponentDoc } from "../../components/ComponentDoc";
 import { DocExample } from "../../components/DocExample";
+import { StatePreview } from "../shared";
 
 const MEMBERS_TABS_CONTENT = `  <Tabs.Content value="members">Manage your team members</Tabs.Content>
   <Tabs.Content value="projects">Manage your projects</Tabs.Content>
@@ -463,6 +481,293 @@ export function MenuSection() {
             </Menu.Positioner>
           </Menu.Portal>
         </Menu.Root>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function BreadcrumbsSection() {
+  return (
+    <ComponentDoc
+      id="breadcrumbs"
+      title="Breadcrumbs"
+      description="Shows the user's location within a hierarchy."
+      usage={{
+        importCode: `import { BreadcrumbsRoot } from "@zed-ui/react"`,
+        usageCode: `const items = [
+  { href: "/", label: "Home" },
+  { href: "/docs", label: "Docs" },
+  { label: "Breadcrumbs" }
+];
+
+<BreadcrumbsRoot items={items} />`,
+        preview: (
+          <BreadcrumbsRoot items={[{ href: "/", label: "Home" }, { label: "Components" }]} />
+        )
+      }}
+    >
+      <DocExample
+        title="Items API"
+        code={`<BreadcrumbsRoot
+  items={[
+    { href: "/", label: "Home" },
+    { href: "/docs", label: "Docs" },
+    { label: "Current" }
+  ]}
+/>`}
+      >
+        <BreadcrumbsRoot
+          items={[
+            { href: "/", label: "Home" },
+            { href: "/docs", label: "Docs" },
+            { label: "Current" }
+          ]}
+        />
+      </DocExample>
+
+      <DocExample
+        title="Long path"
+        code={`<BreadcrumbsRoot items={longPathItems} />`}
+      >
+        <BreadcrumbsRoot
+          items={[
+            { href: "/", label: "Home" },
+            { href: "/products", label: "Products" },
+            { href: "/products/widgets", label: "Widgets" },
+            { label: "Settings" }
+          ]}
+        />
+      </DocExample>
+
+      <DocExample
+        title="Compound parts"
+        code={`<BreadcrumbsRoot>
+  <BreadcrumbsItem href="/">Home</BreadcrumbsItem>
+  <BreadcrumbsSeparator />
+  <BreadcrumbsItem current>Current</BreadcrumbsItem>
+</BreadcrumbsRoot>`}
+      >
+        <BreadcrumbsRoot>
+          <BreadcrumbsItem href="/">Home</BreadcrumbsItem>
+          <BreadcrumbsSeparator />
+          <BreadcrumbsItem current>Current</BreadcrumbsItem>
+        </BreadcrumbsRoot>
+      </DocExample>
+
+      <DocExample
+        title="Custom separator"
+        code={`<BreadcrumbsRoot items={items} separator="›" />`}
+      >
+        <BreadcrumbsRoot
+          items={[{ href: "/", label: "Home" }, { label: "Docs" }]}
+          separator="›"
+        />
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function PaginationSection() {
+  const [page, setPage] = useState(2);
+  const [manyPage, setManyPage] = useState(12);
+
+  return (
+    <ComponentDoc
+      id="pagination"
+      title="Pagination"
+      description="Navigate between pages of content."
+      usage={{
+        importCode: `import { useState } from "react";
+import { Pagination } from "@zed-ui/react"`,
+        usageCode: `const [page, setPage] = useState(1);
+
+<Pagination count={10} page={page} onPageChange={setPage} />`,
+        preview: <Pagination count={10} page={page} onPageChange={setPage} />
+      }}
+    >
+      <DocExample
+        title="Controlled"
+        code={`const [page, setPage] = useState(2);
+
+<Pagination count={10} page={page} onPageChange={setPage} />`}
+        footer={<StatePreview value={page} />}
+      >
+        <Pagination count={10} page={page} onPageChange={setPage} />
+      </DocExample>
+
+      <DocExample
+        title="Sizes"
+        code={`<Pagination count={5} page={2} size="sm" onPageChange={…} />
+<Pagination count={5} page={2} size="md" onPageChange={…} />
+<Pagination count={5} page={2} size="lg" onPageChange={…} />`}
+      >
+        <Stack gap="3">
+          <Pagination count={5} page={2} size="sm" onPageChange={() => undefined} />
+          <Pagination count={5} page={2} size="md" onPageChange={() => undefined} />
+          <Pagination count={5} page={2} size="lg" onPageChange={() => undefined} />
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Many pages"
+        description="Ellipsis appears when page count exceeds the visible window."
+        code={`<Pagination count={50} page={page} onPageChange={setPage} />`}
+        footer={<StatePreview value={manyPage} />}
+      >
+        <Pagination count={50} page={manyPage} onPageChange={setManyPage} />
+      </DocExample>
+
+      <DocExample
+        title="Disabled"
+        code={`<Pagination count={10} disabled page={3} onPageChange={…} />`}
+      >
+        <Pagination count={10} disabled page={3} onPageChange={() => undefined} />
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function StepperSection() {
+  const [activeStep, setActiveStep] = useState(1);
+  const steps = ["Select campaign settings", "Create an ad group", "Create an ad"];
+
+  return (
+    <ComponentDoc
+      id="stepper"
+      title="Stepper"
+      description="Displays progress through a numbered sequence of logical steps."
+      usage={{
+        importCode: `import { Stepper } from "@zed-ui/react"`,
+        usageCode: `<Stepper activeStep={1}>
+  <Stepper.Step>
+    <Stepper.StepLabel>Select campaign settings</Stepper.StepLabel>
+  </Stepper.Step>
+  <Stepper.Step>
+    <Stepper.StepLabel optional="Optional">Create an ad group</Stepper.StepLabel>
+  </Stepper.Step>
+  <Stepper.Step>
+    <Stepper.StepLabel>Create an ad</Stepper.StepLabel>
+  </Stepper.Step>
+</Stepper>`,
+        preview: (
+          <Stepper activeStep={1} style={{ maxWidth: "40rem" }}>
+            {steps.map((label) => (
+              <Stepper.Step key={label}>
+                <Stepper.StepLabel>{label}</Stepper.StepLabel>
+              </Stepper.Step>
+            ))}
+          </Stepper>
+        )
+      }}
+    >
+      <DocExample
+        title="Horizontal"
+        code={`<Stepper activeStep={1}>
+  <Stepper.Step>
+    <Stepper.StepLabel>Select campaign settings</Stepper.StepLabel>
+  </Stepper.Step>
+  <Stepper.Step>
+    <Stepper.StepLabel>Create an ad group</Stepper.StepLabel>
+  </Stepper.Step>
+  <Stepper.Step>
+    <Stepper.StepLabel>Create an ad</Stepper.StepLabel>
+  </Stepper.Step>
+</Stepper>`}
+      >
+        <Stepper activeStep={1} style={{ maxWidth: "40rem" }}>
+          {steps.map((label) => (
+            <Stepper.Step key={label}>
+              <Stepper.StepLabel>{label}</Stepper.StepLabel>
+            </Stepper.Step>
+          ))}
+        </Stepper>
+      </DocExample>
+
+      <DocExample
+        title="Alternative label"
+        code={`<Stepper activeStep={1} alternativeLabel>…</Stepper>`}
+      >
+        <Stepper activeStep={1} alternativeLabel style={{ maxWidth: "40rem" }}>
+          {steps.map((label) => (
+            <Stepper.Step key={label}>
+              <Stepper.StepLabel>{label}</Stepper.StepLabel>
+            </Stepper.Step>
+          ))}
+        </Stepper>
+      </DocExample>
+
+      <DocExample
+        title="Optional and error"
+        code={`<Stepper.Step>
+  <Stepper.StepLabel optional="Optional">Select campaign settings</Stepper.StepLabel>
+</Stepper.Step>
+<Stepper.Step>
+  <Stepper.StepLabel description="Alert message" error>Create an ad group</Stepper.StepLabel>
+</Stepper.Step>`}
+      >
+        <Stepper activeStep={1} style={{ maxWidth: "40rem" }}>
+          <Stepper.Step>
+            <Stepper.StepLabel optional="Optional">Select campaign settings</Stepper.StepLabel>
+          </Stepper.Step>
+          <Stepper.Step>
+            <Stepper.StepLabel description="Alert message" error>
+              Create an ad group
+            </Stepper.StepLabel>
+          </Stepper.Step>
+          <Stepper.Step>
+            <Stepper.StepLabel>Create an ad</Stepper.StepLabel>
+          </Stepper.Step>
+        </Stepper>
+      </DocExample>
+
+      <DocExample
+        title="Vertical with content"
+        code={`<Stepper activeStep={1} orientation="vertical">
+  <Stepper.Step>
+    <Stepper.StepLabel>Select campaign settings</Stepper.StepLabel>
+    <Stepper.StepContent>Body copy for the active step.</Stepper.StepContent>
+  </Stepper.Step>
+</Stepper>`}
+      >
+        <Stepper activeStep={1} orientation="vertical" style={{ maxWidth: "28rem" }}>
+          <Stepper.Step>
+            <Stepper.StepLabel>Select campaign settings</Stepper.StepLabel>
+            <Stepper.StepContent>For each ad campaign that you create, you can control spend and targeting.</Stepper.StepContent>
+          </Stepper.Step>
+          <Stepper.Step>
+            <Stepper.StepLabel>Create an ad group</Stepper.StepLabel>
+            <Stepper.StepContent>An ad group contains one or more ads which target a shared set of keywords.</Stepper.StepContent>
+          </Stepper.Step>
+          <Stepper.Step>
+            <Stepper.StepLabel>Create an ad</Stepper.StepLabel>
+          </Stepper.Step>
+        </Stepper>
+      </DocExample>
+
+      <DocExample
+        title="Controlled"
+        code={`const [activeStep, setActiveStep] = useState(1);
+
+<Stack gap="2">
+  <Stepper activeStep={activeStep}>…</Stepper>
+  <Button size="sm" onClick={() => setActiveStep((s) => Math.min(s + 1, 2))}>
+    Next
+  </Button>
+</Stack>`}
+        footer={<StatePreview value={activeStep} />}
+      >
+        <Stack gap="3">
+          <Stepper activeStep={activeStep} style={{ maxWidth: "40rem" }}>
+            {steps.map((label) => (
+              <Stepper.Step key={label}>
+                <Stepper.StepLabel>{label}</Stepper.StepLabel>
+              </Stepper.Step>
+            ))}
+          </Stepper>
+          <Button size="sm" onClick={() => setActiveStep((step) => Math.min(step + 1, 2))}>
+            Next step
+          </Button>
+        </Stack>
       </DocExample>
     </ComponentDoc>
   );

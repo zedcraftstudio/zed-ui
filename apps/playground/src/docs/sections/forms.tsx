@@ -1,14 +1,19 @@
 import { useState } from "react";
 import {
+  Calendar,
   Checkbox,
   CheckboxCard,
+  Combobox,
+  DatePicker,
   FormField,
   Input,
   MultiSelect,
   Radio,
   RadioCard,
   RadioGroup,
+  NativeSelect,
   Select,
+  Slider,
   Stack,
   Switch,
   SwitchCheckIcon,
@@ -924,6 +929,283 @@ export function RadioSection() {
           <Radio value="pro" label="Pro" />
           <Radio value="enterprise" label="Enterprise" />
         </RadioGroup>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function SliderSection() {
+  return (
+    <ComponentDoc
+      id="slider"
+      title="Slider"
+      description="Range control for selecting a numeric value."
+      usage={{
+        importCode: `import { Slider } from "@zed-ui/react"`,
+        usageCode: `<Slider defaultValue={40} label="Volume" showValue />`,
+        preview: <Slider defaultValue={40} label="Volume" showValue />
+      }}
+    />
+  );
+}
+
+export function NativeSelectSection() {
+  return (
+    <ComponentDoc
+      id="native-select"
+      title="NativeSelect"
+      description="Deprecated native HTML select. Prefer Select or MultiSelect."
+      usage={{
+        importCode: `import { NativeSelect } from "@zed-ui/react"`,
+        usageCode: `<NativeSelect options={[{ value: "a", label: "Option A" }]} placeholder="Choose…" />`,
+        preview: (
+          <NativeSelect
+            options={[
+              { value: "a", label: "Option A" },
+              { value: "b", label: "Option B" }
+            ]}
+            placeholder="Choose…"
+          />
+        )
+      }}
+    />
+  );
+}
+
+const FRAMEWORK_OPTIONS = [
+  { label: "React", value: "react" },
+  { label: "Vue", value: "vue" },
+  { label: "Svelte", value: "svelte" },
+  { label: "Angular", value: "angular", disabled: true }
+];
+
+export function ComboboxSection() {
+  const [framework, setFramework] = useState("react");
+
+  return (
+    <ComponentDoc
+      id="combobox"
+      title="Combobox"
+      description="Filterable select for long option lists. Built on Base UI Combobox."
+      usage={{
+        importCode: `import { useState } from "react";
+import { Combobox } from "@zed-ui/react"`,
+        usageCode: `const options = [
+  { label: "React", value: "react" },
+  { label: "Vue", value: "vue" }
+];
+const [value, setValue] = useState("react");
+
+<Combobox
+  options={options}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Search frameworks…"
+/>`,
+        preview: (
+          <Combobox
+            defaultValue="react"
+            options={FRAMEWORK_OPTIONS}
+            placeholder="Search frameworks…"
+          />
+        )
+      }}
+    >
+      <DocExample
+        title="Controlled"
+        code={`const [value, setValue] = useState("react");
+
+<Combobox
+  options={options}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Search frameworks…"
+/>`}
+        footer={<StatePreview value={framework} />}
+      >
+        <Combobox
+          options={FRAMEWORK_OPTIONS}
+          placeholder="Search frameworks…"
+          value={framework}
+          onValueChange={(next) => setFramework(next ?? "")}
+        />
+      </DocExample>
+
+      <DocExample
+        title="Sizes"
+        code={`<Combobox size="sm" options={options} placeholder="sm" />
+<Combobox size="md" options={options} placeholder="md" />
+<Combobox size="lg" options={options} placeholder="lg" />`}
+      >
+        <Stack gap="3" style={{ maxWidth: "20rem" }}>
+          <Combobox options={FRAMEWORK_OPTIONS} placeholder="Small" size="sm" />
+          <Combobox defaultValue="react" options={FRAMEWORK_OPTIONS} placeholder="Medium" size="md" />
+          <Combobox options={FRAMEWORK_OPTIONS} placeholder="Large" size="lg" />
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Invalid"
+        code={`<Combobox invalid options={options} placeholder="Choose…" />`}
+      >
+        <Combobox invalid options={FRAMEWORK_OPTIONS} placeholder="Choose framework" />
+      </DocExample>
+
+      <DocExample
+        title="Disabled options"
+        code={`<Combobox options={[{ label: "Angular", value: "angular", disabled: true }, …]} />`}
+      >
+        <Combobox options={FRAMEWORK_OPTIONS} placeholder="Angular is disabled" />
+      </DocExample>
+
+      <DocExample
+        title="Inside FormField"
+        code={`<FormField label="Framework" required>
+  <Combobox options={options} placeholder="Search…" />
+</FormField>`}
+      >
+        <FormField description="Type to filter the list." label="Framework" required>
+          <Combobox options={FRAMEWORK_OPTIONS} placeholder="Search frameworks…" />
+        </FormField>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function CalendarSection() {
+  const [value, setValue] = useState<Date | null>(new Date());
+
+  return (
+    <ComponentDoc
+      id="calendar"
+      title="Calendar"
+      description="Month grid for picking a single date."
+      usage={{
+        importCode: `import { useState } from "react";
+import { Calendar } from "@zed-ui/react"`,
+        usageCode: `const [value, setValue] = useState<Date | null>(new Date());
+
+<Calendar value={value} onValueChange={setValue} />`,
+        preview: <Calendar value={value} onValueChange={setValue} />
+      }}
+    >
+      <DocExample
+        title="Controlled"
+        code={`const [value, setValue] = useState<Date | null>(new Date());
+
+<Calendar value={value} onValueChange={setValue} />`}
+        footer={<StatePreview value={value?.toLocaleDateString() ?? "null"} />}
+      >
+        <Calendar value={value} onValueChange={setValue} />
+      </DocExample>
+
+      <DocExample
+        title="Min and max"
+        description="Dates outside the range are disabled."
+        code={`<Calendar
+  min={new Date(2026, 5, 1)}
+  max={new Date(2026, 5, 30)}
+  value={value}
+  onValueChange={setValue}
+/>`}
+      >
+        <Calendar
+          max={new Date(2026, 5, 30)}
+          min={new Date(2026, 5, 1)}
+          value={value}
+          onValueChange={setValue}
+        />
+      </DocExample>
+
+      <DocExample
+        title="Disabled"
+        code={`<Calendar disabled value={value} onValueChange={setValue} />`}
+      >
+        <Calendar disabled value={value} onValueChange={setValue} />
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function DatePickerSection() {
+  const [value, setValue] = useState<Date | null>(null);
+
+  return (
+    <ComponentDoc
+      id="date-picker"
+      title="DatePicker"
+      description="Button trigger that opens a calendar popup."
+      usage={{
+        importCode: `import { useState } from "react";
+import { DatePicker } from "@zed-ui/react"`,
+        usageCode: `const [value, setValue] = useState<Date | null>(null);
+
+<DatePicker value={value} onValueChange={setValue} placeholder="Select date" />`,
+        preview: <DatePicker value={value} onValueChange={setValue} />
+      }}
+    >
+      <DocExample
+        title="Controlled"
+        code={`const [value, setValue] = useState<Date | null>(null);
+
+<DatePicker value={value} onValueChange={setValue} />`}
+        footer={<StatePreview value={value?.toLocaleDateString() ?? "null"} />}
+      >
+        <DatePicker value={value} onValueChange={setValue} />
+      </DocExample>
+
+      <DocExample
+        title="Sizes"
+        code={`<DatePicker size="sm" value={value} onValueChange={setValue} />
+<DatePicker size="md" value={value} onValueChange={setValue} />
+<DatePicker size="lg" value={value} onValueChange={setValue} />`}
+      >
+        <Stack gap="3" style={{ maxWidth: "16rem" }}>
+          <DatePicker size="sm" value={value} onValueChange={setValue} />
+          <DatePicker size="md" value={value} onValueChange={setValue} />
+          <DatePicker size="lg" value={value} onValueChange={setValue} />
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Disabled and invalid"
+        code={`<DatePicker disabled placeholder="Unavailable" />
+<DatePicker invalid placeholder="Required" />`}
+      >
+        <Stack gap="3" style={{ maxWidth: "16rem" }}>
+          <DatePicker disabled placeholder="Unavailable" />
+          <DatePicker invalid placeholder="Required" />
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Min and max"
+        code={`<DatePicker
+  min={new Date(2026, 0, 1)}
+  max={new Date(2026, 11, 31)}
+  value={value}
+  onValueChange={setValue}
+/>`}
+      >
+        <div style={{ maxWidth: "16rem" }}>
+          <DatePicker
+            max={new Date(2026, 11, 31)}
+            min={new Date(2026, 0, 1)}
+            value={value}
+            onValueChange={setValue}
+          />
+        </div>
+      </DocExample>
+
+      <DocExample
+        title="Inside FormField"
+        code={`<FormField label="Start date" required>
+  <DatePicker value={value} onValueChange={setValue} />
+</FormField>`}
+      >
+        <FormField label="Start date" required style={{ maxWidth: "16rem" }}>
+          <DatePicker value={value} onValueChange={setValue} />
+        </FormField>
       </DocExample>
     </ComponentDoc>
   );

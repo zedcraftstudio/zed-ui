@@ -18,7 +18,7 @@ export const Soft: Story = { args: { variant: "soft" } };
 export const Outline: Story = { args: { variant: "outline" } };
 export const Ghost: Story = { args: { variant: "ghost" } };
 export const Link: Story = { args: { variant: "link" } };
-export const Loading: Story = { args: { loading: true } };
+export const Loading: Story = { args: { children: "Saving", loading: true } };
 
 export const Colors: Story = {
   render: () => (

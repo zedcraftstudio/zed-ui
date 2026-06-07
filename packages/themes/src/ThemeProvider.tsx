@@ -1,11 +1,13 @@
+import { useIsomorphicLayoutEffect } from "@zed-ui/hooks";
 import {
   createContext,
   useContext,
-  useLayoutEffect,
   useMemo,
+  useRef,
   type CSSProperties,
   type ReactNode
 } from "react";
+import { devWarn } from "@zed-ui/utils";
 import { createTheme } from "./createTheme";
 import { getComponentDefaults } from "./defaults";
 import { themeToCssVars } from "./cssVars";
@@ -15,35 +17,72 @@ const ThemeContext = createContext<ZedTheme>(createTheme());
 
 export type ThemeProviderProps = {
   children: ReactNode;
+  /** When true (default), syncs CSS variables to documentElement so portaled overlays inherit tokens. */
+  portalSync?: boolean;
   theme?: ZedTheme;
 };
 
-export function ThemeProvider({ children, theme = createTheme() }: ThemeProviderProps) {
+function applyCssVars(target: HTMLElement, cssVars: Record<string, string>) {
+  for (const [name, value] of Object.entries(cssVars)) {
+    target.style.setProperty(name, value);
+  }
+}
+
+function clearCssVars(target: HTMLElement, cssVars: Record<string, string>) {
+  for (const name of Object.keys(cssVars)) {
+    target.style.removeProperty(name);
+  }
+}
+
+function themeVarsToCssBlock(cssVars: Record<string, string>): string {
+  const declarations = Object.entries(cssVars)
+    .map(([name, value]) => `${name}: ${value};`)
+    .join(" ");
+
+  return `.zui-theme { ${declarations} }`;
+}
+
+export function ThemeProvider({
+  children,
+  portalSync = true,
+  theme = createTheme()
+}: ThemeProviderProps) {
+  const themeRef = useRef<HTMLDivElement>(null);
   const cssVars = useMemo(() => themeToCssVars(theme), [theme]);
+  const ssrStyle = useMemo(() => themeVarsToCssBlock(cssVars), [cssVars]);
 
-  useLayoutEffect(() => {
-    const root = document.documentElement;
-    root.classList.add("zui-theme-root");
-    root.setAttribute("data-zui-color-scheme", theme.colorScheme);
-    root.setAttribute("data-zui-density", theme.density);
+  useIsomorphicLayoutEffect(() => {
+    const wrapper = themeRef.current;
+    if (!wrapper) {
+      return;
+    }
 
-    for (const [name, value] of Object.entries(cssVars)) {
-      root.style.setProperty(name, value);
+    applyCssVars(wrapper, cssVars);
+
+    const root = portalSync ? document.documentElement : null;
+    if (root) {
+      root.classList.add("zui-theme-root");
+      root.setAttribute("data-zui-color-scheme", theme.colorScheme);
+      root.setAttribute("data-zui-density", theme.density);
+      applyCssVars(root, cssVars);
     }
 
     return () => {
-      for (const name of Object.keys(cssVars)) {
-        root.style.removeProperty(name);
+      clearCssVars(wrapper, cssVars);
+      if (root) {
+        clearCssVars(root, cssVars);
+        root.classList.remove("zui-theme-root");
+        root.removeAttribute("data-zui-color-scheme");
+        root.removeAttribute("data-zui-density");
       }
-      root.classList.remove("zui-theme-root");
-      root.removeAttribute("data-zui-color-scheme");
-      root.removeAttribute("data-zui-density");
     };
-  }, [cssVars, theme.colorScheme, theme.density]);
+  }, [cssVars, portalSync, theme.colorScheme, theme.density]);
 
   return (
     <ThemeContext.Provider value={theme}>
+      <style data-zui-theme-ssr dangerouslySetInnerHTML={{ __html: ssrStyle }} />
       <div
+        ref={themeRef}
         className="zui-theme"
         data-zui-color-scheme={theme.colorScheme}
         data-zui-density={theme.density}
@@ -56,7 +95,10 @@ export function ThemeProvider({ children, theme = createTheme() }: ThemeProvider
 }
 
 /** @deprecated Use `ThemeProvider` */
-export const ZedProvider = ThemeProvider;
+export function ZedProvider(props: ThemeProviderProps) {
+  devWarn("ZedProvider is deprecated. Use ThemeProvider instead.");
+  return <ThemeProvider {...props} />;
+}
 
 /** @deprecated Use `ThemeProviderProps` */
 export type ZedProviderProps = ThemeProviderProps;
@@ -66,7 +108,10 @@ export function useZedTheme(): ZedTheme {
 }
 
 /** @deprecated Use `useZedTheme` */
-export const useTheme = useZedTheme;
+export function useTheme(): ZedTheme {
+  devWarn("useTheme is deprecated. Use useZedTheme instead.");
+  return useZedTheme();
+}
 
 export function useComponentDefaults<TName extends keyof ZedComponentDefaults>(
   component: TName

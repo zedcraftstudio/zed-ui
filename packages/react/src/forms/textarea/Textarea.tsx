@@ -3,6 +3,7 @@ import type { PolymorphicComponent, PolymorphicProps } from "@zed-ui/system";
 import { cx, dataAttr } from "@zed-ui/utils";
 import type { ZedSize } from "../../shared/types";
 import { Box, type BoxOwnProps } from "../../primitives/box/Box";
+import { useFormFieldControlProps } from "../form-field/FormFieldContext";
 
 export type TextareaOwnProps = Omit<BoxOwnProps, "color"> & {
   endIcon?: ReactNode;
@@ -18,7 +19,7 @@ function TextareaBase(props: PolymorphicProps<ElementType, TextareaOwnProps>, re
     as,
     className,
     endIcon,
-    invalid = false,
+    invalid: invalidProp = false,
     resize,
     rows,
     size = "md",
@@ -26,6 +27,14 @@ function TextareaBase(props: PolymorphicProps<ElementType, TextareaOwnProps>, re
     style,
     ...rest
   } = props;
+
+  const { invalid, id: fieldId, required: fieldRequired, ...fieldAriaProps } =
+    useFormFieldControlProps({
+      id: rest.id,
+      invalid: invalidProp ? true : undefined,
+      required: rest.required
+    });
+  const { id, required, ...textareaRest } = rest;
 
   const hasIcons = Boolean(startIcon || endIcon);
 
@@ -43,7 +52,10 @@ function TextareaBase(props: PolymorphicProps<ElementType, TextareaOwnProps>, re
       data-size={size}
       rows={rows}
       style={{ resize, ...style }}
-      {...rest}
+      {...fieldAriaProps}
+      {...textareaRest}
+      id={fieldId ?? id}
+      required={fieldRequired ?? required}
     />
   );
 

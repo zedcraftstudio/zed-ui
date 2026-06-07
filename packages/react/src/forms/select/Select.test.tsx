@@ -1,26 +1,51 @@
+import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, expect, it } from "vitest";
-import { Select } from "./Select";
 import { renderWithProvider } from "../../test/render";
+import { FormField } from "../form-field/FormField";
+import { Select } from "./Select";
 
-const OPTIONS = [
-  { label: "Design", value: "design" },
-  { label: "Engineering", value: "engineering" }
+expect.extend(toHaveNoViolations);
+
+const options = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" }
 ];
 
 describe("Select", () => {
-  it("renders a combobox trigger", () => {
+  it("renders combobox trigger", () => {
     const { getByRole } = renderWithProvider(
-      <Select defaultValue="design" options={OPTIONS} placeholder="Choose team" />
+      <Select options={options} placeholder="Pick a fruit" />
     );
 
     expect(getByRole("combobox")).toBeTruthy();
   });
 
-  it("shows the selected option label", () => {
-    const { getByRole } = renderWithProvider(
-      <Select defaultValue="design" options={OPTIONS} placeholder="Choose team" />
+  it("opens listbox and shows options", async () => {
+    const { findByText, getByRole } = renderWithProvider(
+      <FormField label="Fruit">
+        <Select options={options} placeholder="Pick a fruit" />
+      </FormField>
+    );
+    getByRole("combobox", { name: "Fruit" }).click();
+    expect(await findByText("Apple")).toBeTruthy();
+    expect(await findByText("Banana")).toBeTruthy();
+  });
+
+  it("renders invalid disabled select with value", () => {
+    const { container, getByRole } = renderWithProvider(
+      <Select defaultValue="apple" disabled invalid options={options} size="sm" />
+    );
+    expect(getByRole("combobox").hasAttribute("disabled")).toBe(true);
+    expect(container.querySelector("[data-invalid='true']")).toBeTruthy();
+  });
+
+  it("has no axe violations when labeled", async () => {
+    const { container } = renderWithProvider(
+      <FormField label="Fruit">
+        <Select options={options} placeholder="Pick a fruit" />
+      </FormField>
     );
 
-    expect(getByRole("combobox").textContent).toContain("Design");
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

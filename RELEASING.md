@@ -55,6 +55,12 @@ Prefer Trusted Publishing and rotate/remove legacy tokens once CI publishes succ
 npm install @zed-ui/react @zed-ui/themes react react-dom
 ```
 
+`react-day-picker` is an **optional** peer on `@zed-ui/react` (required when using `Calendar` or `DatePicker`):
+
+```bash
+npm install react-day-picker
+```
+
 ## Verify before publishing
 
 ### Build
@@ -149,7 +155,7 @@ If a version was published to npm before GitHub Releases were enabled:
 Preview notes locally:
 
 ```bash
-pnpm release:notes 0.0.2
+node scripts/github-release-notes.mjs 0.0.2
 cat release-notes.md
 ```
 

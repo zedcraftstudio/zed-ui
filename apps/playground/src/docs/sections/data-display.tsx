@@ -16,6 +16,7 @@ import {
   CardRoot,
   CardTitle,
   Checkbox,
+  DataTable,
   Flex,
   FormField,
   getAvatarColorFromName,
@@ -32,7 +33,8 @@ import {
   TableHeader,
   TableRow,
   TableScrollArea,
-  Text
+  Text,
+  Timeline
 } from "@zed-ui/react";
 import { ComponentDoc } from "../../components/ComponentDoc";
 import { DocExample } from "../../components/DocExample";
@@ -990,6 +992,388 @@ const rows = products.slice((page - 1) * pageSize, page * pageSize);`}
             ))}
           </TableBody>
         </Table>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+const DATA_TABLE_COLUMNS = [
+  { accessor: "product" as const, header: "Product", id: "product", sortable: true },
+  { accessor: "category" as const, header: "Category", id: "category", sortable: true },
+  { accessor: "price" as const, header: "Price", id: "price", sortable: true }
+];
+
+const DATA_TABLE_CODE = `const columns = [
+  { id: "product", header: "Product", accessor: "product", sortable: true },
+  { id: "category", header: "Category", accessor: "category", sortable: true },
+  { id: "price", header: "Price", accessor: "price", sortable: true }
+];
+
+const data = [
+  { product: "Laptop", category: "Electronics", price: "999.99" },
+  { product: "Desk Chair", category: "Furniture", price: "150" }
+];
+
+<DataTable columns={columns} data={data} enableGlobalFilter variant="outline" />`;
+
+export function DataTableSection() {
+  return (
+    <ComponentDoc
+      id="data-table"
+      title="DataTable"
+      description="Declarative table with client-side sorting and global filter. Built on Table primitives."
+      usage={{
+        importCode: `import { DataTable } from "@zed-ui/react"`,
+        usageCode: DATA_TABLE_CODE,
+        preview: (
+          <DataTable
+            columns={DATA_TABLE_COLUMNS}
+            data={[...PRODUCTS]}
+            enableGlobalFilter
+            variant="outline"
+          />
+        )
+      }}
+    >
+      <DocExample
+        title="Sorting"
+        description="Click sortable column headers to toggle ascending, descending, or none."
+        code={`<DataTable columns={columns} data={data} variant="outline" />`}
+      >
+        <DataTable columns={DATA_TABLE_COLUMNS} data={[...PRODUCTS]} variant="outline" />
+      </DocExample>
+
+      <DocExample
+        title="Global filter"
+        code={`<DataTable columns={columns} data={data} enableGlobalFilter />`}
+      >
+        <DataTable columns={DATA_TABLE_COLUMNS} data={[...PRODUCTS]} enableGlobalFilter />
+      </DocExample>
+
+      <DocExample
+        title="Variants"
+        code={`<DataTable variant="line" columns={columns} data={data} />
+<DataTable variant="outline" columns={columns} data={data} />
+<DataTable variant="subtle" columns={columns} data={data} />`}
+      >
+        <Stack gap="4">
+          <DataTable columns={DATA_TABLE_COLUMNS} data={[...PRODUCTS]} variant="line" />
+          <DataTable columns={DATA_TABLE_COLUMNS} data={[...PRODUCTS]} variant="outline" />
+          <DataTable columns={DATA_TABLE_COLUMNS} data={[...PRODUCTS]} variant="subtle" />
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Sizes"
+        code={`<DataTable size="sm" columns={columns} data={data} />
+<DataTable size="md" columns={columns} data={data} />
+<DataTable size="lg" columns={columns} data={data} />`}
+      >
+        <Stack gap="4">
+          <DataTable columns={DATA_TABLE_COLUMNS} data={PRODUCTS.slice(0, 3)} size="sm" />
+          <DataTable columns={DATA_TABLE_COLUMNS} data={PRODUCTS.slice(0, 3)} size="md" />
+          <DataTable columns={DATA_TABLE_COLUMNS} data={PRODUCTS.slice(0, 3)} size="lg" />
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Custom toolbar"
+        code={`<DataTable
+  columns={columns}
+  data={data}
+  enableGlobalFilter
+  toolbar={<Button size="sm">Export</Button>}
+/>`}
+      >
+        <DataTable
+          columns={DATA_TABLE_COLUMNS}
+          data={[...PRODUCTS]}
+          enableGlobalFilter
+          toolbar={<Button size="sm">Export</Button>}
+        />
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+const TIMELINE_USAGE = `<Timeline.Root>
+  <Timeline.Item>
+    <Timeline.Connector>
+      <Timeline.Separator />
+      <Timeline.Indicator />
+    </Timeline.Connector>
+    <Timeline.Content>
+      <Timeline.Title>Product Shipped</Timeline.Title>
+      <Timeline.Description>13th May 2021</Timeline.Description>
+    </Timeline.Content>
+  </Timeline.Item>
+</Timeline.Root>`;
+
+function TimelineDemo() {
+  return (
+    <Timeline.Root style={{ maxWidth: "25rem" }}>
+      <Timeline.Item>
+        <Timeline.Connector>
+          <Timeline.Separator />
+          <Timeline.Indicator>🚚</Timeline.Indicator>
+        </Timeline.Connector>
+        <Timeline.Content>
+          <Timeline.Title>Product Shipped</Timeline.Title>
+          <Timeline.Description>13th May 2021</Timeline.Description>
+          <Text size="sm">
+            We shipped your product via <strong>FedEx</strong> and it should arrive within 3-5
+            business days.
+          </Text>
+        </Timeline.Content>
+      </Timeline.Item>
+      <Timeline.Item>
+        <Timeline.Connector>
+          <Timeline.Separator />
+          <Timeline.Indicator>✓</Timeline.Indicator>
+        </Timeline.Connector>
+        <Timeline.Content>
+          <Timeline.Title>Order Confirmed</Timeline.Title>
+          <Timeline.Description>18th May 2021</Timeline.Description>
+        </Timeline.Content>
+      </Timeline.Item>
+      <Timeline.Item>
+        <Timeline.Connector>
+          <Timeline.Separator />
+          <Timeline.Indicator>📦</Timeline.Indicator>
+        </Timeline.Connector>
+        <Timeline.Content>
+          <Timeline.Title>Order Delivered</Timeline.Title>
+          <Timeline.Description>20th May 2021, 10:30am</Timeline.Description>
+        </Timeline.Content>
+      </Timeline.Item>
+    </Timeline.Root>
+  );
+}
+
+export function TimelineSection() {
+  return (
+    <ComponentDoc
+      id="timeline"
+      title="Timeline"
+      description="Displays a list of events in chronological order."
+      usage={{
+        importCode: `import { Timeline } from "@zed-ui/react"`,
+        usageCode: TIMELINE_USAGE,
+        preview: <TimelineDemo />
+      }}
+    >
+      <DocExample title="Default" code={TIMELINE_USAGE}>
+        <TimelineDemo />
+      </DocExample>
+
+      <DocExample
+        title="Sizes"
+        code={`<Timeline.Root size="sm">…</Timeline.Root>
+<Timeline.Root size="xl">…</Timeline.Root>`}
+      >
+        <Stack gap="6">
+          <Timeline.Root size="sm" style={{ maxWidth: "28rem" }}>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Created project</Timeline.Title>
+                <Timeline.Description>Just now</Timeline.Description>
+              </Timeline.Content>
+            </Timeline.Item>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Status updated</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+          </Timeline.Root>
+          <Timeline.Root size="xl" style={{ maxWidth: "28rem" }}>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Created project</Timeline.Title>
+                <Timeline.Description>Just now</Timeline.Description>
+              </Timeline.Content>
+            </Timeline.Item>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Status updated</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+          </Timeline.Root>
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Variants"
+        code={`<Timeline.Root variant="subtle">…</Timeline.Root>
+<Timeline.Root variant="outline">…</Timeline.Root>
+<Timeline.Root variant="plain">…</Timeline.Root>`}
+      >
+        <Stack gap="6">
+          <Timeline.Root variant="subtle" style={{ maxWidth: "28rem" }}>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Subtle</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Done</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+          </Timeline.Root>
+          <Timeline.Root variant="outline" style={{ maxWidth: "28rem" }}>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Outline</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Done</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+          </Timeline.Root>
+          <Timeline.Root variant="plain" style={{ maxWidth: "28rem" }}>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Plain</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+            <Timeline.Item>
+              <Timeline.Connector>
+                <Timeline.Separator />
+                <Timeline.Indicator />
+              </Timeline.Connector>
+              <Timeline.Content>
+                <Timeline.Title>Done</Timeline.Title>
+              </Timeline.Content>
+            </Timeline.Item>
+          </Timeline.Root>
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Content before"
+        description="Use a narrow Content slot for dates or metadata before the connector."
+        code={`<Timeline.Item>
+  <Timeline.Content style={{ flex: "0 0 auto", width: "auto" }}>
+    <Timeline.Title>Nov 1994</Timeline.Title>
+  </Timeline.Content>
+  <Timeline.Connector>
+    <Timeline.Separator />
+    <Timeline.Indicator>1</Timeline.Indicator>
+  </Timeline.Connector>
+  <Timeline.Content>
+    <Timeline.Title>Lorem ipsum dolor sit amet.</Timeline.Title>
+  </Timeline.Content>
+</Timeline.Item>`}
+      >
+        <Timeline.Root style={{ maxWidth: "36rem" }}>
+          <Timeline.Item>
+            <Timeline.Content style={{ flex: "0 0 auto", width: "auto" }}>
+              <Timeline.Title style={{ whiteSpace: "nowrap" }}>Nov 1994</Timeline.Title>
+            </Timeline.Content>
+            <Timeline.Connector>
+              <Timeline.Separator />
+              <Timeline.Indicator>1</Timeline.Indicator>
+            </Timeline.Connector>
+            <Timeline.Content>
+              <Timeline.Title>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Timeline.Title>
+            </Timeline.Content>
+          </Timeline.Item>
+          <Timeline.Item>
+            <Timeline.Content style={{ flex: "0 0 auto", width: "auto" }}>
+              <Timeline.Title style={{ whiteSpace: "nowrap" }}>Nov 2010</Timeline.Title>
+            </Timeline.Content>
+            <Timeline.Connector>
+              <Timeline.Separator />
+              <Timeline.Indicator>2</Timeline.Indicator>
+            </Timeline.Connector>
+            <Timeline.Content>
+              <Timeline.Title>Second milestone in the sequence.</Timeline.Title>
+            </Timeline.Content>
+          </Timeline.Item>
+        </Timeline.Root>
+      </DocExample>
+
+      <DocExample
+        title="Alternating content"
+        description="Alternate sides by composing empty and filled Content slots around the connector."
+        code={`<Timeline.Item>
+  <Timeline.Content style={{ flex: 1 }} />
+  <Timeline.Connector>…</Timeline.Connector>
+  <Timeline.Content style={{ flex: 1 }}>
+    <Timeline.Title>Placed Order</Timeline.Title>
+  </Timeline.Content>
+</Timeline.Item>`}
+      >
+        <Timeline.Root size="sm" variant="outline" style={{ maxWidth: "32rem" }}>
+          <Timeline.Item>
+            <Timeline.Content style={{ flex: 1 }} />
+            <Timeline.Connector>
+              <Timeline.Separator />
+              <Timeline.Indicator />
+            </Timeline.Connector>
+            <Timeline.Content style={{ flex: 1 }}>
+              <Timeline.Title>Placed Order</Timeline.Title>
+            </Timeline.Content>
+          </Timeline.Item>
+          <Timeline.Item>
+            <Timeline.Content style={{ alignItems: "flex-end", flex: 1 }}>
+              <Timeline.Title>Prepared Order</Timeline.Title>
+            </Timeline.Content>
+            <Timeline.Connector>
+              <Timeline.Separator />
+              <Timeline.Indicator />
+            </Timeline.Connector>
+            <Timeline.Content style={{ flex: 1 }} />
+          </Timeline.Item>
+          <Timeline.Item>
+            <Timeline.Content style={{ flex: 1 }} />
+            <Timeline.Connector>
+              <Timeline.Separator />
+              <Timeline.Indicator />
+            </Timeline.Connector>
+            <Timeline.Content style={{ flex: 1 }}>
+              <Timeline.Title>Order Delivered</Timeline.Title>
+            </Timeline.Content>
+          </Timeline.Item>
+        </Timeline.Root>
       </DocExample>
     </ComponentDoc>
   );

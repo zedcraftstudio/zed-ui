@@ -6,8 +6,13 @@ import {
   type ReactNode,
   type Ref
 } from "react";
+import { useComponentDefaults } from "@zed-ui/themes";
 import { cx, dataAttr } from "@zed-ui/utils";
 import type { ZedSize } from "../../shared/types";
+import {
+  useFormFieldControlProps,
+  useWarnMissingAccessibleName
+} from "../form-field/FormFieldContext";
 
 function SelectChevronIcon() {
   return (
@@ -70,14 +75,25 @@ type SelectInnerProps = SelectOptionsProps & {
 
 function SelectInner({
   className,
-  invalid = false,
+  invalid: invalidProp = false,
   multiple = false,
   options = [],
   placeholder = "Select…",
   rootProps,
-  size = "md",
+  size: sizeProp,
   triggerRef
 }: SelectInnerProps) {
+  const defaults = useComponentDefaults("Select");
+  const size = (sizeProp ?? (defaults?.size as ZedSize | undefined) ?? "md") as ZedSize;
+  const { invalid, ...fieldAriaProps } = useFormFieldControlProps({
+    invalid: invalidProp ? true : undefined
+  });
+
+  useWarnMissingAccessibleName(multiple ? "MultiSelect" : "Select", fieldAriaProps, {
+    "aria-label": rootProps["aria-label"] as string | undefined,
+    "aria-labelledby": rootProps["aria-labelledby"] as string | undefined
+  });
+
   const optionLabels = useMemo(
     () => new Map(options.map((option) => [option.value, option.label])),
     [options]
@@ -90,6 +106,7 @@ function SelectInner({
         className={cx("zui-select__trigger", className)}
         data-invalid={dataAttr(invalid)}
         data-size={size}
+        {...fieldAriaProps}
       >
         <BaseSelect.Value className="zui-select__value" placeholder={placeholder}>
           {(value) => formatSelectValue(value, options, multiple) ?? null}

@@ -11,8 +11,23 @@ Zed UI targets [WAI-ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI
 | **Accordion** | `ArrowUp`/`ArrowDown`, `Home`, `End` | Moves focus between triggers; `Enter`/`Space` toggles panels |
 | **Menu** | `ArrowUp`/`ArrowDown`, typeahead | Moves focus; `Enter`/`Space` activates item; `Esc` closes |
 | **Select** | `ArrowUp`/`ArrowDown`, `Enter`, typeahead | Opens list, moves highlight, selects value |
-| **Dialog / Drawer** | `Esc` | Closes overlay; focus is trapped while open |
+| **Combobox** | `ArrowUp`/`ArrowDown`, `Enter`, type in input | Filters list, moves highlight, selects value |
+| **CommandPalette** | `ArrowUp`/`ArrowDown`, `Enter`, `Esc` | Filters commands, selects item, closes dialog |
+| **Sidebar** | `Tab`, `Enter`/`Space` on items | `SidebarItem` renders links or buttons with visible `:focus-visible` rings; active route uses `aria-current="page"` |
+| **Dialog / Drawer / AlertDialog** | `Esc` | Closes overlay; focus is trapped while open |
+| **Slider** | `ArrowLeft`/`ArrowRight`, `Home`, `End` | Moves thumb along track |
 | **Checkbox / Radio / Switch** | `Space` | Toggles or selects |
+
+## Form fields
+
+`FormField` provides label, description, and error regions. Controls that support field context (`Input`, `Textarea`, `Select`, `Combobox`, `DatePicker`, `NativeSelect`) automatically receive:
+
+- Matching `id` / `htmlFor` association
+- `aria-describedby` linking description and error text
+- `aria-required` and `required` when the field is required
+- `aria-invalid` when an error is present
+
+Checkbox, Switch, and Radio embed their own labels and do not use `FormField` by default.
 
 ## Focus management
 
@@ -32,8 +47,9 @@ Before shipping a feature:
 
 1. Navigate the flow with keyboard only.
 2. Verify focus order and visible focus indicators.
-3. Run automated checks: Vitest + `jest-axe` smoke tests in `@zed-ui/react`, Storybook `@storybook/addon-a11y`, and Playwright interaction tests for overlays and navigation.
-4. Confirm color contrast for text and interactive states in both light and dark themes.
+3. Run automated checks: Vitest + `jest-axe` in `@zed-ui/react`, Storybook test-runner (all stories, **color-contrast** enabled), and Playwright e2e/visual regression.
+4. Confirm color contrast for text and interactive states in both light and dark themes — CI enforces WCAG AA contrast via axe on every Storybook story.
+5. `eslint-plugin-jsx-a11y` recommended rules are **errors** in `packages/react/src`.
 
 ## Reporting issues
 

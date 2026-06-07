@@ -1,46 +1,22 @@
 # Zed UI
 
-Zed UI is a production-focused React design system and component library. Material UI-level breadth with a composable typed API, design tokens, CSS-variable theming, polymorphic primitives, and strong accessibility defaults.
+Typed React component library with CSS-variable theming and accessibility-first patterns.
 
-## Packages
+- **Docs:** https://zed-ui.zedcraftstudio.com
+- **npm:** [@zed-ui/react](https://www.npmjs.com/package/@zed-ui/react)
 
-- `@zed-ui/react` — public React components
-- `@zed-ui/themes` — theme tokens, `ThemeProvider`, `createTheme`
-- `@zed-ui/system` — polymorphic types, style props, `Slot`
-- `@zed-ui/hooks` — interaction hooks
-- `@zed-ui/utils` — `cx`, `mergeRefs`
-- `@zed-ui/icons` — icon components (stub)
-
-## Apps
-
-- `apps/docs` — Storybook
-- `apps/playground` — Vite integration demo
-
-## Scripts
+## Install
 
 ```bash
-pnpm install
-pnpm build
-pnpm typecheck
-pnpm test
-pnpm test:e2e
-pnpm dev          # playground
-pnpm dev:docs     # Storybook
+npm install @zed-ui/react @zed-ui/themes
 ```
 
-## Install (beta)
+Requires React 18.2+ or 19+.
+
+If you use `Calendar` or `DatePicker`, also install the optional peer:
 
 ```bash
-npm install @zed-ui/react@beta @zed-ui/themes@beta
-```
-
-Peer dependencies:
-
-```json
-{
-  "react": ">=18.2.0 || >=19.0.0",
-  "react-dom": ">=18.2.0 || >=19.0.0"
-}
+npm install react-day-picker
 ```
 
 ## Usage
@@ -49,40 +25,100 @@ Peer dependencies:
 import { Button, ThemeProvider, createTheme } from "@zed-ui/react";
 import "@zed-ui/react/styles.css";
 
-<ThemeProvider theme={createTheme({ colorScheme: "dark", density: "compact" })}>
-  <Button variant="solid" size="md" color="primary">
-    Create Project
-  </Button>
-</ThemeProvider>;
+const theme = createTheme({ colorScheme: "light" });
+
+export function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Button variant="solid" color="primary">
+        Get started
+      </Button>
+    </ThemeProvider>
+  );
+}
 ```
 
-Tree-shakable subpath import:
+`ThemeProvider` injects design tokens as CSS variables. Component styles come from the stylesheet import above (required).
+
+### Subpath imports
 
 ```tsx
 import { Button } from "@zed-ui/react/button";
+import { Stack } from "@zed-ui/react/stack";
 ```
 
-Theme CSS (optional, when using `@zed-ui/themes` directly):
+### Layered CSS (tree-shaking)
+
+Import only the layers your app uses to keep CSS smaller:
 
 ```tsx
-import "@zed-ui/themes/styles.css";
+import "@zed-ui/react/styles/layers/base.css";
+import "@zed-ui/react/styles/layers/actions.css";
+import "@zed-ui/react/styles/layers/forms.css";
 ```
 
-## Accessibility
+| Layer | Typical use |
+| --- | --- |
+| `base` | Required tokens and resets |
+| `actions`, `forms`, `feedback` | Interactive UI |
+| `layout`, `navigation`, `data-display`, `overlays` | App chrome and content |
 
-Zed UI follows APG patterns via Base UI. See [ACCESSIBILITY.md](./ACCESSIBILITY.md) for keyboard tables, focus behavior, and the testing checklist.
+Full bundle (`styles.css`) is simplest; layered imports are for size-sensitive apps. CI enforces limits in `.size-limit.json`.
 
-## Release
+### Next.js (App Router)
 
-This monorepo uses [Changesets](https://github.com/changesets/changesets). To publish a beta:
+Add to `app/layout.tsx`:
+
+```tsx
+import { ThemeProvider, createTheme } from "@zed-ui/react";
+import "@zed-ui/react/styles.css";
+
+const theme = createTheme();
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+Mark client components that use interactive widgets with `"use client"`.
+
+## Documentation
+
+Zed UI uses two doc apps:
+
+| App | Command | Purpose |
+| --- | --- | --- |
+| **Playground** | `pnpm dev` | Public narrative docs at [zed-ui.zedcraftstudio.com](https://zed-ui.zedcraftstudio.com) — guides, props tables, live demos (`apps/playground`) |
+| **Storybook** | `pnpm dev:docs` | Component lab with the a11y addon — isolated stories and visual states (`apps/docs`, port 6006). Production build is deployed at [zed-ui.zedcraftstudio.com/storybook/](https://zed-ui.zedcraftstudio.com/storybook/) |
+
+Update playground sections when changing APIs consumers read in docs. Add or update Storybook stories when changing component behavior or visual variants.
+
+## Development
 
 ```bash
-pnpm changeset
-pnpm version-packages
-pnpm release --tag beta
+git clone https://github.com/zedcraftstudio/zed-ui.git
+cd zed-ui
+pnpm install
+pnpm dev
 ```
 
-The GitHub Actions release workflow publishes to npm when changesets are merged on `main`.
+| Command | Description |
+| --- | --- |
+| `pnpm dev` | Docs playground (http://localhost:5173) |
+| `pnpm dev:docs` | Storybook (http://localhost:6006) |
+| `pnpm build` | Build packages and apps |
+| `pnpm test` | Unit tests (152+) |
+| `pnpm test:coverage` | Vitest coverage (78%+ thresholds) |
+| `pnpm test:e2e:storybook` | Storybook visual regression (20 stories) |
+| `pnpm lint` | ESLint |
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md), [ACCESSIBILITY.md](./ACCESSIBILITY.md), [STABILITY.md](./STABILITY.md), and [RELEASING.md](./RELEASING.md).
 
 ## License
 

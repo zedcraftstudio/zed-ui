@@ -1,7 +1,8 @@
-import { Children, cloneElement, forwardRef, isValidElement, useId, type ElementType, type ReactElement, type ReactNode, type Ref } from "react";
+import { forwardRef, useId, type ElementType, type ReactNode, type Ref } from "react";
 import type { PolymorphicComponent, PolymorphicProps } from "@zed-ui/system";
 import { cx, dataAttr } from "@zed-ui/utils";
 import { Box, type BoxOwnProps } from "../../primitives/box/Box";
+import { FormFieldProvider } from "./FormFieldContext";
 
 export type FormFieldOwnProps = BoxOwnProps & {
   description?: ReactNode;
@@ -27,53 +28,48 @@ function FormFieldBase(props: PolymorphicProps<ElementType, FormFieldOwnProps>, 
 
   const generatedId = useId();
   const fieldId = idProp ?? generatedId;
-  const htmlFor = htmlForProp ?? fieldId;
+  const controlId = htmlForProp ?? `${fieldId}-control`;
   const hasError = Boolean(error);
-  const errorId = `${fieldId}-error`;
-
-  let control = children;
-  if (hasError) {
-    const child = Children.toArray(children).find(isValidElement);
-    if (child) {
-      type ControlProps = {
-        invalid?: boolean;
-        "aria-invalid"?: boolean;
-        "aria-describedby"?: string;
-      };
-      const controlChild = child as ReactElement<ControlProps>;
-      const prevDescribedBy = controlChild.props["aria-describedby"];
-      control = cloneElement(controlChild, {
-        "aria-invalid": true,
-        "aria-describedby": [prevDescribedBy, errorId].filter(Boolean).join(" "),
-        invalid: controlChild.props.invalid ?? true
-      });
-    }
-  }
+  const descriptionId = description ? `${fieldId}-description` : undefined;
+  const errorId = hasError ? `${fieldId}-error` : undefined;
 
   return (
-    <Box
-      ref={ref as Ref<HTMLElement>}
-      as={as ?? "div"}
-      className={cx("zui-form-field", className)}
-      data-invalid={dataAttr(hasError)}
-      data-required={dataAttr(required)}
-      id={fieldId}
-      {...rest}
+    <FormFieldProvider
+      value={{
+        controlId,
+        descriptionId,
+        errorId,
+        invalid: hasError,
+        required
+      }}
     >
-      {label ? (
-        <label className="zui-form-field__label" htmlFor={htmlFor}>
-          {label}
-          {required ? <span aria-hidden className="zui-form-field__required"> *</span> : null}
-        </label>
-      ) : null}
-      <div className="zui-form-field__control">{control}</div>
-      {description ? <div className="zui-form-field__description">{description}</div> : null}
-      {error ? (
-        <div className="zui-form-field__error" id={errorId} role="alert">
-          {error}
-        </div>
-      ) : null}
-    </Box>
+      <Box
+        ref={ref as Ref<HTMLElement>}
+        as={as ?? "div"}
+        className={cx("zui-form-field", className)}
+        data-invalid={dataAttr(hasError)}
+        data-required={dataAttr(required)}
+        {...rest}
+      >
+        {label ? (
+          <label className="zui-form-field__label" htmlFor={controlId}>
+            {label}
+            {required ? <span aria-hidden className="zui-form-field__required"> *</span> : null}
+          </label>
+        ) : null}
+        <div className="zui-form-field__control">{children}</div>
+        {description ? (
+          <div className="zui-form-field__description" id={descriptionId}>
+            {description}
+          </div>
+        ) : null}
+        {error ? (
+          <div className="zui-form-field__error" id={errorId} role="alert">
+            {error}
+          </div>
+        ) : null}
+      </Box>
+    </FormFieldProvider>
   );
 }
 

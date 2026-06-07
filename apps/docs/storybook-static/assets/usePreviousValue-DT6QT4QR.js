@@ -1,1 +1,0 @@
-import{s as e}from"./iframe-Fsv4RreF.js";import{t}from"./react-Dv9OFCKq.js";var n=e(t());function r(e){let[t,r]=n.useState({current:e,previous:null});return e!==t.current&&r({current:e,previous:t.current}),t.previous}export{r as t};

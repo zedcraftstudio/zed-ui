@@ -8,6 +8,7 @@ import {
   useState,
   type ComponentPropsWithoutRef
 } from "react";
+import { useControllableState } from "@zed-ui/hooks";
 import { useComponentDefaults } from "@zed-ui/themes";
 import { cx, dataAttr } from "@zed-ui/utils";
 import type {
@@ -67,11 +68,16 @@ export function TabsRoot({
     (defaults?.variant as TabsVariant | undefined) ??
     "line") as TabsVariant;
   const color = colorProp ?? (defaults?.color as ZedColor | undefined) ?? "primary";
-  const [activeValue, setActiveValue] = useState<BaseTabs.Tab.Value | undefined>(defaultValue);
+  const [activeValue, setActiveValue] = useControllableState<BaseTabs.Tab.Value | undefined>({
+    value,
+    defaultValue
+  });
   const [mountedValues, setMountedValues] = useState(
-    () => new Set<BaseTabs.Tab.Value>(defaultValue != null ? [defaultValue] : [])
+    () =>
+      new Set<BaseTabs.Tab.Value>(
+        (value ?? defaultValue) != null ? [(value ?? defaultValue) as BaseTabs.Tab.Value] : []
+      )
   );
-  const resolvedActiveValue = value !== undefined ? value : activeValue;
 
   const handleValueChange = useCallback(
     (nextValue: BaseTabs.Tab.Value, eventDetails: BaseTabs.Root.ChangeEventDetails) => {
@@ -81,16 +87,16 @@ export function TabsRoot({
       }
       onValueChange?.(nextValue, eventDetails);
     },
-    [onValueChange]
+    [onValueChange, setActiveValue]
   );
 
   const contextValue = useMemo(
     () => ({
       activationMode,
-      activeValue: resolvedActiveValue,
+      activeValue,
       mountedValues
     }),
-    [activationMode, mountedValues, resolvedActiveValue]
+    [activationMode, activeValue, mountedValues]
   );
 
   return (
@@ -110,6 +116,8 @@ export function TabsRoot({
     </TabsStyleContext.Provider>
   );
 }
+
+TabsRoot.displayName = "TabsRoot";
 
 export type TabsListOwnProps = ComponentPropsWithoutRef<typeof BaseTabs.List>;
 

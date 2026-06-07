@@ -70,7 +70,8 @@ export const Indeterminate: Story = {
 
 export const WithDescription: Story = {
   args: {
-    description: "By clicking this, you agree to our Terms and Privacy Policy."
+    description: "By clicking this, you agree to our Terms and Privacy Policy.",
+    label: "Accept terms and conditions"
   }
 };
 

@@ -9,6 +9,9 @@ dist
 coverage
 playwright-report
 test-results
+.storybook-serve
+pages-dist
+apps/docs/storybook-static
 *.tgz
 .pnpm-store
 release-notes.md

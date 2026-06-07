@@ -55,7 +55,7 @@ Import subpaths for smaller bundles:
 import { Button } from "@zed-ui/react/button";
 ```
 
-Available subpaths: `@zed-ui/react/button`, `@zed-ui/react/box`, `@zed-ui/react/stack`, `@zed-ui/react/text`.
+Available subpaths today: `@zed-ui/react/button`, `@zed-ui/react/box`, `@zed-ui/react/stack`, `@zed-ui/react/text`. Other components import from `@zed-ui/react`.
 
 ## Theming
 

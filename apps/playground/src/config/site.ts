@@ -17,7 +17,7 @@ export const STORYBOOK_URL: string | undefined = storybookFromEnv
   ? storybookFromEnv
   : import.meta.env.DEV
     ? "http://localhost:6006"
-    : undefined;
+    : `${DOCS_SITE_URL}/storybook/`;
 
 export function githubEditUrl(sourcePath: string): string {
   return `${GITHUB_REPO}/edit/${GITHUB_BRANCH}/${sourcePath}`;

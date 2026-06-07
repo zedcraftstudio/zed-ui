@@ -1,20 +1,31 @@
+import { useState, type CSSProperties } from "react";
 import {
   Badge,
   Box,
   Button,
   Container,
+  AppShell,
+  Divider,
   Flex,
+  Paper,
+  Sidebar,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+  SidebarSection as SidebarGroup,
+  Stack,
+  Text,
+  TopBar,
   Grid,
   GridItem,
   HStack,
   Heading,
   Spacer,
-  Stack,
-  Text,
   VStack
 } from "@zed-ui/react";
 import { ComponentDoc } from "../../components/ComponentDoc";
 import { DocExample } from "../../components/DocExample";
+import { StatePreview } from "../shared";
 
 const LOREM =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur, tortor in lacinia eleifend, dui nisl tristique nunc.";
@@ -596,6 +607,421 @@ export function StackSection() {
           <Text>Spacious</Text>
           <Text>layout</Text>
         </Stack>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function PaperSection() {
+  return (
+    <ComponentDoc
+      id="paper"
+      title="Paper"
+      description="Surface container with elevation, padding, and radius tokens."
+      usage={{
+        importCode: `import { Paper, Text } from "@zed-ui/react"`,
+        usageCode: `<Paper variant="elevated" size="md" radius="md">
+  <Text>Content on a raised surface.</Text>
+</Paper>`,
+        preview: (
+          <Paper variant="elevated" style={{ maxWidth: "20rem" }}>
+            <Text>Elevated surface</Text>
+          </Paper>
+        )
+      }}
+    >
+      <DocExample
+        title="Variants"
+        code={`<Paper variant="elevated"><Text>elevated</Text></Paper>
+<Paper variant="filled"><Text>filled</Text></Paper>
+<Paper variant="outline"><Text>outline</Text></Paper>
+<Paper variant="subtle"><Text>subtle</Text></Paper>`}
+      >
+        <Stack gap="3" style={{ maxWidth: "20rem" }}>
+          {(["elevated", "filled", "outline", "subtle"] as const).map((variant) => (
+            <Paper key={variant} variant={variant}>
+              <Text size="sm">{variant}</Text>
+            </Paper>
+          ))}
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Sizes"
+        code={`<Paper size="sm"><Text>sm</Text></Paper>
+<Paper size="md"><Text>md</Text></Paper>
+<Paper size="lg"><Text>lg</Text></Paper>`}
+      >
+        <Stack gap="3" style={{ maxWidth: "20rem" }}>
+          {(["sm", "md", "lg"] as const).map((size) => (
+            <Paper key={size} size={size} variant="outline">
+              <Text size="sm">size={size}</Text>
+            </Paper>
+          ))}
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="Radius"
+        code={`<Paper radius="sm" variant="outline">sm</Paper>
+<Paper radius="md" variant="outline">md</Paper>
+<Paper radius="lg" variant="outline">lg</Paper>`}
+      >
+        <Stack gap="3" style={{ maxWidth: "20rem" }}>
+          {(["sm", "md", "lg"] as const).map((radius) => (
+            <Paper key={radius} radius={radius} variant="outline">
+              <Text size="sm">radius={radius}</Text>
+            </Paper>
+          ))}
+        </Stack>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+const shellNavCode = `<Sidebar>
+  <SidebarHeader>Zed UI</SidebarHeader>
+  <SidebarNav>
+    <SidebarItem active href="#">Dashboard</SidebarItem>
+    <SidebarItem href="#">Projects</SidebarItem>
+    <SidebarItem href="#">Settings</SidebarItem>
+  </SidebarNav>
+</Sidebar>`;
+
+function DemoSidebar({
+  active = "Dashboard",
+  collapsed = false,
+  style
+}: {
+  active?: string;
+  collapsed?: boolean;
+  style?: CSSProperties;
+}) {
+  const items = ["Dashboard", "Projects", "Settings"] as const;
+
+  return (
+    <Sidebar collapsed={collapsed} {...(style ? { style } : {})}>
+      <SidebarHeader>Zed UI</SidebarHeader>
+      <SidebarNav>
+        {items.map((item) => (
+          <SidebarItem key={item} active={item === active} href="#">
+            {item}
+          </SidebarItem>
+        ))}
+      </SidebarNav>
+    </Sidebar>
+  );
+}
+
+export function AppShellSection() {
+  return (
+    <ComponentDoc
+      id="app-shell"
+      title="AppShell"
+      description="Application chrome with sidebar, header, main, and optional footer. Slots accept TopBar and Sidebar — no duplicate wrapper elements."
+      usage={{
+        importCode: `import {
+  AppShell,
+  Sidebar,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+  Text,
+  TopBar
+} from "@zed-ui/react"`,
+        usageCode: `<AppShell
+  height="auto"
+  header={<TopBar title="Dashboard" />}
+  sidebar={
+    <Sidebar>
+      <SidebarHeader>Zed UI</SidebarHeader>
+      <SidebarNav>
+        <SidebarItem active href="#">Dashboard</SidebarItem>
+        <SidebarItem href="#">Settings</SidebarItem>
+      </SidebarNav>
+    </Sidebar>
+  }
+  footer={<Text size="sm">© 2026</Text>}
+>
+  <Text>Main content</Text>
+</AppShell>`,
+        preview: (
+          <AppShell
+            height="auto"
+            header={<TopBar title="Dashboard" />}
+            sidebar={<DemoSidebar />}
+            style={{ minHeight: "14rem" }}
+          >
+            <Text>Main content area</Text>
+          </AppShell>
+        )
+      }}
+    >
+      <DocExample
+        title="With footer"
+        code={`<AppShell
+  height="auto"
+  header={<TopBar title="Dashboard" />}
+  sidebar={
+${shellNavCode}
+  }
+  footer={<Text size="sm">© Zed UI</Text>}
+>
+  <Text>Page content</Text>
+</AppShell>`}
+      >
+        <AppShell
+          footer={
+            <Text color="muted" size="sm">
+              © Zed UI
+            </Text>
+          }
+          header={<TopBar title="Dashboard" />}
+          height="auto"
+          sidebar={<DemoSidebar />}
+          style={{ minHeight: "14rem" }}
+        >
+          <Text>Page content</Text>
+        </AppShell>
+      </DocExample>
+
+      <DocExample
+        title="Custom sidebar width"
+        description="sidebarWidth sets --zui-sidebar-width inherited by Sidebar."
+        code={`<AppShell height="auto" sidebarWidth="12rem" sidebar={…} header={…}>
+  …
+</AppShell>`}
+      >
+        <AppShell
+          header={<TopBar title="Narrow nav" />}
+          height="auto"
+          sidebar={
+            <Sidebar>
+              <SidebarNav>
+                <SidebarItem active href="#">
+                  Home
+                </SidebarItem>
+              </SidebarNav>
+            </Sidebar>
+          }
+          sidebarWidth="12rem"
+          style={{ minHeight: "12rem" }}
+        >
+          <Text size="sm">Wider main column</Text>
+        </AppShell>
+      </DocExample>
+
+      <DocExample
+        title="Header only"
+        description="Omit sidebar for simple single-column layouts."
+        code={`<AppShell height="auto" header={<TopBar title="App" />}>
+  <Text>Content</Text>
+</AppShell>`}
+      >
+        <AppShell header={<TopBar title="Simple layout" />} height="auto" style={{ minHeight: "8rem" }}>
+          <Text>Full-width content</Text>
+        </AppShell>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+export function TopBarSection() {
+  return (
+    <ComponentDoc
+      id="topbar"
+      title="TopBar"
+      description="Application header with brand, title, center content, and trailing actions. Use inside AppShell header slot or standalone."
+      usage={{
+        importCode: `import { TopBar, Button, Text } from "@zed-ui/react"`,
+        usageCode: `<TopBar
+  brand="Zed UI"
+  title="Dashboard"
+  actions={<Button size="sm">New</Button>}
+  sticky
+>
+  <Text color="muted" size="sm">Optional center content</Text>
+</TopBar>`,
+        preview: (
+          <TopBar
+            actions={<Button size="sm">New</Button>}
+            brand="Zed UI"
+            title="Dashboard"
+          />
+        )
+      }}
+    >
+      <DocExample
+        title="Sizes"
+        code={`<Stack gap="3">
+  <TopBar size="sm" title="Small" />
+  <TopBar size="md" title="Medium" />
+  <TopBar size="lg" title="Large" />
+</Stack>`}
+      >
+        <Stack gap="3">
+          <TopBar size="sm" title="Small" />
+          <TopBar size="md" title="Medium" />
+          <TopBar size="lg" title="Large" />
+        </Stack>
+      </DocExample>
+
+      <DocExample
+        title="With actions"
+        code={`<TopBar
+  title="Projects"
+  actions={<Button size="sm">Create</Button>}
+/>`}
+      >
+        <TopBar actions={<Button size="sm">Create</Button>} title="Projects" />
+      </DocExample>
+
+      <DocExample
+        title="Content slot"
+        description="Use children for breadcrumbs, tabs, or search between title and actions."
+        code={`<TopBar title="Settings" actions={<Button size="sm">Save</Button>}>
+  <Text color="muted" size="sm">Profile / Security</Text>
+</TopBar>`}
+      >
+        <TopBar actions={<Button size="sm">Save</Button>} title="Settings">
+          <Text color="muted" size="sm">
+            Profile / Security
+          </Text>
+        </TopBar>
+      </DocExample>
+    </ComponentDoc>
+  );
+}
+
+function SidebarCollapsedExample() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  return (
+    <DocExample
+      title="Collapsed"
+      description="Collapsed width syncs with AppShell grid because the column sizes to the sidebar."
+      code={`const [collapsed, setCollapsed] = useState(false);
+
+<Sidebar collapsed={collapsed}>
+  <SidebarHeader>Z</SidebarHeader>
+  <SidebarNav>
+    <SidebarItem active href="#" icon="◎">Dashboard</SidebarItem>
+    <SidebarItem href="#" icon="◇">Projects</SidebarItem>
+  </SidebarNav>
+</Sidebar>`}
+      footer={
+        <HStack align="center" gap="3">
+          <StatePreview value={String(collapsed)} />
+          <Button size="sm" variant="outline" onClick={() => setCollapsed((value) => !value)}>
+            Toggle collapsed
+          </Button>
+        </HStack>
+      }
+    >
+      <Sidebar collapsed={collapsed} style={{ minHeight: "12rem" }}>
+        <SidebarHeader>Z</SidebarHeader>
+        <SidebarNav>
+          <SidebarItem active href="#" icon="◎">
+            Dashboard
+          </SidebarItem>
+          <SidebarItem href="#" icon="◇">
+            Projects
+          </SidebarItem>
+          <SidebarItem href="#" icon="⚙">
+            Settings
+          </SidebarItem>
+        </SidebarNav>
+      </Sidebar>
+    </DocExample>
+  );
+}
+
+export function SidebarSection() {
+  return (
+    <ComponentDoc
+      id="sidebar"
+      title="Sidebar"
+      description="Navigation panel with header, items, sections, and footer. Collapsed mode hides labels for icon-only layouts."
+      usage={{
+        importCode: `import {
+  Sidebar,
+  SidebarHeader,
+  SidebarItem,
+  SidebarNav,
+  SidebarSection as SidebarGroup
+} from "@zed-ui/react"`,
+        usageCode: `<Sidebar>
+  <SidebarHeader>Zed UI</SidebarHeader>
+  <SidebarNav>
+    <SidebarItem active href="/">Dashboard</SidebarItem>
+    <SidebarItem href="/projects">Projects</SidebarItem>
+  </SidebarNav>
+  <SidebarGroup label="Workspace">
+    <SidebarNav>
+      <SidebarItem href="/team">Team</SidebarItem>
+    </SidebarNav>
+  </SidebarGroup>
+</Sidebar>`,
+        preview: <DemoSidebar style={{ minHeight: "10rem" }} />
+      }}
+    >
+      <DocExample
+        title="Sections"
+        code={`<Sidebar style={{ minHeight: "12rem" }}>
+  <SidebarHeader>Zed UI</SidebarHeader>
+  <SidebarNav>
+    <SidebarItem active href="#">Dashboard</SidebarItem>
+  </SidebarNav>
+  <SidebarGroup label="Workspace">
+    <SidebarNav>
+      <SidebarItem href="#">Team</SidebarItem>
+      <SidebarItem href="#">Billing</SidebarItem>
+    </SidebarNav>
+  </SidebarGroup>
+</Sidebar>`}
+      >
+        <Sidebar style={{ minHeight: "12rem" }}>
+          <SidebarHeader>Zed UI</SidebarHeader>
+          <SidebarNav>
+            <SidebarItem active href="#">
+              Dashboard
+            </SidebarItem>
+          </SidebarNav>
+          <SidebarGroup label="Workspace">
+            <SidebarNav>
+              <SidebarItem href="#">Team</SidebarItem>
+              <SidebarItem href="#">Billing</SidebarItem>
+            </SidebarNav>
+          </SidebarGroup>
+        </Sidebar>
+      </DocExample>
+
+      <SidebarCollapsedExample />
+    </ComponentDoc>
+  );
+}
+
+export function DividerSection() {
+  return (
+    <ComponentDoc
+      id="divider"
+      title="Divider"
+      description="Separates content with a horizontal or vertical rule."
+      usage={{
+        importCode: `import { Divider } from "@zed-ui/react"`,
+        usageCode: `<Divider />`,
+        preview: <Divider />
+      }}
+    >
+      <DocExample title="Labeled" code={`<Divider label="or" />`}>
+        <Divider label="or" />
+      </DocExample>
+      <DocExample title="Vertical in flex row" code={`<Flex align="center" gap="3" height="2rem"><Text>A</Text><Divider orientation="vertical" /><Text>B</Text></Flex>`}>
+        <Flex align="center" gap="3" height="2rem">
+          <Text>A</Text>
+          <Divider orientation="vertical" />
+          <Text>B</Text>
+        </Flex>
       </DocExample>
     </ComponentDoc>
   );

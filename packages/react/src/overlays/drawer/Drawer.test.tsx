@@ -19,4 +19,16 @@ describe("Drawer", () => {
     expect(getByRole("heading", { name: "Settings" })).toBeTruthy();
     expect(await axe(container)).toHaveNoViolations();
   });
+
+  it("renders drawer without title on alternate side", () => {
+    const { getByRole, getByText } = renderWithProvider(
+      <DrawerRoot defaultOpen>
+        <DrawerTrigger render={<Button>Open drawer</Button>} />
+        <DrawerContent side="left">Panel body</DrawerContent>
+      </DrawerRoot>
+    );
+    expect(getByText("Panel body")).toBeTruthy();
+    expect(getByRole("button", { name: "Close" })).toBeTruthy();
+    expect(document.body.querySelector("[data-side='left']")).toBeTruthy();
+  });
 });
