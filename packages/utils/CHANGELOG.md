@@ -1,5 +1,11 @@
 # @zed-ui/utils
 
+## 0.0.3
+
+### Patch Changes
+
+- Add `devWarn` helper for development-only deprecation notices.
+
 ## 0.0.2
 
 ### Patch Changes

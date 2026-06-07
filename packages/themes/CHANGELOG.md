@@ -1,5 +1,13 @@
 # @zed-ui/themes
 
+## 0.0.3
+
+### Patch Changes
+
+- Warning token contrast fix for accessible button states.
+- Updated dependencies
+  - @zed-ui/utils@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

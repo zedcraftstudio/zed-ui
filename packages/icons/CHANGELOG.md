@@ -1,5 +1,11 @@
 # @zed-ui/icons
 
+## 0.0.3
+
+### Patch Changes
+
+- No functional changes; version aligned with `@zed-ui/react` fixed release.
+
 ## 0.0.2
 
 ### Patch Changes
