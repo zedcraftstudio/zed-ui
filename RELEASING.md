@@ -31,8 +31,8 @@ For each published package (or once at the org level if your npm plan supports i
 
 1. Open the package on npm → **Settings** → **Trusted Publisher**.
 2. Add **GitHub Actions**:
-   - **Organization / user:** `zed-ui`
-   - **Repository:** `zedkit-ui`
+   - **Organization / user:** `zedcraftstudio`
+   - **Repository:** `zed-ui`
    - **Workflow filename:** `release.yml`
    - **Environment:** _(leave empty unless you use a GitHub Environment)_
 
@@ -132,9 +132,26 @@ The **Release** workflow (`release.yml`) will either:
 
 ### 3. After publish
 
-- Tag and changelog are handled by Changesets.
+- Version bumps and package changelogs are handled by Changesets.
+- A **single GitHub Release** is created automatically (tag `v0.0.x`, combined notes from all `@zed-ui/*` changelogs).
+- Releases: https://github.com/zedcraftstudio/zed-ui/releases
 - Verify on npm: `https://www.npmjs.com/package/@zed-ui/react`
 - Check provenance badge on the npm package page (Trusted Publishing + CI).
+
+### 4. Backfill a GitHub Release (one-time / manual)
+
+If a version was published to npm before GitHub Releases were enabled:
+
+1. Open **Actions → Release → Run workflow**
+2. Enter the version (e.g. `0.0.2`)
+3. The workflow creates tag `v0.0.2` and a release with aggregated changelog notes
+
+Preview notes locally:
+
+```bash
+pnpm release:notes 0.0.2
+cat release-notes.md
+```
 
 ## Consumer install
 
