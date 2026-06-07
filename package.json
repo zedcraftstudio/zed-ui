@@ -6,6 +6,7 @@
   "packageManager": "pnpm@10.12.1",
   "scripts": {
     "build": "turbo run build",
+    "build:pages": "node scripts/build-pages.mjs",
     "dev": "turbo run dev --filter=@zed-ui/playground",
     "dev:docs": "turbo run dev --filter=@zed-ui/docs",
     "format": "prettier --write .",
@@ -21,7 +22,8 @@
     "release": "pnpm build && changeset publish",
     "release:ci": "pnpm build && NPM_CONFIG_PROVENANCE=true changeset publish",
     "publish:local": "pnpm build && pnpm -r --filter '@zed-ui/*' --filter '!@zed-ui/playground' --filter '!@zed-ui/docs' publish --access public --no-git-checks",
-    "pack:dry-run": "pnpm build && pnpm -r --filter '@zed-ui/*' --filter '!@zed-ui/playground' --filter '!@zed-ui/docs' exec npm pack --dry-run",
+    "pack:dry-run": "pnpm build && pnpm pack:dry-run:only",
+    "pack:dry-run:only": "pnpm -r --filter '@zed-ui/*' --filter '!@zed-ui/playground' --filter '!@zed-ui/docs' exec npm pack --dry-run",
     "size": "size-limit",
     "audit": "pnpm audit --audit-level=high"
   },

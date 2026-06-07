@@ -158,7 +158,7 @@ The **Release** workflow (`release.yml`) will either:
 
 If a version was published to npm before GitHub Releases were enabled:
 
-1. Open **Actions → Release → Run workflow**
+1. Open **Actions → Release → Run workflow** (runs the `backfill-github-release` job)
 2. Enter the version (e.g. `0.0.2`)
 3. The workflow creates tag `v0.0.2` and a release with aggregated changelog notes
 

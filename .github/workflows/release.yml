@@ -65,7 +65,7 @@ jobs:
           draft: false
           prerelease: false
 
-  github-release:
+  backfill-github-release:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:

@@ -1,8 +1,8 @@
-name: Deploy docs to GitHub Pages
+name: Redeploy GitHub Pages
 
+# Normal deploys run from ci.yml after tests pass. Use this workflow only to
+# redeploy the current main branch without a full CI run.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -28,13 +28,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - name: Build playground for GitHub Pages
-        run: pnpm --filter @zed-ui/playground build:pages
+      - run: pnpm build:pages
         env:
           VITE_BASE_PATH: ${{ vars.PAGES_BASE_PATH || '/' }}
           VITE_STORYBOOK_URL: ${{ vars.STORYBOOK_URL || 'https://zed-ui.zedcraftstudio.com/storybook/' }}
-      - run: pnpm --filter @zed-ui/docs build:pages
-      - run: node scripts/deploy-pages.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: pages-dist

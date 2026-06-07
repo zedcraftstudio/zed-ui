@@ -5,9 +5,17 @@ on:
     branches: [main]
   pull_request:
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   ci:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -24,11 +32,41 @@ jobs:
       - run: pnpm test:coverage
       - run: pnpm build
       - run: pnpm size
-      - run: pnpm pack:dry-run
-      - run: pnpm --filter @zed-ui/docs build:pages
+      - run: pnpm pack:dry-run:only
+      - name: Build GitHub Pages site
+        if: github.ref == 'refs/heads/main'
+        run: pnpm build:pages
+        env:
+          VITE_BASE_PATH: ${{ vars.PAGES_BASE_PATH || '/' }}
+          VITE_STORYBOOK_URL: ${{ vars.STORYBOOK_URL || 'https://zed-ui.zedcraftstudio.com/storybook/' }}
+      - name: Build Storybook for tests
+        if: github.event_name == 'pull_request'
+        run: pnpm --filter @zed-ui/docs build:pages
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm --filter @zed-ui/docs test-storybook
       - run: pnpm audit --audit-level=high
         continue-on-error: true
       - run: pnpm test:e2e
       - run: pnpm test:e2e:storybook
+      - name: Upload GitHub Pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-dist
+
+  deploy-pages:
+    if: github.ref == 'refs/heads/main'
+    needs: ci
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
