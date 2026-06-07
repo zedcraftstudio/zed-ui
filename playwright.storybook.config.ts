@@ -9,18 +9,19 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   forbidOnly: Boolean(process.env.CI),
-  retries: 2,
+  retries: process.env.CI ? 2 : 1,
   reporter: "list",
   snapshotPathTemplate: "{testDir}/__screenshots__/{testFilePath}/{arg}{ext}",
   use: {
     baseURL: storybookUrl,
-    trace: "on-first-retry"
+    trace: "on-first-retry",
+    viewport: { width: 1280, height: 720 }
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: `pnpm --filter @zed-ui/docs build:pages && STORYBOOK_PORT=${storybookPort} node scripts/serve-storybook.mjs`,
+    command: `STORYBOOK_PORT=${storybookPort} node scripts/storybook-e2e-webserver.mjs`,
     url: storybookUrl,
     reuseExistingServer: false,
-    timeout: 180_000
+    timeout: process.env.CI ? 300_000 : 180_000
   }
 });

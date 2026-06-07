@@ -24,6 +24,13 @@ const types = {
   ".png": "image/png"
 };
 
+if (!existsSync(path.join(source, "index.html"))) {
+  console.error(
+    "Missing Storybook build at apps/docs/storybook-static. Run: pnpm --filter @zed-ui/docs build:pages"
+  );
+  process.exit(1);
+}
+
 await rm(serveRoot, { recursive: true, force: true });
 await mkdir(path.join(serveRoot, "storybook"), { recursive: true });
 await cp(source, path.join(serveRoot, "storybook"), { recursive: true });
@@ -58,6 +65,14 @@ const server = http.createServer((req, res) => {
     res.end();
   });
   stream.pipe(res);
+});
+
+server.on("error", (error) => {
+  if (error.code === "EADDRINUSE") {
+    console.error(`Port ${port} is already in use. Stop the other Storybook server or set STORYBOOK_PORT.`);
+  }
+  console.error(error);
+  process.exit(1);
 });
 
 server.listen(port, "127.0.0.1", () => {

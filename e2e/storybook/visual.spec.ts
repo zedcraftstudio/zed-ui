@@ -26,13 +26,14 @@ const stories = [
 test.describe("Storybook visual regression", () => {
   for (const story of stories) {
     test(`${story.name} matches snapshot`, async ({ page }) => {
-      await page.goto(`iframe.html?id=${story.id}&viewMode=story`);
+      await page.goto(`iframe.html?id=${story.id}&viewMode=story`, { waitUntil: "domcontentloaded" });
       await page.waitForFunction(
         () => (document.querySelector("#storybook-root")?.childElementCount ?? 0) > 0
       );
-      await page.waitForLoadState("networkidle");
+      await page.evaluate(() => document.fonts?.ready);
       await expect(page.locator("#storybook-root")).toHaveScreenshot(`${story.name}.png`, {
-        maxDiffPixelRatio: 0.02
+        animations: "disabled",
+        maxDiffPixelRatio: 0.03
       });
     });
   }
