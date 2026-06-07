@@ -15,7 +15,7 @@
     "@zed-ui/react": "workspace:*",
     "react": "^19.2.6",
     "react-day-picker": "^9.14.0",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@fontsource/inter": "^5.2.8",
