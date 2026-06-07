@@ -63,9 +63,9 @@ Customize color scheme, density, and semantic colors with `createTheme()` from `
 
 ## Documentation
 
-- [Documentation](https://sinadinzidan.github.io/zed-ui/)
-- [GitHub repository](https://github.com/sinadinzidan/zed-ui)
-- [Report an issue](https://github.com/sinadinzidan/zed-ui/issues)
+- [Documentation](https://zed-ui.zedcraftstudio.com/)
+- [GitHub repository](https://github.com/zedcraftstudio/zed-ui)
+- [Report an issue](https://github.com/zedcraftstudio/zed-ui/issues)
 
 ## License
 

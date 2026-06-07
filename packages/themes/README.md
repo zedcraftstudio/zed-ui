@@ -50,8 +50,8 @@ const theme = createTheme({
 
 ## Documentation
 
-- [Documentation](https://sinadinzidan.github.io/zed-ui/)
-- [GitHub repository](https://github.com/sinadinzidan/zed-ui)
+- [Documentation](https://zed-ui.zedcraftstudio.com/)
+- [GitHub repository](https://github.com/zedcraftstudio/zed-ui)
 - Main install guide: [`@zed-ui/react` on npm](https://www.npmjs.com/package/@zed-ui/react)
 
 ## License

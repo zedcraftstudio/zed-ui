@@ -10,10 +10,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sinadinzidan/zed-ui.git",
+    "url": "git+https://github.com/zedcraftstudio/zed-ui.git",
     "directory": "packages/hooks"
   },
-  "homepage": "https://sinadinzidan.github.io/zed-ui/",
+  "homepage": "https://zed-ui.zedcraftstudio.com/",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.cjs",
