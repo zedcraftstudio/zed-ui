@@ -25,7 +25,17 @@ These packages are published together (same version):
 2. Create the **`@zed-ui`** organization (or user scope) on npm.
 3. Enable **2FA** on your npm account (required for publishing).
 
-### 2. Trusted Publishing (recommended)
+### 2. npm publish token (required)
+
+CI publishes via `NODE_AUTH_TOKEN` from the GitHub secret **`NPM_TOKEN`**:
+
+1. On [npmjs.com](https://www.npmjs.com) → **Access Tokens** → **Generate New Token** → **Granular Access Token** (or **Automation**).
+2. Grant **Read and write** publish access to all `@zed-ui/*` packages (or the whole `@zed-ui` scope).
+3. In GitHub: **zedcraftstudio/zed-ui** → **Settings** → **Secrets and variables** → **Actions** → add `NPM_TOKEN`.
+
+Without this secret, `changeset publish` fails with **`E404 Not Found`** on `PUT https://registry.npmjs.org/@zed-ui%2f…` even when packages already exist.
+
+### 3. Trusted Publishing (optional, provenance)
 
 For each published package (or once at the org level if your npm plan supports it):
 
@@ -36,13 +46,7 @@ For each published package (or once at the org level if your npm plan supports i
    - **Workflow filename:** `release.yml`
    - **Environment:** _(leave empty unless you use a GitHub Environment)_
 
-Trusted Publishing lets `.github/workflows/release.yml` publish without storing `NPM_TOKEN` in GitHub secrets. Published tarballs include **provenance** when CI runs on GitHub.
-
-### 3. Legacy token (optional fallback)
-
-If Trusted Publishing is not configured yet, create an npm **Automation** or **Publish** token and add it as the GitHub secret `NPM_TOKEN`. Uncomment `NODE_AUTH_TOKEN` in `release.yml`.
-
-Prefer Trusted Publishing and rotate/remove legacy tokens once CI publishes successfully.
+Repeat for **every** `@zed-ui/*` package (`react`, `themes`, `system`, `utils`, `hooks`, `icons`). Trusted Publishing can supplement `NPM_TOKEN`; published tarballs include **provenance** when CI runs on GitHub.
 
 ## Peer dependencies
 
@@ -170,10 +174,18 @@ import { ThemeProvider, createTheme, Button } from "@zed-ui/react";
 import "@zed-ui/react/styles.css";
 ```
 
+## Troubleshooting publish failures
+
+| Error | Cause | Fix |
+|-------|--------|-----|
+| `E404` on `PUT @zed-ui/…` | CI has no npm publish credentials | Add `NPM_TOKEN` secret (see above) |
+| `Cannot find module '@zed-ui/system'` during publish | `prepublishOnly` rebuild in isolation | Use root `pnpm build` only (`release:ci` already does this) |
+| Partial publish (some packages at new version, others not) | Transient CI failure | Re-run **Release** workflow after fixing auth; versions already on npm are skipped |
+
 ## Security checklist
 
 - [ ] npm 2FA enabled
-- [ ] Trusted Publisher configured for `release.yml`
-- [ ] No long-lived `NPM_TOKEN` in CI (or rotated after switching to OIDC)
+- [ ] `NPM_TOKEN` secret set on GitHub (Automation / granular publish token)
+- [ ] Trusted Publisher configured for `release.yml` on all `@zed-ui/*` packages (optional)
 - [ ] `pnpm pack:dry-run` passes in CI
 - [ ] Peers not bundled (`react` / `react-dom` stay external)

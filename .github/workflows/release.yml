@@ -30,6 +30,8 @@ jobs:
           node-version: 22
           cache: pnpm
           registry-url: https://registry.npmjs.org
+          scope: "@zed-ui"
+          always-auth: true
       - run: pnpm install --frozen-lockfile
       - name: Create release pull request or publish to npm
         id: changesets
@@ -43,9 +45,9 @@ jobs:
           createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Uses npm Trusted Publishing (OIDC). Configure on npmjs.com before first release.
-          # Legacy fallback: set repository secret NPM_TOKEN and uncomment the line below.
-          # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # Required for npm publish (Automation token with publish access to @zed-ui).
+          # Optional: also configure Trusted Publishing on npm for workflow release.yml.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Prepare GitHub release notes
         if: steps.changesets.outputs.published == 'true'
         id: release

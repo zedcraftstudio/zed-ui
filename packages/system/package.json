@@ -34,7 +34,6 @@
     "access": "public"
   },
   "scripts": {
-    "prepublishOnly": "pnpm run build",
     "build": "tsup",
     "lint": "eslint src",
     "test": "vitest run --passWithNoTests",
