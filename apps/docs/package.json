@@ -19,15 +19,15 @@
   },
   "devDependencies": {
     "@fontsource/inter": "^5.2.8",
-    "@storybook/addon-a11y": "^8.6.14",
+    "@storybook/addon-a11y": "^10.4.6",
     "@storybook/addon-essentials": "^8.6.14",
-    "@storybook/react": "^8.6.14",
-    "@storybook/react-vite": "^8.6.14",
-    "@storybook/test-runner": "^0.21.3",
+    "@storybook/react": "^10.4.6",
+    "@storybook/react-vite": "^10.4.6",
+    "@storybook/test-runner": "^0.24.4",
     "axe-playwright": "^2.0.3",
     "concurrently": "^9.1.2",
     "playwright": "^1.55.0",
-    "storybook": "^8.6.14",
+    "storybook": "^10.4.6",
     "vite": "^8.0.14",
     "wait-on": "^8.0.3"
   }
